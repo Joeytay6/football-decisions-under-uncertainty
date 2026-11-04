@@ -1,0 +1,8 @@
+# raw and derived match data are rebuilt by the scripts, not stored
+data/
+open-data/
+report/build/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

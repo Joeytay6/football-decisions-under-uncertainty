@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Football Decisions Under Uncertainty</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root { --ink:#1c2420; --muted:#5b6660; --green:#1e7a4c; --green-d:#155c39; --soft:#e9f2ed; --grey:#9aa59f; --sage:#9db0a3; --purple:#5b4b9a; --rule:#d5ddd8; --cream:#f6f8f6; --red:#8b3a3a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#fff; }
+  body { font-family:"Inter","DejaVu Sans",sans-serif; color:var(--ink); font-size:9pt; line-height:1.42; }
+  .page { width:210mm; height:297mm; padding:13mm 16mm 14mm; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .kicker { font-size:7.4pt; letter-spacing:.09em; text-transform:uppercase; color:var(--green); font-weight:700; }
+  h1 { font-family:"Inter Display","Inter",sans-serif; font-size:31pt; line-height:1.04; margin:5mm 0 4mm; font-weight:800; letter-spacing:-.015em; }
+  h2 { font-family:"Inter Display","Inter",sans-serif; font-size:16.5pt; line-height:1.15; margin:1.2mm 0 1.6mm; font-weight:800; letter-spacing:-.01em; }
+  h3 { font-size:9.4pt; margin:3mm 0 1.2mm; font-weight:700; color:var(--green-d); }
+  p { margin:0 0 1.8mm; }
+  b { font-weight:700; }
+  .lead { font-size:10.6pt; line-height:1.5; }
+  .q { font-size:10pt; color:var(--muted); margin:0 0 2.6mm; line-height:1.42; }
+  .muted { color:var(--muted); }
+  .small { font-size:7.8pt; }
+  .rule { border-top:1px solid var(--rule); margin:3.5mm 0; }
+  .foot { position:absolute; left:16mm; right:16mm; bottom:7.5mm; display:flex; justify-content:space-between; font-size:7pt; color:var(--muted); border-top:1px solid var(--rule); padding-top:1.6mm; }
+  .tiles { display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin:4mm 0 3mm; }
+  .tiles.three { grid-template-columns:repeat(3,1fr); }
+  .tile { background:var(--soft); border-radius:2.2mm; padding:3.2mm 3.2mm 3mm; }
+  .tile .lab { font-size:6.6pt; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); font-weight:700; margin-bottom:1.2mm; }
+  .tile .num { font-family:"Inter Display","Inter",sans-serif; font-size:18pt; font-weight:800; color:var(--green); line-height:1.05; margin-bottom:1.3mm; letter-spacing:-.01em; white-space:nowrap; }
+  .tile .num.sm { font-size:14.5pt; }
+  .tile .what { font-size:7.8pt; line-height:1.36; }
+  .cover-band { background:var(--green); color:#fff; margin:-13mm -16mm 0; padding:13mm 16mm 9mm; }
+  .cover-band .kicker { color:#bfe0cd; }
+  .cover-band h1 { color:#fff; }
+  .cover-band .sub { color:#d7ebdf; font-size:10.4pt; max-width:165mm; line-height:1.5; margin:0; }
+  .prepared { display:inline-block; margin-top:4mm; font-size:7.8pt; letter-spacing:.06em; text-transform:uppercase; font-weight:700; background:rgba(255,255,255,.14); padding:1.2mm 2.6mm; border-radius:1.4mm; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.2mm 6mm; }
+  .about-grid div { font-size:8pt; line-height:1.38; }
+  .about-grid b { display:block; font-size:8.4pt; color:var(--green-d); }
+  table.t { width:100%; border-collapse:collapse; font-size:7.9pt; }
+  table.t th { text-align:left; font-size:6.6pt; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:1.3mm 2mm; border-bottom:1.1px solid var(--ink); font-weight:700; }
+  table.t td { padding:1.35mm 2mm; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.34; }
+  table.t td.n, table.t th.n { text-align:right; white-space:nowrap; }
+  table.t.compact td { padding:.95mm 2mm; font-size:7.6pt; }
+  table.t tr.tot td { font-weight:700; border-top:1.1px solid var(--ink); }
+  table.t td b { color:var(--green-d); }
+  .design { border:1px solid var(--rule); border-left:1.2mm solid var(--green); border-radius:0 2mm 2mm 0; padding:2.2mm 3.2mm 1.6mm; margin:2.2mm 0 3mm; background:#fff; }
+  .design .h { font-size:6.8pt; letter-spacing:.08em; text-transform:uppercase; font-weight:800; color:var(--green); margin-bottom:1.2mm; }
+  .design dl { display:grid; grid-template-columns:27mm 1fr; gap:.9mm 3mm; margin:0; font-size:7.7pt; line-height:1.36; }
+  .design dt { font-weight:700; color:var(--muted); }
+  .design dd { margin:0; }
+  .design code, code { font-family:"DejaVu Sans Mono",monospace; font-size:7pt; background:var(--cream); padding:0 1mm; border-radius:.8mm; }
+  figure { margin:0; }
+  figure img { width:100%; display:block; }
+  figcaption { font-size:7.4pt; color:var(--muted); margin-top:1mm; line-height:1.34; }
+  .callout { background:var(--soft); border-left:1.2mm solid var(--green); border-radius:0 2mm 2mm 0; padding:2.6mm 3.6mm; margin:2mm 0 2.6mm; }
+  .callout p:last-child { margin:0; }
+  .so { font-weight:700; }
+  .tag { display:inline-block; font-size:6.8pt; font-weight:700; color:var(--green); border:1px solid var(--green); border-radius:1.2mm; padding:.15mm 1.5mm; margin:0 1.1mm 1mm 0; }
+  ul { margin:0 0 1.8mm; padding-left:4.2mm; }
+  li { margin:0 0 .9mm; }
+  .uses { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin:1.5mm 0 2.5mm; }
+  .use { border-top:1mm solid var(--green); background:var(--cream); padding:2.2mm 2.6mm; font-size:7.8pt; line-height:1.36; border-radius:0 0 1.6mm 1.6mm; }
+  .use b { display:block; font-size:8.2pt; margin-bottom:.6mm; color:var(--green-d); }
+  .limits { font-size:7.6pt; color:#36403b; line-height:1.36; }
+  .limits b { color:var(--ink); }
+  .contents { columns:2; column-gap:8mm; font-size:8.3pt; }
+  .contents div { break-inside:avoid; display:flex; justify-content:space-between; border-bottom:1px dotted var(--rule); padding:1mm 0; }
+  .refs { font-size:7.4pt; line-height:1.38; padding-left:4.5mm; }
+  .refs li { margin-bottom:1.1mm; }
+  .contact { background:var(--green); color:#fff; border-radius:2.4mm; padding:3.6mm 5mm; display:flex; justify-content:space-between; align-items:center; font-size:8.8pt; }
+  .contact b { font-size:10.5pt; }
+  .pipe { display:flex; align-items:stretch; gap:0; margin:2mm 0 3mm; }
+  .pipe div { flex:1; background:var(--cream); border:1px solid var(--rule); padding:2mm 2.4mm; font-size:7.6pt; line-height:1.32; position:relative; }
+  .pipe div b { display:block; font-size:7.8pt; color:var(--green-d); }
+  .pipe div + div { margin-left:4mm; }
+  .pipe div + div::before { content:"\2192"; position:absolute; left:-3.6mm; top:40%; color:var(--green); font-weight:800; }
+  .part { display:inline-block; font-size:6.6pt; letter-spacing:.08em; text-transform:uppercase; font-weight:800; color:var(--muted); margin-left:1.5mm; }
+  /* ---- the appraisal pages (projects 1-3) ---- */
+  .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin:3mm 0 2mm; }
+  .step { position:relative; border:1px solid var(--rule); border-top:1.2mm solid var(--green); border-radius:0 0 2mm 2mm; padding:2.6mm 2.8mm 2.6mm; background:#fff; min-height:33mm; }
+  .step.clin { border-top-color:var(--red); }
+  .step .n { position:absolute; top:-4.2mm; right:2mm; width:5.6mm; height:5.6mm; border-radius:50%; background:var(--green); color:#fff; font-size:7.6pt; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .step.clin .n { background:var(--red); }
+  .step .t { font-size:6.6pt; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:1mm; }
+  .step .fq { font-weight:700; font-size:8.8pt; line-height:1.3; margin-bottom:1.2mm; }
+  .step .m { font-size:7.6pt; line-height:1.35; color:#36403b; }
+  .step:not(:nth-child(4n))::after { content:""; position:absolute; right:-3.1mm; top:50%; width:3mm; height:0; border-top:1.2px solid var(--sage); }
+  .legend-row { font-size:7.4pt; color:var(--muted); display:flex; gap:5mm; margin-bottom:3mm; }
+  .legend-row span::before { content:""; display:inline-block; width:3mm; height:1.2mm; margin-right:1.4mm; vertical-align:middle; background:var(--green); }
+  .legend-row span.clin::before { background:var(--red); }
+  table.cmp { width:100%; border-collapse:collapse; font-size:8.4pt; }
+  table.cmp th { text-align:left; font-size:7.4pt; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:1.6mm 2.4mm; border-bottom:1.2px solid var(--ink); }
+  table.cmp td { padding:2mm 2.4mm; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.38; }
+  table.cmp td:first-child { color:var(--muted); width:38%; }
+  table.cmp td:last-child b { color:var(--green-d); }
+  table.steps { width:100%; border-collapse:collapse; font-size:8.4pt; margin:1mm 0 3mm; }
+  table.steps td { padding:1.7mm 2.2mm; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.36; }
+  table.steps td.k { width:7mm; }
+  table.steps td.k span { display:inline-flex; width:5mm; height:5mm; border-radius:50%; background:var(--green); color:#fff; font-size:7pt; font-weight:800; align-items:center; justify-content:center; }
+  table.steps td.s { width:44mm; font-weight:700; }
+  table.steps td.s i { display:block; font-style:normal; font-weight:500; font-size:7.2pt; color:var(--muted); letter-spacing:.03em; }
+  table.steps td.r { width:52mm; background:var(--cream); }
+  table.steps td.r b { color:var(--green-d); }
+  .deal { display:grid; grid-template-columns:1fr 1fr 1.25fr; gap:3mm; margin:2mm 0 2.5mm; }
+  .dcol { border-radius:2mm; padding:3mm 3.2mm; font-size:8.3pt; line-height:1.4; }
+  .dcol .h { font-size:6.9pt; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin-bottom:1.4mm; }
+  .dcol .big { font-family:"Inter Display","Inter",sans-serif; font-size:17pt; font-weight:800; line-height:1.05; margin-bottom:1.4mm; }
+  .dcol.seller { background:#f3eeee; } .dcol.seller .h, .dcol.seller .big { color:var(--red); }
+  .dcol.ours { background:var(--cream); } .dcol.ours .h { color:var(--muted); } .dcol.ours .big { color:var(--ink); }
+  .dcol.deal3 { background:var(--green); color:#fff; } .dcol.deal3 .h { color:#bfe0cd; } .dcol.deal3 .big { color:#fff; }
+  .grid-svc { display:grid; grid-template-columns:1fr 1fr; gap:3mm 5mm; margin:2mm 0 2mm; }
+  .svc { border-left:1mm solid var(--green); padding:1mm 0 1mm 3mm; font-size:8.4pt; line-height:1.4; }
+  .svc b { display:block; font-size:9pt; margin-bottom:.6mm; }
+  .p13 { font-size:9.3pt; line-height:1.45; }
+  .p13 .q { font-size:10.5pt; margin:0 0 3mm; }
+  .p13 h2 { font-size:17pt; margin:1.5mm 0 2mm; }
+  .p13 h3 { font-size:9.6pt; margin:3mm 0 1.2mm; color:var(--green); }
+  .p13 figcaption { font-size:7.6pt; margin-top:1.2mm; line-height:1.35; }
+  .p13 .callout { padding:3mm 4mm; margin:2mm 0 3mm; }
+  .p13 .tag { font-size:7pt; padding:.2mm 1.6mm; margin:0 1.2mm 1mm 0; }
+</style>
+</head>
+<body>
+{% set t = I.timing %}
+{% set sig = W.signing %}{% set deal = W.deal %}{% set fin = W.finishing %}{% set inp = W.inputs %}
+{% set rel = W.reliability %}{% set cd = W.critical %}{% set cw = W.critical_watch %}
+{% set NP = 16 %}
+
+<!-- =================================================== 1. COVER -->
+<section class="page">
+  <div class="cover-band">
+    <div class="kicker">Portfolio of independent work &middot; Joe Taylor &middot; 2026</div>
+    <h1>Football decisions<br>under uncertainty</h1>
+    <p class="sub">Six projects on recruitment, transfer value, data quality, injury and fatigue, built from free public event data with methods from health economics, clinical epidemiology, laboratory science and exercise physiology.</p>
+    {{ PREPARED }}
+  </div>
+
+  <p class="lead" style="margin-top:5.5mm">I'm a health economist, sport scientist and former NHS clinical scientist. Every week, health systems decide whether a new medicine is worth its price, with incomplete evidence, a fixed budget and a lot at stake, and they've built rigorous tools for exactly that. This portfolio applies those tools, from <b>study design</b> and <b>evidence synthesis</b> to <b>decision modelling</b> and <b>value of information</b>, to the decisions football clubs make every week.</p>
+
+  <div class="tiles">
+    <div class="tile"><div class="lab">Walk-away price</div><div class="num">{{ sig.walk_away|k }}</div><div class="what">for a target priced at {{ inp.asking_fee|k }}, where there's only a <b>{{ sig.p_worth|pct }}</b> chance the deal pays off at the asking price.</div></div>
+    <div class="tile"><div class="lab">Shortlists</div><div class="num sm">{{ S.tests.npxg_xa90_1.auc|f2 }} vs {{ S.tests.ga90_1.auc|f2 }}</div><div class="what">Accuracy (AUC) of expected goals and assists against goals and assists as a <b>screening test</b> for who performs best later in the season.</div></div>
+    <div class="tile"><div class="lab">Hidden injury risk</div><div class="num">{{ (t[5].rate_observable / t[0].rate_observable)|f1 }}&times;</div><div class="what">Corrected for teams with no substitutes left, the last 15 minutes carry the <b>highest injury risk of the match</b>: {{ (t[5].rate_observable / t[0].rate_observable)|f1 }} times the opening 15.</div></div>
+    <div class="tile"><div class="lab">Fatigue in event data</div><div class="num">+{{ (F.mh_by_bin['75-90+'].rr - 1)|pct }}</div><div class="what">more pressing from a fresh substitute than from the <b>same player</b> as a starter in the last 15 minutes. Time-motion studies report a similar gap.</div></div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="two">
+    <div>
+      <h3 style="margin-top:0">What's inside</h3>
+      <ul>
+        <li><b>Project 1:</b> appraising a signing the way NICE appraises a medicine: walk-away price, value of information and an outcomes-based deal</li>
+        <li><b>Project 2:</b> finishing, skill or luck?</li>
+        <li><b>Project 3:</b> measurement science: which numbers to trust, and when form is real</li>
+        <li><b>Project 4:</b> scouting numbers judged like a screening test</li>
+        <li><b>Project 5:</b> injuries in matches: what event data can and can't see</li>
+        <li><b>Project 6:</b> a fatigue signal in event data</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">About me</h3>
+      <div class="about-grid">
+        <div><b>Health economist</b>Decision models and evidence synthesis for pharmaceutical clients at Lumanity</div>
+        <div><b>Sport scientist</b>English Institute of Sport, British Triathlon, Barnsley FC and Leeds Rhinos academies</div>
+        <div><b>Clinical scientist</b>NHS Trainee Clinical Perfusion Scientist, Oxford</div>
+        <div><b>Start-up co-founder</b>Built Novamint's commercial side from scratch</div>
+      </div>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <p class="small muted"><b>Data.</b> StatsBomb (Hudl) open event data, free and public: the FA Women's Super League 2023/24 ({{ D.rows[4].with_events|n }} matches; projects 1&ndash;3) and the Premier League, La Liga, Serie A and Ligue 1 2015/16 ({{ D.men_total.matches|n }} matches; projects 2 and 4&ndash;6). Every number comes from the accompanying code and is inserted automatically. In project 1 the fee, wages, injury rates and the value of a league point are illustrative, not real valuations.</p>
+
+  <div class="foot"><span>Joe Taylor &middot; +44 7583 108807 &middot; j.taylor1998@live.co.uk</span><span>1 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 2. ABOUT THIS PORTFOLIO -->
+<section class="page">
+  <div class="kicker">About this portfolio</div>
+  <h2>What this is, and what it adds</h2>
+  <p class="q">Six pieces of independent work, each set up and reported like a research study, so the methods and the thinking can be judged on their own merits.</p>
+
+  <h3>What's different from the usual approach</h3>
+  <table class="t">
+    <tr><th style="width:24%">Question</th><th style="width:28%">Usual approach</th><th>What these projects add, and where the method comes from</th></tr>
+    <tr><td><b>1. What should we pay for a player, and how?</b></td><td>Comparable fees, one valuation, negotiation</td><td>A decision model with the uncertainty left in: the chance a signing pays off at every fee, a walk-away price, <b>what's worth finding out before bidding</b> and an outcomes-based deal. <span class="muted">Health technology assessment (NICE methods).</span></td></tr>
+    <tr><td><b>2. Is a hot finisher skilled or lucky?</b></td><td>Read goals minus xG as skill</td><td>A hierarchical model that separates skill from luck, tested <b>out of sample</b> in the men's game. <span class="muted">Evidence synthesis.</span></td></tr>
+    <tr><td><b>3. Which numbers can we trust, and is a change in form real?</b></td><td>Take every number at face value; react to runs of form</td><td>Reliability and <b>critical differences</b>, the checks a lab runs before acting on a test result, with false alarms controlled. <span class="muted">Clinical laboratory science.</span></td></tr>
+    <tr><td><b>4. Which numbers should a shortlist be built on?</b></td><td>Rank players on per-90 output</td><td>Each number treated as a <b>screening test</b> and scored on how well it finds the players who perform best afterwards. <span class="muted">Diagnostic accuracy studies.</span></td></tr>
+    <tr><td><b>5. How often are players injured in matches, and when?</b></td><td>Club records for your own players; media reports for everyone else</td><td>Injury <b>rates</b> with proper exposure for any player, a correction for a recording bias that hides late-match injuries, and benchmarks against UEFA's injury surveillance. <span class="muted">Clinical epidemiology.</span></td></tr>
+    <tr><td><b>6. Do players tire, and when?</b></td><td>GPS and heart-rate data, which a club only has for its own players</td><td>A fatigue signal in event data for <b>any</b> player, with a design that separates fatigue from tactics and the score. <span class="muted">Exercise physiology; stratified analysis.</span></td></tr>
+  </table>
+
+  <div class="callout" style="margin-top:3mm">
+    <p><b>What's new, and what's a check.</b> Three projects do something I haven't seen in public football analysis: a full value-of-information and deal-design model for a signing (1), a correction for the recording bias that hides late-match injuries (5), and a within-player design that separates fatigue from tactics in event data (6). The other three take well-known ideas (finishing is mostly luck, xG predicts better than goals, small samples mislead) and test them with methods from medicine. They confirm them, which is how a new method earns trust, and they turn each idea into a number a club can act on.</p>
+  </div>
+
+  <div class="two" style="margin-top:3mm">
+    <div>
+      <h3 style="margin-top:0">How each project is reported</h3>
+      <p>Each project states its question, data, design, methods, the main bias it deals with, its limitations and the code that produces it: in a <b>study design box</b> on the page for projects 2 (men's check) and 4&ndash;6, and on page 14 for projects 1&ndash;3, with every model input and its source. Results come with 95% intervals and, where published research exists, are checked against it.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Reproducibility</h3>
+      <p>All the data are free and public. One script turns the raw match files into tidy tables; one script per project turns those into every number and chart here; this document is then built from those outputs, so <b>no number is typed by hand</b>.</p>
+      <p>Where a finding was null, it's reported as null. Inputs that are assumptions rather than data are labelled.</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <h3 style="margin-top:0">Contents</h3>
+  <div class="contents">
+    <div><span>Data, definitions and methods</span><span>3</span></div>
+    <div><span>The approach: recruitment as an appraisal</span><span>4</span></div>
+    <div><span>Project 1. Appraising a signing</span><span>5</span></div>
+    <div><span>Project 2. Finishing: skill or luck?</span><span>7</span></div>
+    <div><span>Project 3. Measurement science</span><span>9</span></div>
+    <div><span>Project 4. Scouting numbers as screening tests</span><span>10</span></div>
+    <div><span>Project 5. Injuries in matches</span><span>11</span></div>
+    <div><span>Project 6. A fatigue signal in event data</span><span>13</span></div>
+    <div><span>Projects 1&ndash;3: study designs and inputs</span><span>14</span></div>
+    <div><span>References</span><span>15</span></div>
+    <div><span>What I bring</span><span>16</span></div>
+    <div><span>Code: available on request</span><span>&nbsp;</span></div>
+  </div>
+
+  <div class="foot"><span>Joe Taylor &middot; Football decisions under uncertainty</span><span>2 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 3. DATA -->
+<section class="page">
+  <div class="kicker">Data and methods</div>
+  <h2>Where the data come from</h2>
+  <p class="q">Everything here uses StatsBomb's free open data, published by Hudl at github.com/hudl/open-data: every on-ball event, pressure and substitution, with full lineups, for each match below. The files used are fixed at one version of the repository (commit 4b73468), so every result can be rebuilt exactly.</p>
+
+  <table class="t">
+    <tr><th>Competition</th><th>Season</th><th class="n">Matches</th><th class="n">Player appearances</th><th class="n">Player-hours</th><th class="n">Non-penalty shots</th><th class="n">Pressures</th><th class="n">Projects</th></tr>
+    {% for r in D.rows %}
+    <tr><td style="white-space:nowrap"><b>{{ r.competition }}</b></td><td>{{ r.season|replace('/20','/') }}</td><td class="n">{{ r.with_events|n }}{% if r.with_events < 380 and r.gender == 'Men' %}*{% endif %}{% if r.gender == 'Women' %}&dagger;{% endif %}</td><td class="n">{{ r.appearances|n }}</td><td class="n">{{ r.player_hours|n }}</td><td class="n">{{ r.shots|n }}</td><td class="n">{{ r.pressures|n }}</td><td class="n">{% if r.gender == 'Men' %}2, 4&ndash;6{% else %}1&ndash;3{% endif %}</td></tr>
+    {% endfor %}
+    <tr class="tot"><td>Men's total</td><td></td><td class="n">{{ D.men_total.matches|n }}</td><td class="n">{{ D.men_total.appearances|n }}</td><td class="n">{{ D.men_total.player_hours|n }}</td><td class="n">{{ D.men_total.shots|n }}</td><td class="n">{{ D.men_total.pressures|n }}</td><td></td></tr>
+  </table>
+  <p class="small muted" style="margin-top:1.2mm">* Ligue 1 2015/16 had 380 matches; the open data include 377. &dagger; 131 of 132 WSL matches have event data; all 132 results are used for the league table. Projects 1&ndash;3 use the tables they were first built on, which count minutes on the match clock ({{ inp.player_matches|n }} player-matches, {{ inp.shots|n }} shots); see page 14.</p>
+
+  <p class="small" style="margin:1.5mm 0 0"><b>From raw files to this page:</b> <code>build_tables.py</code> turns the raw match files into tidy tables; one <code>project*.py</code> script per project produces every estimate, interval and chart; this document is built from those outputs, so no number is typed by hand. Python (pandas, NumPy, SciPy, Matplotlib), with each method written out in the code rather than called from a black box.</p>
+
+  <div class="two">
+    <div>
+      <h3 style="margin-top:0">Definitions</h3>
+      <ul class="small" style="font-size:7.9pt">
+        <li><b>Minutes on the pitch</b> come from on/off times. StatsBomb restarts the clock at 45:00 for the second half, so times are converted to elapsed playing time and stoppage time counts.</li>
+        <li><b>Per 90</b> = count &divide; minutes &times; 90.</li>
+        <li><b>npxG</b> is StatsBomb's expected goals, penalties excluded; <b>xA</b> is the npxG of shots a player's passes created.</li>
+        <li><b>Injury withdrawal</b>: a substitution StatsBomb records as caused by injury.</li>
+        <li><b>Pressure</b>: StatsBomb's event for a player closing down an opponent on the ball, a repeated high-intensity action.</li>
+        <li><b>Season halves</b>: each team's league fixtures in date order, split in two.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">What public data can't do</h3>
+      <ul class="small" style="font-size:7.9pt">
+        <li><b>No tracking, GPS or training data.</b> Physical output is inferred from events, not measured.</li>
+        <li><b>No medical records.</b> Injuries are seen only when they force a substitution; diagnosis and days lost are unknown.</li>
+        <li><b>No fees or wages.</b> Money in project 1 is illustrative and labelled.</li>
+        <li><b>The men's data are from 2015/16</b>, the most recent free men's seasons with every match. Teams then had three substitutions, not five, which matters for project 5 and is handled there.</li>
+        <li><b>Event data are coded by people.</b> Definitions such as "injury" can vary a little between leagues and coders.</li>
+        <li>Every method here runs unchanged on a club's own event, tracking, GPS and medical data, where these limits largely disappear.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:1.5mm">Methods used, in plain words</h3>
+  <table class="t compact">
+    <tr><th style="width:37%">Method <span style="font-weight:500">(where it's standard)</span></th><th>What it does here</th><th style="width:11%">Used in</th></tr>
+    <tr><td>Random-effects meta-analysis <span class="muted">(evidence synthesis)</span></td><td>Pulls one noisy season towards the average, by exactly as much as the noise deserves</td><td>Project 1</td></tr>
+    <tr><td>Markov model, simulation, net monetary benefit <span class="muted">(health technology assessment)</span></td><td>Plays the signing out 10,000 times, with injuries and uncertainty, and turns the result into money</td><td>Project 1</td></tr>
+    <tr><td>Value of information; managed entry agreements <span class="muted">(research funding; NHS pricing)</span></td><td>Prices each unknown before you bid; designs a fee that pays more only if the player delivers</td><td>Project 1</td></tr>
+    <tr><td>Bayesian hierarchical model <span class="muted">(small-area disease rates)</span></td><td>Separates how much of a player's finishing is skill and how much is luck</td><td>Project 2</td></tr>
+    <tr><td>Reliability, reference change values, false discovery rate <span class="muted">(clinical labs; genomics)</span></td><td>Says which numbers are stable enough to use, and when a change in form is real</td><td>Project 3</td></tr>
+    <tr><td>ROC/AUC, sensitivity, PPV <span class="muted">(diagnostic test evaluation)</span></td><td>Scores each scouting number on how well it picks out the players who go on to perform</td><td>Project 4</td></tr>
+    <tr><td>Incidence rates, Poisson regression, Kaplan&ndash;Meier <span class="muted">(injury surveillance; trials)</span></td><td>How often and when players come off injured, and how long they're out against a comparison group</td><td>Project 5</td></tr>
+    <tr><td>Mantel&ndash;Haenszel stratification, bootstrap <span class="muted">(epidemiology)</span></td><td>Compares each player only with himself in the same situation, so tactics and the score can't explain the result</td><td>Project 6</td></tr>
+  </table>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data.</span><span>3 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 4. THE APPROACH -->
+<section class="page p13">
+  <div class="kicker">The approach</div>
+  <h2>Recruitment as an appraisal, in eight steps</h2>
+  <p class="q">Before the NHS pays for a medicine, NICE works through a fixed sequence of questions. Each one has a direct football equivalent, and steps 7 and 8 borrow from NHS deal-making and clinical lab science.</p>
+  <div class="legend-row"><span>Health economics (NICE)</span><span class="clin">Clinical science</span></div>
+
+  <div class="flow">
+    <div class="step"><div class="n">1</div><div class="t">Scope</div><div class="fq">Who would she replace, and what counts as success?</div><div class="m">The comparator is the player she'd replace, not an average player. Success is league points.</div></div>
+    <div class="step"><div class="n">2</div><div class="t">Evidence synthesis</div><div class="fq">How good is she really?</div><div class="m">Random-effects meta-analysis, players in place of trials, shrinks one noisy season towards the truth.</div></div>
+    <div class="step"><div class="n">3</div><div class="t">Decision model</div><div class="fq">What will she add?</div><div class="m">A Markov model of fitness and injury, and a league model that turns goals into points.</div></div>
+    <div class="step"><div class="n">4</div><div class="t">Probabilistic analysis</div><div class="fq">How sure can we be?</div><div class="m">{{ inp.n_sims|n }} simulated versions of the signing, each input drawn from its range of plausible values.</div></div>
+    <div class="step"><div class="n">5</div><div class="t">Decision rule</div><div class="fq">What should we pay?</div><div class="m">The chance the signing pays off at every fee, and a walk-away price.</div></div>
+    <div class="step"><div class="n">6</div><div class="t">Value of information</div><div class="fq">What's worth finding out before we bid?</div><div class="m">Puts a price on each uncertainty, so scouting and medical budgets go where they pay.</div></div>
+    <div class="step"><div class="n">7</div><div class="t">Managed entry agreement</div><div class="fq">How should we structure the deal?</div><div class="m">Outcomes-based add-ons, as the NHS uses when a medicine's benefit is uncertain.</div></div>
+    <div class="step clin"><div class="n">8</div><div class="t">Lab measurement science</div><div class="fq">Which numbers can we trust, and is a change real?</div><div class="m">Reliability and reference change values, the tests labs use before acting on a result.</div></div>
+  </div>
+
+  <h3 style="margin-top:6mm">What's different from the usual approach</h3>
+  <table class="cmp">
+    <tr><th>The usual approach</th><th>This approach</th></tr>
+    <tr><td>Rank players on last season's numbers</td><td><b>Estimate each player's true level</b>, and check which numbers are reliable enough to recruit on at all</td></tr>
+    <tr><td>Compare a target with an average player</td><td>Compare with <b>the player she'd actually replace</b>, because that's the real gain</td></tr>
+    <tr><td>One valuation, with the uncertainty left out</td><td><b>The chance a deal pays off at every fee</b>, and a walk-away price that reflects the uncertainty</td></tr>
+    <tr><td>Scout and gather data the same way on everyone</td><td><b>Value of information</b> shows where extra scouting or medical work is worth the money</td></tr>
+    <tr><td>Argue about one fixed fee</td><td><b>Outcomes-based deals</b> that bridge the gap between the seller's view and the club's</td></tr>
+    <tr><td>React to a run of good or bad form</td><td><b>Critical differences</b> from clinical lab science say when a change is real, with false alarms controlled</td></tr>
+  </table>
+
+  <div class="callout" style="margin-top:5mm">
+    <p><b>Why it matters.</b> A club makes a handful of big recruitment decisions a year, each with a lot of money and uncertainty attached. These methods don't replace scouts or coaches. They turn everyone's judgement into a clear answer: what to pay, how sure we are, and what would change our mind.</p>
+  </div>
+
+  <div class="foot"><span>Joe Taylor &middot; Football decisions under uncertainty</span><span>4 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 5. PROJECT 1 -->
+<section class="page p13">
+  <div class="kicker">Project 1 &middot; Health technology assessment &middot; Women's game</div>
+  <h2>Appraising a signing, from goals to a walk-away price</h2>
+  <p class="q">An illustrative target: the best forward outside the top four, at an asking fee of {{ inp.asking_fee|k }}, with the club valuing an extra league point at {{ inp.value_per_point|k }}.</p>
+  <span class="tag">Meta-analysis</span><span class="tag">Markov model</span><span class="tag">Probabilistic sensitivity analysis</span><span class="tag">Net monetary benefit</span>
+
+  <table class="steps" style="margin-top:2.5mm">
+    <tr><td class="k"><span>1</span></td><td class="s">What's a goal worth?<i>League regression</i></td><td>Points against goal difference across the 2023/24 table.</td><td class="r">Each goal of goal difference was worth <b>{{ W.league_model.used_slope|f2 }} points</b>.</td></tr>
+    <tr><td class="k"><span>2</span></td><td class="s">How good is she really?<i>Random-effects meta-analysis</i></td><td>Her attacking output (non-penalty xG + expected assists per 90) is pulled towards the forward average by how noisy it is. {{ W.signing_extra.i2|pct }} of the variation between forwards is real; the rest is noise.</td><td class="r">Raw <b>{{ sig.target_raw_per90|f2 }}</b> per 90 becomes a true level of <b>{{ sig.target_true|f2 }}</b>, against {{ sig.comparator|f2 }} for the player she'd replace.</td></tr>
+    <tr><td class="k"><span>3</span></td><td class="s">How often will she play?<i>Markov model</i></td><td>Match by match she moves between fit, short-term injury and long-term injury, like a patient in a chronic disease model.</td><td class="r">Fit for <b>{{ W.signing_extra.fit_share|pct }}</b> of matches over a two-season contract.</td></tr>
+    <tr><td class="k"><span>4</span></td><td class="s">What will she add?<i>Decision model</i></td><td>Extra goals per match = (her level &minus; the replaced player's) &times; share of the match she plays &times; chance she's fit. Goals become points; costs are fee + wages &minus; resale, discounted as NICE does.</td><td class="r"><b>{{ sig.points_mean|f1 }} extra points</b> on average.</td></tr>
+    <tr><td class="k"><span>5</span></td><td class="s">How sure can we be?<i>{{ inp.n_sims|n }} simulations</i></td><td>Every uncertain input is drawn from its range at once: her level, injuries, minutes, resale, points per goal.</td><td class="r">90% of outcomes between <b>{{ sig.points_p5|sf1 }} and {{ sig.points_p95|f1 }}</b> points.</td></tr>
+    <tr><td class="k"><span>6</span></td><td class="s">What should we pay?<i>Acceptability analysis</i></td><td>Net benefit = points &times; {{ inp.value_per_point|k }} &minus; net cost, at every possible fee.</td><td class="r"><b>{{ sig.p_worth|pct }}</b> chance it pays off at {{ inp.asking_fee|k }}. Walk away above <b>{{ sig.walk_away|k }}</b>.</td></tr>
+  </table>
+
+  <figure>
+    <img src="img/c1_bid.png" alt="Chance the signing pays off at every fee">
+    <figcaption>The same {{ inp.n_sims|n }} simulations at every fee. Even on a free transfer it's only a {{ sig.p_free|pct }} bet, because of her wages. Above {{ sig.walk_away|k }} the club expects to lose money.</figcaption>
+  </figure>
+
+  <div class="callout" style="margin-top:4mm">
+    <p class="so" style="margin:0">What it means: at the asking price this is a coin flip the club slightly loses. A clear walk-away price before negotiations start stops a good player becoming a bad deal.</p>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24. Fee, wages, injury rates and the value of a point are illustrative.</span><span>5 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 6. PROJECT 1b -->
+<section class="page p13">
+  <div class="kicker">Project 1, continued</div>
+  <h2>What's worth finding out, and a deal that bridges the gap</h2>
+  <p class="q">Two questions most clubs answer by instinct: should we do more homework before bidding, and how should we structure the fee?</p>
+
+  <h3>Value of information: where scouting money pays</h3>
+  <figure>
+    <img src="img/c2_voi.png" alt="Value of information by source of uncertainty">
+  </figure>
+  <p style="margin-top:2mm">Perfect information about everything would be worth up to <b>{{ sig.evpi|k }}</b> for this one decision, and <b>{{ sig.voi['Her true level (scouting, more data)']|k1 }}</b> of that is about her true level. <span class="so">So: send the scouts again, or buy more data on her. A more detailed medical would add almost nothing here.</span> It's the method health economists use to decide which research is worth funding, estimated here with the regression approach of Strong, Oakley and Brennan (2014).</p>
+
+  <div class="rule" style="margin:3.5mm 0"></div>
+
+  <h3 style="margin-top:0">Bridging the price gap: an outcomes-based deal</h3>
+  <p>The seller and the club disagree because they believe different things about her level. The NHS faces this with every new medicine, and solves it with <b>managed entry agreements</b>, where the price depends on results. The same idea, built from the model:</p>
+
+  <div class="deal">
+    <div class="dcol seller"><div class="h">The seller's view</div><div class="big">{{ inp.asking_fee|k }}</div>"Look at last season." She produced {{ sig.target_raw_per90|f2 }} xG + xA per 90, a pace of about {{ deal.pace_seller|n }} goals and assists over two seasons.</div>
+    <div class="dcol ours"><div class="h">The club's view</div><div class="big">{{ sig.walk_away|k }}</div>One season over-states her. Her true level is about {{ sig.target_true|f2 }} per 90, so she's worth {{ sig.walk_away|k }} on average.</div>
+    <div class="dcol deal3"><div class="h">The deal</div><div class="big">{{ deal.upfront|k }} + {{ deal.bonus|k }}</div>{{ deal.upfront|k }} now, plus {{ deal.bonus|k }} if she reaches <b>{{ deal.hurdle }} goals and assists</b> over two seasons: last season's pace.</div>
+  </div>
+
+  <div class="two" style="gap:5mm">
+    <ul>
+      <li>If she's the player the seller says, <b>they get their {{ inp.asking_fee|k }}</b>.</li>
+      <li>On average the club pays <b>{{ deal.paid_mean|k }}</b>, its walk-away price.</li>
+      <li>The bonus is paid in {{ deal.p_hit_ours|pct }} of simulations, and only when she's delivered: <b>{{ deal.points_if_hit|f1 }} extra points</b> on average, against {{ deal.points_if_miss|f1 }} when she falls short.</li>
+    </ul>
+    <ul>
+      <li>When the bonus is triggered, the signing pays off <b>{{ deal.worth_if_hit|pct }}</b> of the time.</li>
+      <li>The chance of losing &pound;50k or more falls from <b>{{ deal.fixed_ask.p_big_loss|pct }}</b> (fixed {{ inp.asking_fee|k }}) to <b>{{ deal.outcomes.p_big_loss|pct }}</b>.</li>
+      <li>Any clause can be tested this way before it's offered: appearances, goals, minutes, sell-on.</li>
+    </ul>
+  </div>
+
+  <div class="callout" style="margin-top:2mm">
+    <p class="so" style="margin:0">What it means: instead of arguing about one number, the club offers a structure where it pays more only in the worlds where she's worth more, and gets the deal done.</p>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24. Values illustrative; goals and assists simulated from expected goals and assists.</span><span>6 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 7. PROJECT 2 -->
+<section class="page p13">
+  <div class="kicker">Project 2 &middot; Evidence synthesis &middot; Women's game</div>
+  <h2>Skill or luck? The truth about finishing</h2>
+  <p class="q">When a striker scores far more than her expected goals, how much of it is skill that will carry on, and how much is luck?</p>
+  <span class="tag">Hierarchical Bayesian model</span><span class="tag">Shrinkage</span><span class="tag">Credible intervals</span>
+
+  <div class="two" style="margin-top:3mm">
+    <div>
+      <h3 style="margin-top:0">How it works</h3>
+      <p>Each player has a true finishing multiplier: 1.2 means she scores 20% more than her chances deserve. A Bayesian model estimates how much these multipliers really vary across the league, then uses that to judge each player's season. Players with few shots are pulled strongly towards the average; players with many keep more of their own record.</p>
+      <p>Same logic as a meta-analysis of small trials: one striking result from a small sample is usually partly luck.</p>
+    </div>
+    <div class="callout" style="margin:0">
+      <p>&bull; Players scored <b>{{ fin.league_ratio|f2 }} goals per 1.00 xG</b> on average.</p>
+      <p>&bull; True finishing skill varies by only about <b>&plusmn;{{ fin.spread|pct }}</b> between players.</p>
+      <p>&bull; Of <b>{{ fin.n15 }}</b> players with 15+ shots, <b>{% if fin.n_confident == 0 %}none{% else %}{{ fin.n_confident }}{% endif %}</b> had a 90% chance of being a genuinely above-average finisher on one season's evidence.</p>
+      <p>&bull; Khadija Shaw scored {{ fin.shaw.goals }} from {{ fin.shaw.xg|f1 }} xG, a raw {{ (fin.shaw.goals / fin.shaw.xg)|f2 }}. Her true finishing is more like <b>{{ fin.shaw.skill|f2 }}</b> (90% interval {{ fin.shaw.lo|f2 }}&ndash;{{ fin.shaw.hi|f2 }}): probably good, not extraordinary.</p>
+      <p class="so" style="margin-top:2mm">What it means: value strikers on the chances they get, not last season's conversion rate. A hot finishing season is mostly luck.</p>
+    </div>
+  </div>
+
+  <figure style="margin-top:3mm">
+    <img src="img/c4_finishing.png" alt="Raw finishing against estimated finishing skill">
+    <figcaption>Each dot is a player with 1.5+ xG. Raw finishing ranges from 0 to over 2 goals per xG; true skill barely leaves the average.</figcaption>
+  </figure>
+
+  <figure style="margin-top:2.5mm">
+    <img src="img/c7_intervals.png" alt="Raw finishing against estimated finishing, with intervals">
+    <figcaption>Red crosses: what last season says. Green: what the evidence supports once luck is accounted for.</figcaption>
+  </figure>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24.</span><span>7 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 8. PROJECT 2b (men) -->
+<section class="page">
+  <div class="kicker">Project 2, continued &middot; Men's game</div>
+  <h2>Does it hold up? The same model on four men's leagues</h2>
+  <p class="q">A much bigger sample, and a harder test: if a striker over-performs his xG in the first half of a season, does he keep doing it in the second?</p>
+
+  <div class="design"><div class="h">Study design</div><dl>
+    <dt>Data</dt><dd>{{ FI.shots|n }} non-penalty shots with StatsBomb xG ({{ FI.goals|n }} goals from {{ FI.xg|n }} xG) by {{ FI.model.players|n }} players, Premier League, La Liga, Serie A and Ligue 1, 2015/16.</dd>
+    <dt>Model</dt><dd>The same hierarchical (random-effects) Gamma&ndash;Poisson model as for the women's game: each player's goals follow his xG times a true finishing multiplier, and the multipliers vary across players by an amount the data estimate. Posterior by grid approximation.</dd>
+    <dt>Check</dt><dd>Out of sample: does over-performance in the first half of the season predict the second half? ({{ FI.halves.players }} players with 20+ shots in each half)</dd>
+    <dt>Code</dt><dd><code>project2b_finishing_men.py</code></dd>
+  </dl></div>
+
+  <div class="tiles three">
+    <div class="tile"><div class="lab">Raw spread</div><div class="num">&plusmn;{{ FI.model.raw_ratio_sd_regulars|pct }}</div><div class="what">Typical variation in goals per xG among the {{ FI.model.regulars_40_shots }} players with 40+ shots: what the raw numbers suggest.</div></div>
+    <div class="tile"><div class="lab">True skill spread</div><div class="num">&plusmn;{{ FI.model.spread|pct }}</div><div class="what">What the model estimates once luck is removed (95% credible interval: from almost nothing to {{ FI.model.spread_hi|pct(1) }}).</div></div>
+    <div class="tile"><div class="lab">Out of sample</div><div class="num">r = {{ FI.halves.r_finishing|sf2 }}</div><div class="what">First-half over-performance against second-half ({{ FI.halves.players }} players, p = {{ FI.halves.p_finishing|f2 }}). Shot quality, by contrast: <b>r = {{ FI.halves.r_shot_quality|f2 }}</b>.</div></div>
+  </div>
+
+  <figure>
+    <img src="img/finishing.png" alt="Raw finishing against model estimate for the 12 players with most xG">
+    <figcaption>Purple: what the season's raw numbers say. Green: the model's estimate of each player's true finishing, with a 90% interval. Goals exclude penalties.</figcaption>
+  </figure>
+  {% set ib = FI.top12[-1] %}
+  <div class="callout" style="margin-top:2.5mm">
+    <p>Players scored {{ FI.model.league_ratio|f2 }} goals per xG overall. {{ ib.player }} scored {{ ib.goals }} non-penalty goals from {{ ib.xg|f1 }} xG, a raw {{ ib.raw_ratio|f2 }}. On one season's evidence his true finishing is estimated at <b>{{ ib.skill|f2 }}</b> (90% interval {{ ib.skill_lo|f2 }}&ndash;{{ ib.skill_hi|f2 }}). Of the {{ FI.model.regulars_40_shots }} regular shooters, <b>{% if FI.model.regulars_confident_above + FI.model.regulars_confident_below == 0 %}none{% else %}{{ FI.model.regulars_confident_above + FI.model.regulars_confident_below }}{% endif %}</b> can be called a better or worse finisher than average with 90% confidence. Over-performance didn't carry from one half of the season to the next; the quality of a player's chances did. The women's-game conclusion holds.</p>
+  </div>
+
+  <div class="two" style="gap:5mm">
+    <div>
+      <h3 style="margin-top:0">What a club could use this for</h3>
+      <p>Value strikers on the chances they get and the quality of those chances, which persist; treat a hot conversion rate as mostly noise until several seasons say otherwise. The same model sets how much to trust any per-player rate from a small sample.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Limitations</h3>
+      <p class="limits">One season per player: with several seasons, real finishing differences of a few percent may become detectable. Results depend on the xG model, which doesn't see everything (such as shot placement before the shot is taken).</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, men's top flights 2015/16.</span><span>8 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 9. PROJECT 3 -->
+<section class="page p13">
+  <div class="kicker">Project 3 &middot; Clinical laboratory science &middot; Women's game</div>
+  <h2>Measurement science: which numbers to trust, and when form is real</h2>
+  <p class="q">Before a lab acts on a blood test, it asks two questions: is the test reliable, and is the change bigger than normal day-to-day variation? Football data deserves the same checks.</p>
+  <span class="tag">Split-half reliability</span><span class="tag">Spearman&ndash;Brown</span><span class="tag">Reference change values</span><span class="tag">False discovery rate</span>
+
+  <h3>1. Which numbers can you trust after one season?</h3>
+  <figure>
+    <img src="img/c5_reliability.png" alt="Season-long reliability of each metric">
+    <figcaption>Each player's matches split at random into two halves, 300 times. If a metric measures the player, her two halves agree. Reliability is scaled to a full season; "matches" are matches of 60+ minutes.</figcaption>
+  </figure>
+  <p style="margin-top:2mm"><span class="so">Passing and pressing settle in about {{ [rel[0].matches_for_07, rel[1].matches_for_07]|max|n }} matches. Chance quality (npxG + xA) needs about {{ rel[4].matches_for_07|n }}. Finishing needs about {{ rel[6].matches_for_07|n }}, nearly three seasons.</span> A recruitment shortlist built on unreliable numbers is mostly a list of lucky players.</p>
+
+  <h3>2. How big must a change in form be before it's real?</h3>
+  <figure>
+    <img src="img/c6_critical.png" alt="Smallest real change in form for each metric">
+  </figure>
+  <p style="margin-top:2mm">Reference change values tell labs whether a change in a test result is real. Applied to match data, <b>one match can differ from the last by {{ (cd|map(attribute='one')|min)|pct }} to {{ (cd|map(attribute='one')|max)|pct }} with nothing real behind it</b>, and five-match form has to move by {{ (cd|map(attribute='five')|min)|pct }} to {{ (cd|map(attribute='five')|max)|pct }} before it's likely to mean something. Of {{ cw.comparisons }} end-of-season changes across the league, {{ cw.beyond_95 }} crossed the usual 95% line, about as many as chance alone would produce ({{ cw.by_chance }}). <b>Only {{ cw.survive_fdr }} survived false-discovery control.</b></p>
+
+  <div class="callout">
+    <p class="so" style="margin:0">What it means: recruit on the reliable numbers, and give staff a short list of genuine changes in form or physical output worth a conversation, without overreacting to noise.</p>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24. Outfield players with 10+ matches of 60+ minutes.</span><span>9 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 10. PROJECT 4 -->
+<section class="page">
+  <div class="kicker">Project 4 &middot; Diagnostic accuracy &middot; Men's game</div>
+  <h2>Scouting numbers judged like a screening test</h2>
+  <p class="q">If a recruitment team shortlists attackers on their numbers from the first half of a season, how often does the shortlist contain the players who turn out to be most productive in the second half? Which number makes the best screening test?</p>
+
+  <div class="design"><div class="h">Study design</div><dl>
+    <dt>Design</dt><dd>Diagnostic accuracy study with a chronological split: the test uses only each team's first 19 league matches, the outcome only the last 19.</dd>
+    <dt>Population</dt><dd>{{ S.cohort.players }} attacking players (forwards, wingers, attacking and wide midfielders) with 900+ minutes in each half of the 2015/16 season, four leagues.</dd>
+    <dt>Reference standard</dt><dd>Top fifth of his league for non-penalty goals + assists per 90 in the second half ({{ S.cohort.positives }} players).</dd>
+    <dt>Index tests</dt><dd>First-half goals + assists, goals, shots, npxG, and npxG + xA, each per 90. "Positive" = top fifth of the league on that number.</dd>
+    <dt>Measures</dt><dd>AUC, sensitivity, specificity, positive predictive value (PPV), positive likelihood ratio; 95% intervals from 2,000 bootstrap resamples.</dd>
+    <dt>Code</dt><dd><code>project4_screening.py</code></dd>
+  </dl></div>
+
+  <figure>
+    <img src="img/screening.png" alt="ROC curves and positive predictive value">
+    <figcaption>Left: ROC curves; the further above the diagonal, the better the test separates future top performers. Right: share of a top-fifth shortlist who were truly top-fifth afterwards, and how many shortlisted players it takes to find one.</figcaption>
+  </figure>
+
+  <table class="t" style="margin-top:2.5mm">
+    <tr><th>Test (first half of season, per 90)</th><th class="n">AUC (95% CI)</th><th class="n">Sensitivity</th><th class="n">Specificity</th><th class="n">PPV</th><th class="n">Likelihood ratio +</th></tr>
+    {% for c in ['ga90_1','goals90_1','shots90_1','npxg90_1','npxg_xa90_1'] %}{% set v = S.tests[c] %}
+    <tr><td>{% if c in ['npxg90_1','npxg_xa90_1'] %}<b>{{ v.label|replace(' per 90','') }}</b>{% else %}{{ v.label|replace(' per 90','') }}{% endif %}</td><td class="n">{{ v.auc|f2 }} ({{ v.auc_lo|f2 }}&ndash;{{ v.auc_hi|f2 }})</td><td class="n">{{ v.sens|pct }}</td><td class="n">{{ v.spec|pct }}</td><td class="n">{{ v.ppv|pct }}</td><td class="n">{{ v.lr_pos|f1 }}</td></tr>
+    {% endfor %}
+  </table>
+
+  <div class="callout" style="margin-top:3mm">
+    <p>Picked at random, <b>1 in 5</b> shortlisted players would be a future top-fifth performer. A shortlist built on goals + assists found <b>{{ S.tests.ga90_1.ppv|pct }}</b>; one built on npxG found <b>{{ S.tests.npxg90_1.ppv|pct }}</b>. Across all thresholds npxG + xA ranked players better than goals + assists (AUC {{ S.tests.npxg_xa90_1.auc|f2 }} against {{ S.tests.ga90_1.auc|f2 }}; difference {{ S.auc_diff_npxgxa_vs_ga.diff|f2 }}, 95% CI {{ S.auc_diff_npxgxa_vs_ga.lo|f2 }}&ndash;{{ S.auc_diff_npxgxa_vs_ga.hi|f2 }}). Even the best number <b>missed {{ (1 - S.tests.npxg90_1.sens)|pct }}</b> of future top performers.</p>
+  </div>
+
+  <div class="two" style="gap:5mm">
+    <div>
+      <h3 style="margin-top:0">What a club could use this for</h3>
+      <p>Screen in two stages, as medicine does: a cheap data screen with its threshold set by the cost of missing a player against the cost of a wasted scouting trip, then live scouting and video as the confirmatory test. Project 3 says which numbers are stable; this says which ones predict.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Robustness and limitations</h3>
+      <p class="limits">With the outcome defined on second-half npxG + xA instead, npxG + xA still ranks best (AUC {{ S.tests_xref.npxg_xa90_1.auc|f2 }}). With {{ S.cohort.players }} players, PPV differences between the better tests are within chance. One season, attackers only; team context isn't modelled.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, men's top flights 2015/16.</span><span>10 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 11. PROJECT 5a -->
+<section class="page">
+  <div class="kicker">Project 5 &middot; Clinical epidemiology &middot; Men's game</div>
+  <h2>Injuries in matches: what event data can and can't see</h2>
+  <p class="q">How often do players have to come off injured, at what point in the match, and for how long are they missing afterwards? And can free event data measure this reliably, for any player in any covered league?</p>
+
+  <div class="design"><div class="h">Study design</div><dl>
+    <dt>Design</dt><dd>Retrospective cohort of every player appearance in four complete league seasons.</dd>
+    <dt>Data</dt><dd>{{ I.matches|n }} matches, Premier League, La Liga, Serie A and Ligue 1, 2015/16: {{ I.appearances|n }} appearances, {{ I.player_hours|n }} player-hours on the pitch.</dd>
+    <dt>Case</dt><dd>A substitution recorded as caused by injury ("injury withdrawal"): <b>{{ I.injury_withdrawals|n }}</b> cases.</dd>
+    <dt>Exposure</dt><dd>Minutes on the pitch from on/off times, stoppage time included. Withdrawals made at half-time ({{ I.half_time_withdrawals }}) count towards the end of the first half.</dd>
+    <dt>Analysis</dt><dd>Rates per 1,000 player-hours with exact Poisson intervals; timing by 15-minute period (Poisson regression); position; return to the matchday squad (Kaplan&ndash;Meier, censored at the end of the season or a move to another club) against players substituted for tactical reasons.</dd>
+    <dt>Bias addressed</dt><dd><b>Ascertainment.</b> With three substitutions allowed, once a team has used all three an injured player can't be withdrawn, so the injury never reaches the data. Rates are recalculated using only minutes when the team could still substitute.</dd>
+    <dt>Code</dt><dd><code>build_tables.py</code>, <code>project5_injury.py</code></dd>
+  </dl></div>
+
+  <div class="tiles">
+    <div class="tile"><div class="lab">Injury withdrawals</div><div class="num">{{ I.overall_rate.rate|f1 }}</div><div class="what">per 1,000 player-hours (95% CI {{ I.overall_rate.lo|f1 }}&ndash;{{ I.overall_rate.hi|f1 }}): about <b>{{ I.by_league[-1].per_team_season|f1 }} per team per season</b>.</div></div>
+    <div class="tile"><div class="lab">Out of substitutes</div><div class="num">{{ I.subs.share_with_none_left_by_85|pct }}</div><div class="what">of teams had used all three substitutions by the 85th minute (median third change: <b>{{ I.subs.median_third_sub_clock|f0 }}'</b>).</div></div>
+    <div class="tile"><div class="lab">Unseen minutes</div><div class="num">{{ I.share_of_exposure_unobservable_75_90|pct }}</div><div class="what">of playing time in the last period of matches was time when <b>an injury could not show up</b> as a withdrawal.</div></div>
+    <div class="tile"><div class="lab">Treatment stoppages</div><div class="num">{{ I.stoppages.per_match|f1 }}</div><div class="what">per match; <b>{{ I.stoppages.share_followed_by_withdrawal|pct }}</b> ended with that player withdrawn within 15 minutes.</div></div>
+  </div>
+
+  <figure>
+    <img src="img/inj_timing.png" alt="Injury withdrawal rate by match period">
+    <figcaption>Bars: withdrawals per 1,000 player-hours in each 15-minute period, with 95% intervals for the corrected rate. Grey uses all minutes played; green uses only minutes when the player's team still had a substitution left.</figcaption>
+  </figure>
+
+  <div class="callout" style="margin-top:2.5mm">
+    <p>Taken at face value, the data say the last period is <b>safer</b> than the one before ({{ t[5].rate_crude|f1 }} against {{ t[4].rate_crude|f1 }} per 1,000 hours). That is an artefact. Counting only minutes in which an injury <i>could</i> be recorded, the last period has the <b>highest rate of the match: {{ t[5].rate_observable|f1 }}</b>, {{ (t[5].rate_observable / t[0].rate_observable)|f1 }} times the first 15 minutes. Within each half the risk rises by <b>{{ (I.trend.rr_per_15min_within_half - 1)|pct }} every 15 minutes</b> (95% CI {{ (I.trend.lo - 1)|pct }} to {{ (I.trend.hi - 1)|pct }}), against {{ (I.trend_crude.rr_per_15min_within_half - 1)|pct }} before the correction, and the second half carries {{ I.trend.rr_second_half|f1 }} times the risk of the first. UEFA's injury study and earlier English data both found risk rising towards the end of each half [1, 2]; the corrected event data now agree.</p>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, men's top flights 2015/16.</span><span>11 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 12. PROJECT 5b -->
+<section class="page">
+  <div class="kicker">Project 5, continued</div>
+  <h2>Who is withdrawn injured, and how long they're out</h2>
+
+  <div class="two" style="gap:5mm; margin-top:2mm">
+    <div>
+      <h3 style="margin-top:0">By position (corrected exposure)</h3>
+      <table class="t">
+        <tr><th>Position</th><th class="n">Cases</th><th class="n">Rate per 1,000 h</th><th class="n">vs midfielders</th></tr>
+        {% set names = {'GK':'Goalkeepers','DEF':'Defenders','MID':'Midfielders','FWD':'Forwards'} %}
+        {% for r in I.position %}
+        <tr><td>{{ names[r.group] }}</td><td class="n">{{ r.withdrawals|n }}</td><td class="n">{{ r.rate|f1 }} ({{ r.lo|f1 }}&ndash;{{ r.hi|f1 }})</td><td class="n">{% if r.group == 'MID' %}reference{% else %}{{ r.rr_vs_mid|f2 }} ({{ r.rr_lo|f2 }}&ndash;{{ r.rr_hi|f2 }}){% endif %}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-top:0">By league</h3>
+      <table class="t">
+        <tr><th>League</th><th class="n">Cases</th><th class="n">Rate per 1,000 h</th><th class="n">Per team-season</th></tr>
+        {% for r in I.by_league[:-1] %}
+        <tr><td>{{ r.league }}</td><td class="n">{{ r.withdrawals|n }}</td><td class="n">{{ r.rate|f1 }} ({{ r.lo|f1 }}&ndash;{{ r.hi|f1 }})</td><td class="n">{{ r.per_team_season|f1 }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <p style="margin-top:2mm">Defenders were withdrawn injured {{ (I.position[1].rr_vs_mid - 1)|pct }} more often per hour than midfielders; goalkeepers rarely. Rates differed {{ (I.by_league[2].rate / I.by_league[0].rate)|f1 }}-fold between leagues, which may reflect playing style, medical practice or how injuries were coded. As a check on the data, a video study of 2018/19 counted 135 injury withdrawals in the Premier League and 142 in La Liga [3]; StatsBomb records {{ I.by_league[0].withdrawals }} and {{ I.by_league[1].withdrawals }} for 2015/16. As a rough comparison (different clubs and seasons), injury withdrawals ran at {{ I.share_of_uefa_time_loss|pct }} of UEFA's match rate for <i>all</i> time-loss injuries (27.5 per 1,000 hours [1]): event data seem to capture around half of match injuries, the ones that stop a player finishing.</p>
+
+  <figure style="margin-top:2.5mm">
+    <img src="img/inj_return.png" alt="Return to matchday squad after injury withdrawal">
+    <figcaption>Matchday squads come from the lineups. Players substituted for tactical reasons are the comparison group, so ordinary rotation and dropping are accounted for. Players followed until they return or the season ends.</figcaption>
+  </figure>
+
+  <div class="callout" style="margin-top:2.5mm">
+    <p><b>{{ I.return.injury.absent_next|pct }}</b> of players withdrawn injured missed their team's next league match, against <b>{{ I.return.tactical.absent_next|pct }}</b> after a tactical substitution (risk ratio {{ I.return.rr_absent_next.rr|f1 }}, 95% CI {{ I.return.rr_absent_next.lo|f1 }}&ndash;{{ I.return.rr_absent_next.hi|f1 }}). <b>{{ I.return.injury.absent_next4|pct }}</b> were still out four matches later, against {{ I.return.tactical.absent_next4|pct(1) }}. Over the next {{ I.return.horizon }} league matches, each withdrawal cost about <b>{{ I.return.excess_matches_missed_per_withdrawal|f1 }} extra matches</b> out of the squad: around <b>{{ I.return.excess_matches_per_team_season|f0 }} player-matches per team per season</b> from in-match injuries alone.</p>
+  </div>
+
+  <h3>What a club could use this for</h3>
+  <div class="uses">
+    <div class="use"><b>In-play</b>Risk peaks in the final 15 minutes, just when most teams can no longer replace an injured player. These rates put a number on the value of keeping a substitution in hand.</div>
+    <div class="use"><b>Medical and performance</b>League-wide benchmarks for in-match injury by position and period, for any league with event data, against which a club's own record can be compared.</div>
+    <div class="use"><b>Recruitment</b>A target's record of injury withdrawals and time back in the squad, for any player in a covered league, feeding availability into a valuation like project 1.</div>
+  </div>
+  <p class="limits"><b>Limitations.</b> No diagnosis or days lost: absence from the squad also reflects selection, which the comparison group only partly handles. Injuries that don't force a withdrawal are invisible, and the time of withdrawal isn't always the time of injury: a player who carries a knock and comes off later moves a case into a later period. Teams now have five substitutions, so the bias is smaller today but still present late in matches. League differences may partly reflect coding.</p>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, men's top flights 2015/16.</span><span>12 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 13. PROJECT 6 -->
+<section class="page">
+  <div class="kicker">Project 6 &middot; Exercise physiology &middot; Men's game</div>
+  <h2>A fatigue signal in event data</h2>
+  <p class="q">Tracking and GPS studies show high-intensity running falls late in matches, but a club only has that data for its own players. Can event data show the same thing for any player, including opponents and recruitment targets?</p>
+
+  <div class="design"><div class="h">Study design</div><dl>
+    <dt>Design</dt><dd>Within-player comparison in the same period of matches: each player as a fresh substitute against the same player as a starter.</dd>
+    <dt>Data</dt><dd>{{ D.men_total.pressures|n }} pressures by outfield players in {{ D.men_total.matches|n }} matches (2015/16, four leagues), with minutes on the pitch in each 15-minute period.</dd>
+    <dt>Outcome</dt><dd>Pressures per minute on the pitch: closing down the ball carrier is a repeated high-intensity action.</dd>
+    <dt>Analysis</dt><dd>Mantel&ndash;Haenszel rate ratio, stratified by <b>player &times; period &times; score state</b> (winning, drawing, losing), so each player is only compared with himself in the same situation. 95% intervals from a cluster bootstrap over players (1,000 resamples).</dd>
+    <dt>Bias addressed</dt><dd><b>Confounding.</b> Pressing also depends on tactics and the score (teams that lead sit deeper), and substitutes are different players from starters.</dd>
+    <dt>Code</dt><dd><code>project6_fatigue.py</code></dd>
+  </dl></div>
+
+  <figure>
+    <img src="img/fatigue.png" alt="Pressing rate by period and rate ratios">
+    <figcaption>Left: raw pressures per 90 minutes. "Came on as a sub" counts substitutes already on the pitch at the start of the period. Right: rate ratios with 95% intervals; above 1 means the fresh substitute pressed more.</figcaption>
+  </figure>
+
+  <div class="two" style="margin-top:3mm; gap:5mm">
+    <div>
+      <h3 style="margin-top:0">Results</h3>
+      <p>Players who completed 90 minutes pressed <b>{{ (1 - F.within_match_decline['75-90+'].rr)|pct }} less</b> in the last period than in the first 15 minutes, with a partial recovery after half-time ({{ (1 - F.within_match_decline['30-45+'].rr)|pct }} down before the break, {{ (1 - F.within_match_decline['45-60'].rr)|pct }} down just after it).</p>
+      <p>Compared with themselves in the same period and score state, fresh substitutes pressed <b>{{ (F.mh_by_bin['45-60'].rr - 1)|pct }}</b> more in the first 15 minutes after half-time (no clear difference), <b>{{ (F.mh_by_bin['60-75'].rr - 1)|pct }}</b> more from 60', and <b>{{ (F.mh_by_bin['75-90+'].rr - 1)|pct }}</b> more from 75' (95% CI {{ (F.mh_by_bin['75-90+'].lo - 1)|pct }} to {{ (F.mh_by_bin['75-90+'].hi - 1)|pct }}). The gap grows the longer the starter has played, as fatigue would predict, and is biggest for forwards on the point estimates.</p>
+      <p>Without the matching, the gap from 60' looks like {{ (F.crude_late.rr - 1)|pct }} rather than {{ (F.mh_late.rr - 1)|pct }}: <b>{{ ((F.crude_late.rr - F.mh_late.rr) / (F.crude_late.rr - 1))|pct }} of the raw difference</b> is who comes on and the score, not fatigue.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Against the physiology literature</h3>
+      <p>Using video time-motion analysis, Mohr, Krustrup and Bangsbo found high-intensity running was 35&ndash;45% lower in the last 15 minutes than the first, and substitutes covered 25% more high-intensity running than other players in the final 15 minutes [4]. Event data, with no tracking at all, show the same pattern in the same direction.</p>
+      <h3>What a club could use this for</h3>
+      <ul>
+        <li><b>In-play:</b> the fatigue signal appears after 60' and is strongest late on, especially in forwards, which supports planned changes in pressing roles.</li>
+        <li><b>Recruitment and opposition:</b> a physical proxy for players with no GPS data. The next step is to test a player-level version against a club's own tracking data.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="limits"><b>Limitations.</b> Pressing also depends on how much the opponent has the ball; players aren't randomly chosen to start; substitutes may be told to press; a reliable player-by-player measure is not yet established.</p>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, men's top flights 2015/16.</span><span>13 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 14. PROJECTS 1-3: DESIGNS AND INPUTS -->
+<section class="page">
+  <div class="kicker">Projects 1&ndash;3 &middot; Study designs</div>
+  <h2>How projects 1&ndash;3 were set up, and where every input comes from</h2>
+  <p class="q">The women's-game projects, reported in the same form as the others. Inputs that are data are estimated in the code; inputs that are assumptions are marked as illustrative.</p>
+
+  <div class="design"><div class="h">Project 1 &middot; Appraising a signing</div><dl>
+    <dt>Design</dt><dd>Model-based economic evaluation, structured like a NICE technology appraisal: comparator, evidence synthesis, decision model, probabilistic analysis, decision rule, value of information [5&ndash;7].</dd>
+    <dt>Data</dt><dd>FA WSL 2023/24: {{ sig.n_regular_fwd }} forwards with {{ inp.min_minutes_regular }}+ minutes; the target is the forward with the highest estimated true level outside the top four ({{ inp.target_player }}, {{ W.signing_extra.target_team }}, {{ W.signing_extra.target_minutes|n }} minutes). All {{ W.league_model.results }} results for the league model.</dd>
+    <dt>Comparator</dt><dd>The player she'd replace: a forward at the {{ inp.comparator_percentile }}th percentile of regular forwards' estimated true level ({{ sig.comparator|f2 }} npxG + xA per 90).</dd>
+    <dt>Outcome</dt><dd>League points over {{ inp.seasons }} seasons of {{ inp.matches_per_season }} matches; net monetary benefit = points &times; value of a point &minus; (fee &times; (1 &minus; resale share) + wages), discounted at {{ inp.discount_rate|pct(1) }} a year.</dd>
+    <dt>Methods</dt><dd>DerSimonian&ndash;Laird random effects (I&sup2; {{ W.signing_extra.i2|pct }}); three-state Markov availability model; {{ inp.n_sims|n }}-draw probabilistic analysis; acceptability curve; EVPI and EVPPI by regression [6]; outcomes-based deal with goals and assists drawn from a Poisson distribution.</dd>
+    <dt>Assumptions</dt><dd>The gap between her npxG + xA and the replaced player's becomes extra goals for the team; defensive work isn't valued; the comparator's level is fixed. Inputs marked illustrative below are not data.</dd>
+    <dt>Code</dt><dd><code>build_tables_clock.py</code>, <code>project1_3_wsl.py</code></dd>
+  </dl></div>
+
+  <table class="t compact">
+    <tr><th style="width:30%">Input</th><th style="width:34%">Value used</th><th>Basis</th></tr>
+    <tr><td>Points per goal of goal difference</td><td>{{ W.league_model.used_slope|f2 }} (SE {{ W.league_model.used_se|f3 }})</td><td><b>Data:</b> least squares on the 2023/24 table, {{ W.league_model.teams }} teams, R&sup2; {{ W.league_model.r2|f2 }}</td></tr>
+    <tr><td>Her true level</td><td>{{ sig.target_true|f2 }} (SD {{ sig.target_true_sd|f2 }}) npxG + xA per 90</td><td><b>Data:</b> random-effects shrinkage of her season</td></tr>
+    <tr><td>Asking fee; extra wages</td><td>{{ inp.asking_fee|k }}; {{ inp.extra_wages_per_season|k }} a season</td><td>Illustrative</td></tr>
+    <tr><td>Value of a league point</td><td>{{ inp.value_per_point|k }}</td><td>Illustrative; for a real club, prize money, survival and Europe</td></tr>
+    <tr><td>Injury per match (short / long term)</td><td>{{ inp.short_injury|pct(1) }} / {{ inp.long_injury|pct(1) }} (Beta distributions)</td><td>Illustrative; replace with the club's medical records or project 5 rates</td></tr>
+    <tr><td>Recovery per match (short / long term)</td><td>{{ inp.short_recovery|pct }} / {{ inp.long_recovery|pct(1) }} (Beta distributions)</td><td>Illustrative</td></tr>
+    <tr><td>Share of each match she plays; resale</td><td>Mean {{ inp.minutes_share|pct }}; mean {{ inp.resale_share|pct }} of the fee</td><td>Illustrative (Beta distributions)</td></tr>
+    <tr><td>Discount rate</td><td>{{ inp.discount_rate|pct(1) }} a year</td><td>NICE reference case [7]</td></tr>
+  </table>
+
+  <div class="two" style="margin-top:3mm; gap:5mm">
+    <div class="design" style="margin:0"><div class="h">Project 2 &middot; Finishing</div><dl style="grid-template-columns:17mm 1fr">
+      <dt>Data</dt><dd>{{ inp.shots|n }} non-penalty shots with StatsBomb xG, WSL 2023/24.</dd>
+      <dt>Model</dt><dd>Goals ~ Poisson(xG &times; finishing multiplier); multipliers ~ Gamma across players, mean and spread estimated on a grid with weak priors; 4,000 posterior draws per player.</dd>
+      <dt>Check</dt><dd>Repeated out of sample on four men's leagues (page 8).</dd>
+    </dl></div>
+    <div class="design" style="margin:0"><div class="h">Project 3 &middot; Measurement science</div><dl style="grid-template-columns:17mm 1fr">
+      <dt>Data</dt><dd>{{ rel[0].players }} outfield players with 10+ matches of 60+ minutes.</dd>
+      <dt>Methods</dt><dd>Split-half reliability (300 random splits) and Spearman&ndash;Brown; reference change value = 1.96 &times; &radic;2 &times; within-player CV [8]; watch-list of each player's last 5 matches against all earlier ones, false discovery rate {{ cw.fdr|pct }} [9].</dd>
+    </dl></div>
+  </div>
+
+  {% set lvl = 'Her true level (scouting, more data)' %}
+  <div class="callout" style="margin-top:3mm">
+    <p><b>Sensitivity check.</b> These projects count minutes on the match clock, as when they were first built. Rebuilt on elapsed playing time (as projects 4&ndash;6 are), the walk-away price is {{ WE.signing.walk_away|k }} instead of {{ sig.walk_away|k }}, the chance of paying off at the asking price {{ WE.signing.p_worth|pct }} instead of {{ sig.p_worth|pct }}, {{ (WE.signing.voi[lvl] / WE.signing.evpi)|pct }} of the value of information is still about her true level ({{ (sig.voi[lvl] / sig.evpi)|pct }} before), and finishing still needs about {{ WE.reliability[6].matches_for_07|n }} matches to become reliable. No conclusion changes.</p>
+  </div>
+
+  <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24.</span><span>14 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 15. REFERENCES -->
+<section class="page">
+  <div class="kicker">References</div>
+  <h2>Sources</h2>
+  <ol class="refs" style="font-size:8pt">
+    <li>Ekstrand J, H&auml;gglund M, Wald&eacute;n M. Injury incidence and injury patterns in professional football: the UEFA injury study. <i>Br J Sports Med</i> 2011;45:553&ndash;558. doi:10.1136/bjsm.2009.060582</li>
+    <li>Hawkins RD, Fuller CW. A prospective epidemiological study of injuries in four English professional football clubs. <i>Br J Sports Med</i> 1999;33:196&ndash;203. doi:10.1136/bjsm.33.3.196</li>
+    <li>Argibay-Gonz&aacute;lez JC, V&aacute;zquez-Est&eacute;vez C, Guti&eacute;rrez-Santiago A, et al. Analysis of injury patterns in men's football between the English League and the Spanish League. <i>Int J Environ Res Public Health</i> 2022;19:11296. doi:10.3390/ijerph191811296</li>
+    <li>Mohr M, Krustrup P, Bangsbo J. Match performance of high-standard soccer players with special reference to development of fatigue. <i>J Sports Sci</i> 2003;21:519&ndash;528. doi:10.1080/0264041031000071182</li>
+    <li>DerSimonian R, Laird N. Meta-analysis in clinical trials. <i>Control Clin Trials</i> 1986;7:177&ndash;188.</li>
+    <li>Strong M, Oakley JE, Brennan A. Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample: a nonparametric regression approach. <i>Med Decis Making</i> 2014;34:311&ndash;326.</li>
+    <li>National Institute for Health and Care Excellence. <i>NICE health technology evaluations: the manual</i> (PMG36). 2022.</li>
+    <li>Fraser CG, Harris EK. Generation and application of data on biological variation in clinical chemistry. <i>Crit Rev Clin Lab Sci</i> 1989;27:409&ndash;437.</li>
+    <li>Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful approach to multiple testing. <i>J R Stat Soc B</i> 1995;57:289&ndash;300.</li>
+    <li>StatsBomb (Hudl) open data. github.com/hudl/open-data (commit 4b73468). Free to use with credit to StatsBomb.</li>
+  </ol>
+
+  <div class="rule"></div>
+  <h3 style="margin-top:0">Notes on the code</h3>
+  <table class="t compact">
+    <tr><th style="width:34%">File</th><th>What it does</th></tr>
+    <tr><td><code>build_tables.py</code></td><td>Raw events and lineups into tidy tables per competition, with the second-half clock restart handled so stoppage time counts.</td></tr>
+    <tr><td><code>build_tables_clock.py</code></td><td>The original match-clock tables for projects 1&ndash;3.</td></tr>
+    <tr><td><code>project1_3_wsl.py</code></td><td>Projects 1&ndash;3: league model, random effects, Markov model, probabilistic analysis, value of information, deal, finishing model, reliability, critical differences, watch-list; and the sensitivity check above.</td></tr>
+    <tr><td><code>project2b_finishing_men.py</code></td><td>Project 2 in the men's game, with the out-of-sample check.</td></tr>
+    <tr><td><code>project4_screening.py</code></td><td>Project 4: ROC/AUC, sensitivity, specificity, PPV, likelihood ratios, bootstrap intervals.</td></tr>
+    <tr><td><code>project5_injury.py</code></td><td>Project 5: rates, timing with the substitution correction, position, league, return to the squad.</td></tr>
+    <tr><td><code>project6_fatigue.py</code></td><td>Project 6: pressing by period; Mantel&ndash;Haenszel rate ratios with cluster-bootstrap intervals.</td></tr>
+    <tr><td><code>report/make_report.py</code></td><td>Builds this document from the outputs.</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:1.5mm">Everything runs in Python 3 with pandas, NumPy, SciPy and Matplotlib; <code>python run_all.py path/to/open-data/data</code> rebuilds every table, number and chart.</p>
+
+  <div class="foot"><span>Joe Taylor &middot; Football decisions under uncertainty</span><span>15 / {{ NP }}</span></div>
+</section>
+
+<!-- =================================================== 16. WHAT I BRING -->
+<section class="page p13">
+  <div class="kicker">About me</div>
+  <h2>What I bring</h2>
+  <p class="q">Science, decision modelling, consulting and commercial experience in one person.</p>
+
+  <div class="grid-svc" style="gap:3.4mm 6mm">
+    <div class="svc"><b>Decision modelling and health economics</b>Health Economist at Lumanity (2024&ndash;2026): cost-effectiveness, budget impact and population-level decision models in Excel (VBA) and R, evidence synthesis and NICE submissions. PGCert Health Economics and Decision Modelling, University of Sheffield. Co-author, <i>Journal of Medical Economics</i> (2025).</div>
+    <div class="svc"><b>Data science and statistics</b>Python, R and Excel (VBA). Bayesian hierarchical models, meta-analysis, simulation, survival analysis, diagnostic accuracy and value of information, each written out in code, as every number in this portfolio is.</div>
+    <div class="svc"><b>Sport science and physiology</b>BSc Sport and Exercise Sciences (2:1) and MSc Sport and Exercise Physiology (Merit), Leeds Beckett. Heat acclimation research with the English Institute of Sport for the British triathlon team before Tokyo; Barnsley FC academy; Leeds Rhinos academy; biomarker consultancy for athletes; UK Anti-Doping accredited advisor.</div>
+    <div class="svc"><b>Clinical science</b>NHS Trainee Clinical Perfusion Scientist, Oxford University Hospitals (2021&ndash;2024): running heart-lung bypass in cardiac surgery, interpreting complex physiological data and making high-stakes decisions in real time. PGCert Perfusion Science (Merit), University of Bristol.</div>
+    <div class="svc"><b>Consulting</b>Client-facing work for pharmaceutical companies: value narratives, decks and payer materials, launch planning across the EU5, the US and Australia, presenting to client teams and helping win new work.</div>
+    <div class="svc"><b>Commercial and strategy</b>Co-founder of Novamint (2025&ndash;), a science-led start-up. I built the commercial side from scratch: market sizing, positioning, pricing and unit economics, the go-to-market and launch plan, manufacturing partners, our SEIS application and investor conversations.</div>
+    <div class="svc"><b>Research</b>Study design, systematic reviews and critical appraisal; research on thermal-stress biomarkers, exercise-induced bronchoconstriction, oxidative stress, inflammation after bypass and cancer policy.</div>
+    <div class="svc"><b>Communication</b>Turning complex analysis into clear decisions for boards, coaches, clinicians, clients and investors: what to do, how sure we are, and what would change our mind.</div>
+  </div>
+
+  <div class="rule"></div>
+  <p><b>Football.</b> A lifelong obsession. This work started as a way to bring my day job and my favourite sport together, and it's where I want to build my career. Every method here runs unchanged on a club's own event, tracking, GPS, medical and financial data.</p>
+
+  <div class="foot"><span>Joe Taylor &middot; Football decisions under uncertainty</span><span>16 / {{ NP }}</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+{
+ "league_model": {
+  "slope": 0.5189658426118138,
+  "se": 0.027763027088178578,
+  "r2": 0.9721771574812583,
+  "teams": 12,
+  "results": 132,
+  "used_slope": 0.52,
+  "used_se": 0.028
+ },
+ "signing_extra": {
+  "fit_share": 0.8869685563912652,
+  "mu_fwd": 0.3784536350446257,
+  "tau": 0.12446483730184522,
+  "i2": 0.7581899544152133,
+  "target_team": "West Ham United",
+  "target_minutes": 946.365,
+  "nmb_mean": -4163.008966608159
+ },
+ "signing": {
+  "target_raw_per90": 0.4801399809481543,
+  "target_true": 0.4414017052189815,
+  "target_true_sd": 0.07738390568736297,
+  "comparator": 0.31610468954093174,
+  "n_regular_fwd": 37,
+  "points_mean": 2.113815092063853,
+  "points_p5": -0.0699683896255313,
+  "points_p95": 4.346304713615003,
+  "p_worth": 0.4769,
+  "walk_away": 94218.55758960755,
+  "p_free": 0.7966,
+  "evpi": 30568.658094881404,
+  "voi": {
+   "Her true level (scouting, more data)": 29437.929467970036,
+   "Resale value (market)": 3560.830938914394,
+   "Share of matches she plays (manager's plans)": 2008.7869721566822,
+   "Points per goal (league model)": 1097.9380621444732,
+   "Injury risk and recovery (medical)": 1084.3200877832369
+  }
+ },
+ "deal": {
+  "upfront": 88973.02611025661,
+  "bonus": 11026.97388974338,
+  "hurdle": 15,
+  "pace_seller": 15.927503059697543,
+  "contrib_mean": 14.591150557273062,
+  "p_hit_ours": 0.4757,
+  "p_hit_if_repeat": 0.62524,
+  "paid_mean": 94218.55758960753,
+  "worth_if_hit": 0.6821526171957116,
+  "worth_if_miss": 0.33301544917032233,
+  "points_if_hit": 2.7685631224954754,
+  "points_if_miss": 1.5197589446743378,
+  "fixed_ask": {
+   "mean": -4163.008966608159,
+   "p_worth": 0.4769,
+   "p_big_loss": 0.2945,
+   "p5": -135458.1384137229,
+   "p25": -60703.574653177726,
+   "p75": 49451.85982806204,
+   "p95": 131564.48467282113
+  },
+  "fixed_walk": {
+   "mean": -2.4586915969848633e-11,
+   "p_worth": 0.4968,
+   "p_big_loss": 0.2771,
+   "p5": -130837.71647561304,
+   "p25": -56339.66693854281,
+   "p75": 53672.79568895031,
+   "p95": 135642.88702664198
+  },
+  "outcomes": {
+   "mean": -4.691407810794795,
+   "p_worth": 0.4991,
+   "p_big_loss": 0.2693,
+   "p5": -127906.03223613475,
+   "p25": -55139.61594644008,
+   "p75": 52232.72639824837,
+   "p95": 132453.68279360977
+  }
+ },
+ "finishing": {
+  "league_ratio": 1.0690758919857357,
+  "spread": 0.07500000000000001,
+  "spread_lo": 0.01,
+  "spread_hi": 0.2,
+  "mean": 1.0699999999999998,
+  "n15": 77,
+  "n_confident": 0,
+  "shaw": {
+   "goals": 21,
+   "xg": 11.624655410999999,
+   "skill": 1.138352903611012,
+   "lo": 0.9754761562097116,
+   "hi": 1.3923688748830503,
+   "p_above": 0.7075
+  }
+ },
+ "reliability": [
+  {
+   "metric": "Passes",
+   "players": 126,
+   "r_half": 0.8265262157322543,
+   "half_matches": 8.0,
+   "season_reliability": 0.9050252973247361,
+   "matches_for_07": 3.9178156054764903
+  },
+  {
+   "metric": "Pressures",
+   "players": 126,
+   "r_half": 0.8004572285773038,
+   "half_matches": 8.0,
+   "season_reliability": 0.8891710570762227,
+   "matches_for_07": 4.653338450713495
+  },
+  {
+   "metric": "Ball recoveries",
+   "players": 126,
+   "r_half": 0.5869569531428521,
+   "half_matches": 8.0,
+   "season_reliability": 0.7397263699943806,
+   "matches_for_07": 13.13577909484324
+  },
+  {
+   "metric": "Shots (forwards)",
+   "players": 33,
+   "r_half": 0.7308719554605339,
+   "half_matches": 8.0,
+   "season_reliability": 0.8445130249580715,
+   "matches_for_07": 6.873602770685747
+  },
+  {
+   "metric": "npxG + xA (forwards)",
+   "players": 33,
+   "r_half": 0.536806077798575,
+   "half_matches": 8.0,
+   "season_reliability": 0.6985996288712397,
+   "matches_for_07": 16.1069088174599
+  },
+  {
+   "metric": "Goals (forwards)",
+   "players": 33,
+   "r_half": 0.4985880870118989,
+   "half_matches": 8.0,
+   "season_reliability": 0.6654104504541415,
+   "matches_for_07": 18.77238804187711
+  },
+  {
+   "metric": "Goals minus xG: finishing (forwards)",
+   "players": 33,
+   "r_half": 0.23704550670146565,
+   "half_matches": 8.0,
+   "season_reliability": 0.3832446024294424,
+   "matches_for_07": 60.080519586373796
+  }
+ ],
+ "critical": [
+  {
+   "metric": "Passes",
+   "cv": 0.29807513554311316,
+   "one": 0.8262221226108877,
+   "five": 0.3016936627091882
+  },
+  {
+   "metric": "Pressures",
+   "cv": 0.3645798681801294,
+   "one": 1.010563836531127,
+   "five": 0.369005739378041
+  },
+  {
+   "metric": "Ball recoveries",
+   "cv": 0.5313527726312569,
+   "one": 1.4728347430209552,
+   "five": 0.5378032081532678
+  },
+  {
+   "metric": "Forwards' shots",
+   "cv": 0.8145919817483948,
+   "one": 2.2579337756423548,
+   "five": 0.8244808415147509
+  },
+  {
+   "metric": "Forwards' npxG + xA",
+   "cv": 0.9036917192970648,
+   "one": 2.504905647842971,
+   "five": 0.9146622184971247
+  }
+ ],
+ "critical_watch": {
+  "comparisons": 444,
+  "players": 126,
+  "beyond_95": 28,
+  "by_chance": 22,
+  "survive_fdr": 5,
+  "fdr": 0.1
+ },
+ "inputs": {
+  "asking_fee": 100000,
+  "extra_wages_per_season": 30000,
+  "seasons": 2,
+  "matches_per_season": 22,
+  "value_per_point": 60000,
+  "comparator_percentile": 25,
+  "discount_rate": 0.035,
+  "n_sims": 10000,
+  "short_injury": 0.04,
+  "long_injury": 0.005,
+  "short_recovery": 0.5,
+  "long_recovery": 0.06666666666666667,
+  "minutes_share": 0.85,
+  "resale_share": 0.3,
+  "min_minutes_regular": 900,
+  "player_matches": 3945,
+  "shots": 3480,
+  "target_player": "Jessica Ziu"
+ }
+}

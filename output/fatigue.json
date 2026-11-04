@@ -1,0 +1,287 @@
+{
+ "leagues": [
+  "Premier League",
+  "La Liga",
+  "Serie A",
+  "Ligue 1"
+ ],
+ "crude": [
+  {
+   "bin": "0-15",
+   "role": "starter",
+   "pressures": 87227,
+   "exposure": 454641.2,
+   "per90": 17.267308814071402
+  },
+  {
+   "bin": "0-15",
+   "role": "sub",
+   "pressures": 46,
+   "exposure": 300.0,
+   "per90": 13.8
+  },
+  {
+   "bin": "15-30",
+   "role": "starter",
+   "pressures": 77211,
+   "exposure": 453124.534,
+   "per90": 15.335717840429272
+  },
+  {
+   "bin": "15-30",
+   "role": "sub",
+   "pressures": 195,
+   "exposure": 1185.0,
+   "per90": 14.810126582278482
+  },
+  {
+   "bin": "30-45+",
+   "role": "starter",
+   "pressures": 79524,
+   "exposure": 490314.00800000003,
+   "per90": 14.597094684678067
+  },
+  {
+   "bin": "30-45+",
+   "role": "sub",
+   "pressures": 603,
+   "exposure": 3506.619,
+   "per90": 15.476446115189589
+  },
+  {
+   "bin": "45-60",
+   "role": "starter",
+   "pressures": 78548,
+   "exposure": 436280.475,
+   "per90": 16.203613054194093
+  },
+  {
+   "bin": "45-60",
+   "role": "sub",
+   "pressures": 2877,
+   "exposure": 14829.8,
+   "per90": 17.46011409459332
+  },
+  {
+   "bin": "60-75",
+   "role": "starter",
+   "pressures": 62765,
+   "exposure": 401091.499,
+   "per90": 14.083694154784368
+  },
+  {
+   "bin": "60-75",
+   "role": "sub",
+   "pressures": 5330,
+   "exposure": 30369.616,
+   "per90": 15.795392342135639
+  },
+  {
+   "bin": "75-90+",
+   "role": "starter",
+   "pressures": 62443,
+   "exposure": 431963.939,
+   "per90": 13.010044340761509
+  },
+  {
+   "bin": "75-90+",
+   "role": "sub",
+   "pressures": 18845,
+   "exposure": 100790.459,
+   "per90": 16.827485625400318
+  }
+ ],
+ "mh_late": {
+  "rr": 1.1403778128116657,
+  "lo": 1.1134486667173005,
+  "hi": 1.1654033609020957,
+  "lo_poisson": 1.1188510334793773,
+  "hi_poisson": 1.1623187690223362,
+  "strata": 3565,
+  "players": 1303,
+  "sub_minutes": 109988.36600000001,
+  "starter_minutes": 280046.668,
+  "sub_pressures": 20122,
+  "starter_pressures": 44361
+ },
+ "mh_by_bin": {
+  "45-60": {
+   "rr": 1.0242434453771636,
+   "lo": 0.9755385333616452,
+   "hi": 1.0812626268656096,
+   "lo_poisson": 0.9796022177083347,
+   "hi_poisson": 1.0709190081789226,
+   "strata": 770,
+   "players": 645,
+   "sub_minutes": 13405.184000000001,
+   "starter_minutes": 64116.561,
+   "sub_pressures": 2588,
+   "starter_pressures": 12095
+  },
+  "60-75": {
+   "rr": 1.067096463526546,
+   "lo": 1.026620362035367,
+   "hi": 1.1096921214354243,
+   "lo_poisson": 1.0308135691881974,
+   "hi_poisson": 1.104656454384496,
+   "strata": 1322,
+   "players": 943,
+   "sub_minutes": 27136.748999999996,
+   "starter_minutes": 100622.647,
+   "sub_pressures": 4764,
+   "starter_pressures": 16581
+  },
+  "75-90+": {
+   "rr": 1.1736440815120657,
+   "lo": 1.1416274154158441,
+   "hi": 1.204477384941929,
+   "lo_poisson": 1.1471389522095732,
+   "hi_poisson": 1.2007616230057652,
+   "strata": 2243,
+   "players": 1270,
+   "sub_minutes": 82851.617,
+   "starter_minutes": 179424.021,
+   "sub_pressures": 15358,
+   "starter_pressures": 27780
+  }
+ },
+ "mh_by_position": {
+  "DEF": {
+   "rr": 1.1150458769663776,
+   "lo": 1.0578368036907841,
+   "hi": 1.1834712309037119,
+   "lo_poisson": 1.0626751230681528,
+   "hi_poisson": 1.1699975662834627,
+   "strata": 820,
+   "players": 379,
+   "sub_minutes": 17977.886,
+   "starter_minutes": 72579.862,
+   "sub_pressures": 2498,
+   "starter_pressures": 8635
+  },
+  "MID": {
+   "rr": 1.1235809575788902,
+   "lo": 1.085343418943743,
+   "hi": 1.1663290898820524,
+   "lo_poisson": 1.0906984604049,
+   "hi_poisson": 1.1574547998951448,
+   "strata": 1367,
+   "players": 580,
+   "sub_minutes": 37227.053,
+   "starter_minutes": 92005.89099999999,
+   "sub_pressures": 8085,
+   "starter_pressures": 18229
+  },
+  "FWD": {
+   "rr": 1.1676251796606458,
+   "lo": 1.1238755530806384,
+   "hi": 1.2203357948956288,
+   "lo_poisson": 1.127104519040604,
+   "hi_poisson": 1.2096026030824927,
+   "strata": 1244,
+   "players": 473,
+   "sub_minutes": 38493.279,
+   "starter_minutes": 70868.759,
+   "sub_pressures": 6600,
+   "starter_pressures": 10297
+  }
+ },
+ "crude_late": {
+  "rr": 1.2263280207129712,
+  "lo": 1.1915206453828233,
+  "hi": 1.2585734835121465,
+  "lo_poisson": 1.2095582344644422,
+  "hi_poisson": 1.2433303098065955,
+  "strata": 1,
+  "players": 1922,
+  "sub_minutes": 131160.075,
+  "starter_minutes": 833055.438,
+  "sub_pressures": 24175,
+  "starter_pressures": 125208
+ },
+ "mh_late_player_only": {
+  "rr": 1.1067523782296553,
+  "lo": 1.085464016825495,
+  "hi": 1.1306048450905144,
+  "lo_poisson": 1.0886076212182596,
+  "hi_poisson": 1.1251995694704147,
+  "strata": 1372,
+  "players": 1372,
+  "sub_minutes": 125126.223,
+  "starter_minutes": 575702.906,
+  "sub_pressures": 23014,
+  "starter_pressures": 91434
+ },
+ "within_match_decline": {
+  "0-15": {
+   "rr": 1.0,
+   "lo": 1.0,
+   "hi": 1.0
+  },
+  "15-30": {
+   "rr": 0.8971166560766602,
+   "lo": 0.8866264832781046,
+   "hi": 0.9077257920842032,
+   "lo_poisson": 0.8865827816584954,
+   "hi_poisson": 0.9077756880238831,
+   "strata": 21693,
+   "players": 1678,
+   "sub_minutes": 325395.0,
+   "starter_minutes": 325395.0,
+   "sub_pressures": 52240,
+   "starter_pressures": 58231
+  },
+  "30-45+": {
+   "rr": 0.8597937076756298,
+   "lo": 0.8487853250073363,
+   "hi": 0.8717061081007744,
+   "lo_poisson": 0.849800533692997,
+   "hi_poisson": 0.869904395736317,
+   "strata": 21693,
+   "players": 1678,
+   "sub_minutes": 354280.475,
+   "starter_minutes": 325395.0,
+   "sub_pressures": 54386,
+   "starter_pressures": 58231
+  },
+  "45-60": {
+   "rr": 0.949665985471656,
+   "lo": 0.9376716447312297,
+   "hi": 0.9621706249266215,
+   "lo_poisson": 0.9386779560147436,
+   "hi_poisson": 0.9607826392246567,
+   "strata": 21693,
+   "players": 1678,
+   "sub_minutes": 325395.0,
+   "starter_minutes": 325395.0,
+   "sub_pressures": 55300,
+   "starter_pressures": 58231
+  },
+  "60-75": {
+   "rr": 0.8419913791623018,
+   "lo": 0.829550330371608,
+   "hi": 0.8541508148778004,
+   "lo_poisson": 0.8319366475325911,
+   "hi_poisson": 0.8521676316174809,
+   "strata": 21693,
+   "players": 1678,
+   "sub_minutes": 325395.0,
+   "starter_minutes": 325395.0,
+   "sub_pressures": 49030,
+   "starter_pressures": 58231
+  },
+  "75-90+": {
+   "rr": 0.7992668232160501,
+   "lo": 0.7867632489974871,
+   "hi": 0.8116740025215825,
+   "lo_poisson": 0.7901418494787208,
+   "hi_poisson": 0.8084971769503533,
+   "strata": 21693,
+   "players": 1678,
+   "sub_minutes": 408314.039,
+   "starter_minutes": 325395.0,
+   "sub_pressures": 58316,
+   "starter_pressures": 58231
+  }
+ }
+}
