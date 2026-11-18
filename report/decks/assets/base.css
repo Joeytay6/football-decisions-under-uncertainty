@@ -1,0 +1,14 @@
+:root{
+  --ink:#0c1612; --ink2:#15241d; --ink3:#22332b; --paper:#f4f3ee; --paper2:#ebeae3; --line:#d6d9d0;
+  --green:#1e7a4c; --greenD:#155a38; --purple:#5b4b9a; --amber:#d3962e; --lime:#c9f26b; --muted:#5b6660;
+  --chalk:#e8eee9; --chalk2:#a9b6ae; --grey:#9aa59f;
+  --disp:'Barlow Condensed',sans-serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#777}
+body{font-family:var(--sans);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;font-feature-settings:"tnum" 0}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
+.num{font-family:var(--disp);font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+b,strong{font-weight:600}
+.pitchbg{position:absolute;pointer-events:none}
+.chip{display:inline-block;font-family:var(--mono);font-size:7.6pt;letter-spacing:.1em;text-transform:uppercase;padding:1.2mm 2.2mm;border:.5pt solid currentColor;border-radius:1mm;margin:0 1.4mm 1.4mm 0}

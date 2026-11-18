@@ -70,14 +70,14 @@
    "season": "2023/2024",
    "gender": "Women",
    "matches": 132,
-   "with_events": 131,
-   "appearances": 3945,
+   "with_events": 132,
+   "appearances": 3975,
    "players": 295,
-   "player_hours": 4860.9329333333335,
-   "shots": 3480,
-   "goals_np": 398,
-   "xg": 372.2841408955,
-   "pressures": 51422,
+   "player_hours": 4898.039600000001,
+   "shots": 3505,
+   "goals_np": 402,
+   "xg": 374.8308073855,
+   "pressures": 51668,
    "injury_withdrawals": 75
   }
  ],
@@ -95,14 +95,14 @@
  },
  "all_total": {
   "matches": 1649.0,
-  "with_events": 1648.0,
-  "appearances": 46040.0,
+  "with_events": 1649.0,
+  "appearances": 46070.0,
   "players": 2509.0,
-  "player_hours": 57807.28095,
-  "shots": 40967.0,
-  "goals_np": 3967.0,
-  "xg": 3805.6696177875,
-  "pressures": 542522.0,
+  "player_hours": 57844.387616666674,
+  "shots": 40992.0,
+  "goals_np": 3971.0,
+  "xg": 3808.2162842775,
+  "pressures": 542768.0,
   "injury_withdrawals": 756.0
  }
 }

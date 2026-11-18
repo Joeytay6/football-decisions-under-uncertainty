@@ -138,7 +138,7 @@
     {{ PREPARED }}
   </div>
 
-  <p class="lead" style="margin-top:5.5mm">I'm a health economist, sport scientist and former NHS clinical scientist. Every week, health systems decide whether a new medicine is worth its price, with incomplete evidence, a fixed budget and a lot at stake, and they've built rigorous tools for exactly that. This portfolio applies those tools, from <b>study design</b> and <b>evidence synthesis</b> to <b>decision modelling</b> and <b>value of information</b>, to the decisions football clubs make every week.</p>
+  <p class="lead" style="margin-top:5.5mm">I'm a health economist and sport scientist, and I trained as a clinical perfusion scientist in the NHS. Every week, health systems decide whether a new medicine is worth its price, with incomplete evidence, a fixed budget and a lot at stake, and they've built rigorous tools for exactly that. This portfolio applies those tools, from <b>study design</b> and <b>evidence synthesis</b> to <b>decision modelling</b> and <b>value of information</b>, to the decisions football clubs make every week.</p>
 
   <div class="tiles">
     <div class="tile"><div class="lab">Walk-away price</div><div class="num">{{ sig.walk_away|k }}</div><div class="what">for a target priced at {{ inp.asking_fee|k }}, where there's only a <b>{{ sig.p_worth|pct }}</b> chance the deal pays off at the asking price.</div></div>
@@ -173,7 +173,7 @@
   <div class="rule"></div>
   <p class="small muted"><b>Data.</b> StatsBomb (Hudl) open event data, free and public: the FA Women's Super League 2023/24 ({{ D.rows[4].with_events|n }} matches; projects 1&ndash;3) and the Premier League, La Liga, Serie A and Ligue 1 2015/16 ({{ D.men_total.matches|n }} matches; projects 2 and 4&ndash;6). Every number comes from the accompanying code, public at <b>github.com/Joeytay6/football-decisions-under-uncertainty</b>, and is inserted automatically. In project 1 the fee, wages, injury rates and the value of a league point are illustrative, not real valuations.</p>
 
-  <div class="foot"><span>Joe Taylor &middot; +44 7583 108807 &middot; j.taylor1998@live.co.uk</span><span>1 / {{ NP }}</span></div>
+  <div class="foot"><span>Joe Taylor &middot; github.com/Joeytay6</span><span>1 / {{ NP }}</span></div>
 </section>
 
 <!-- =================================================== 2. ABOUT THIS PORTFOLIO -->
@@ -242,7 +242,7 @@
     {% endfor %}
     <tr class="tot"><td>Men's total</td><td></td><td class="n">{{ D.men_total.matches|n }}</td><td class="n">{{ D.men_total.appearances|n }}</td><td class="n">{{ D.men_total.player_hours|n }}</td><td class="n">{{ D.men_total.shots|n }}</td><td class="n">{{ D.men_total.pressures|n }}</td><td></td></tr>
   </table>
-  <p class="small muted" style="margin-top:1.2mm">* Ligue 1 2015/16 had 380 matches; the open data include 377. &dagger; 131 of 132 WSL matches have event data; all 132 results are used for the league table. Projects 1&ndash;3 use the tables they were first built on, which count minutes on the match clock ({{ inp.player_matches|n }} player-matches, {{ inp.shots|n }} shots); see page 14.</p>
+  <p class="small muted" style="margin-top:1.2mm">* Ligue 1 2015/16 had 380 matches; the open data include 377. &dagger; All 132 WSL matches have event data, and all 132 results are used for the league table. Projects 1&ndash;3 use the tables they were first built on, which count minutes on the match clock ({{ inp.player_matches|n }} player-matches, {{ inp.shots|n }} shots); see page 14.</p>
 
   <p class="small" style="margin:1.5mm 0 0"><b>From raw files to this page:</b> <code>build_tables.py</code> turns the raw match files into tidy tables; one <code>project*.py</code> script per project produces every estimate, interval and chart; this document is built from those outputs, so no number is typed by hand. Python (pandas, NumPy, SciPy, Matplotlib), with each method written out in the code rather than called from a black box.</p>
 
@@ -710,7 +710,7 @@
 
   {% set lvl = 'Her true level (scouting, more data)' %}
   <div class="callout" style="margin-top:3mm">
-    <p><b>Sensitivity check.</b> These projects count minutes on the match clock, as when they were first built. Rebuilt on elapsed playing time (as projects 4&ndash;6 are), the walk-away price is {{ WE.signing.walk_away|k }} instead of {{ sig.walk_away|k }}, the chance of paying off at the asking price {{ WE.signing.p_worth|pct }} instead of {{ sig.p_worth|pct }}, {{ (WE.signing.voi[lvl] / WE.signing.evpi)|pct }} of the value of information is still about her true level ({{ (sig.voi[lvl] / sig.evpi)|pct }} before), and finishing still needs about {{ WE.reliability[6].matches_for_07|n }} matches to become reliable. No conclusion changes.</p>
+    <p><b>Sensitivity check.</b> These projects count minutes on the match clock, as when they were first built. Rebuilt on elapsed playing time (as projects 4 to 6 are), {{ WE.inputs.target_player }} ({{ WE.signing_extra.target_team }}) edges ahead of {{ W.inputs.target_player }} as the forward with the highest estimated true level outside the top four: the gap between them is well within the uncertainty in either. For her, the walk-away price is {{ WE.signing.walk_away|k }} and the chance of paying off at the asking price {{ WE.signing.p_worth|pct }}; {{ (WE.signing.voi[lvl] / WE.signing.evpi)|pct }} of the value of information is again about her true level ({{ (sig.voi[lvl] / sig.evpi)|pct }} for {{ W.inputs.target_player }}), and finishing still needs about {{ WE.reliability[6].matches_for_07|n }} matches to become reliable. The conclusions hold: at the asking price the signing is close to a coin flip, and more scouting is where extra information pays.</p>
   </div>
 
   <div class="foot"><span>Data: StatsBomb (Hudl) open data, FA WSL 2023/24.</span><span>14 / {{ NP }}</span></div>

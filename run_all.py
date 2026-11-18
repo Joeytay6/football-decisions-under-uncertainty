@@ -15,12 +15,17 @@ def run(*args):
     subprocess.run([sys.executable, *map(str, args)], check=True)
 
 
+TEAM_COMPETITIONS = COMPETITIONS + [(37, 4, "wsl_2018_19"), (37, 42, "wsl_2019_20"), (37, 90, "wsl_2020_21")]
+
 for comp, season, folder in COMPETITIONS:
     run("build_tables.py", SOURCE, comp, season, f"data/{folder}")
+for comp, season, folder in TEAM_COMPETITIONS:   # team-level tables for projects 7-10 (local copy of the data needed)
+    run("build_team_tables.py", SOURCE, comp, season, f"data/{folder}")
 run("build_tables_clock.py", "" if SOURCE.startswith("http") else SOURCE, "data/wsl_2023_24_clock")
 run("data_summary.py")
 run("project1_3_wsl.py")              # projects 1-3, women's game
 run("project1_3_wsl.py", "elapsed")   # sensitivity check on elapsed-time minutes
-for script in ("project2b_finishing_men.py", "project4_screening.py", "project5_injury.py", "project6_fatigue.py"):
+for script in ("project2b_finishing_men.py", "project4_screening.py", "project5_injury.py", "project6_fatigue.py",
+               "project8_coaches.py", "project7_team_strength.py", "project9_game_model.py", "project10_set_pieces.py"):
     run(script)
-run("report/make_report.py", "all")
+run("report/make_report.py", "generic")

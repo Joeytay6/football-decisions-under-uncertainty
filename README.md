@@ -1,12 +1,12 @@
 # Football decisions under uncertainty
 
-**Six projects on recruitment, transfer value, data quality, injury and fatigue, built from free public event data with methods from health economics, clinical epidemiology, laboratory science and exercise physiology.**
+**Ten projects on recruitment, transfer value, team and coach evaluation, game models, data quality, injury, fatigue and set pieces, built from free public event data with methods from health economics, clinical epidemiology, laboratory science and exercise physiology.**
 
-By Joe Taylor: health economist, sport and exercise scientist, former NHS clinical scientist and start-up co-founder.
+By Joe Taylor: health economist, sport and exercise scientist and start-up co-founder, who trained as a clinical perfusion scientist in the NHS.
 
-📄 **[Read the portfolio (PDF, 16 pages)](portfolio/Joe_Taylor_Football_Decisions_Portfolio.pdf)**
+📊 **[A deck for every project](decks/)** (PDF, 6 to 11 slides each) &nbsp;·&nbsp; 📄 **[The original six-project portfolio](portfolio/Joe_Taylor_Football_Decisions_Portfolio.pdf)** (PDF, 16 pages)
 
-Health systems decide every week whether a new medicine is worth its price, with incomplete evidence, a fixed budget and a lot at stake, and they've built rigorous tools for exactly that. This repository applies those tools to the decisions football clubs make every week. Every number and chart in the portfolio is produced by the code here, from raw match files, with nothing typed in by hand.
+Health systems decide every week whether a new medicine is worth its price, with incomplete evidence, a fixed budget and a lot at stake, and they've built rigorous tools for exactly that. This repository applies those tools to the decisions football clubs make. Every number and chart is produced by the code here, from raw match files, with nothing typed in by hand.
 
 ---
 
@@ -14,28 +14,30 @@ Health systems decide every week whether a new medicine is worth its price, with
 
 | | Question | Method, and where it comes from | Data |
 |---|---|---|---|
-| 1 | What should we pay for a player, and how should the deal be structured? | Decision model, probabilistic analysis and value of information (health technology assessment, NICE methods) | Women's Super League 2023/24 |
-| 2 | Is a hot finisher skilled or lucky? | Bayesian hierarchical model (small-area disease rates), tested out of sample | WSL 2023/24 and four men's leagues 2015/16 |
+| 1 | What should we pay for a player, and how should the deal be structured? | Decision model, probabilistic analysis and value of information (health technology assessment, NICE methods) | WSL 2023/24 |
+| 2 | Is a hot finisher skilled or lucky? | Bayesian hierarchical model, tested out of sample | WSL 2023/24; four men's leagues 2015/16 |
 | 3 | Which numbers can we trust, and when is a change in form real? | Reliability, reference change values, false discovery rate (clinical laboratory science) | WSL 2023/24 |
 | 4 | Which numbers should a shortlist be built on? | Diagnostic accuracy: ROC/AUC, sensitivity, PPV (screening-test evaluation) | Four men's leagues 2015/16 |
-| 5 | How often are players injured in matches, when, and for how long? | Injury epidemiology: incidence rates, Poisson regression, Kaplan–Meier with a comparison group | Four men's leagues 2015/16 |
-| 6 | Do players tire, and can event data show it? | Mantel–Haenszel stratified comparison with a cluster bootstrap (epidemiology) | Four men's leagues 2015/16 |
+| 5 | How often are players injured in matches, when, and for how long? | Injury epidemiology with a correction for ascertainment bias | Four men's leagues 2015/16 |
+| 6 | Do players tire, and can event data show it? | Mantel-Haenszel stratified comparison, cluster bootstrap (epidemiology) | Four men's leagues 2015/16 |
+| 7 | How good is a team, really? | Observed against expected, as in risk-adjusted hospital outcomes; reliability; prognostic validation | Four men's leagues 2015/16; WSL 2018/19 to 2023/24 |
+| 8 | Judging a head coach: does a mid-season change work? | Funnel plots; controlled before-and-after study with matched controls | Four men's leagues 2015/16 |
+| 9 | Can event data measure a game model? | Measurement validation as for clinical questionnaires (COSMIN): reliability, construct validity, structure, responsiveness | Four men's leagues 2015/16; WSL 2018/19 to 2023/24 |
+| 10 | Are set pieces a repeatable edge, and what is it worth? | Reliability, signal and noise, points per goal (cost-effectiveness framing) | Four men's leagues 2015/16; WSL 2018/19 to 2023/24 |
 
 ### 1. Appraising a signing the way NICE appraises a medicine
 
 An illustrative target (the best forward outside the top four, asking fee £100k, a league point valued at £60k) is appraised in eight steps: a league model turning goals into points, random-effects shrinkage of her season, a Markov model of fitness and injury, 10,000 simulations, an acceptability curve, value of information and an outcomes-based deal.
 
-- **Walk-away price £92k.** There's only a 47% chance the deal pays off at the asking price.
+- **Walk-away price £90k.** There's only a 46% chance the deal pays off at the asking price.
 - **96% of the value of extra information is about her true level**, so more scouting pays and a more detailed medical adds little.
-- **An outcomes-based deal of £86k up front plus £14k at 16 goals and assists** gives the seller their price only if she repeats last season, and costs the club its walk-away price on average.
+- **An outcomes-based deal of £83k up front plus £17k at 16 goals and assists** gives the seller their price only if she repeats last season, and costs the club its walk-away price on average.
 
 ![How much to bid](output/c1_bid.png)
 
-Fee, wages, injury rates and the value of a point are illustrative; points per goal and her level are estimated from the data. Every input and its basis is listed on page 14 of the portfolio.
+Fee, wages, injury rates and the value of a point are illustrative; points per goal and her level are estimated from the data.
 
 ### 2. Finishing: skill or luck?
-
-Each player's goals follow his expected goals (xG) times a true finishing multiplier, and a Bayesian hierarchical model estimates how much those multipliers really vary.
 
 - In the WSL, true finishing skill varies by only about **±8%** between players, and none of the 77 players with 15+ shots can be called a genuinely better finisher on one season's evidence.
 - Out of sample in four men's leagues (206 players), over-performing xG in the first half of the season **didn't predict the second half (r = −0.06)**. The quality of a player's chances did (r = 0.68).
@@ -44,16 +46,12 @@ Each player's goals follow his expected goals (xG) times a true finishing multip
 
 ### 3. Measurement science: which numbers to trust, and when form is real
 
-The two checks a clinical lab runs before acting on a test result: is it reliable, and is the change bigger than normal variation?
-
-- Passing and pressing are reliable after about 4 matches; chance quality needs about 14; **finishing needs about 64, nearly three seasons**.
-- Of 430 end-of-season changes in form across the league, 29 crossed the usual 95% line, about as many as chance alone would produce (22). **Only 6 survived false-discovery control.**
+- Passing and pressing are reliable after about 4 matches; chance quality needs about 15; **finishing needs about 58, nearly three WSL seasons**.
+- Of 433 end-of-season changes in form, 28 crossed the usual 95% line, about as many as chance alone would produce (22). **Only 6 survived false-discovery control.**
 
 ![Reliability](output/c5_reliability.png)
 
 ### 4. Scouting numbers judged like a screening test
-
-A chronological split: each test uses a team's first 19 league matches, the outcome its last 19. The cohort is 165 attacking players with 900+ minutes in each half of the season.
 
 - As a screening test for next-half top performers, **npxG + xA scored an AUC of 0.80, against 0.69 for goals + assists**.
 - A shortlist built on npxG found 59% true future top performers, against 47% for goals + assists and 20% at random.
@@ -62,22 +60,53 @@ A chronological split: each test uses a team's first 19 league matches, the outc
 
 ### 5. Injuries in matches: what event data can and can't see
 
-A retrospective cohort of 42,095 appearances (52,946 player-hours) in 1,517 matches.
-
-- **12.9 injury withdrawals per 1,000 player-hours**, about half the time-loss match injury rate in UEFA's surveillance study: event data sees the injuries that stop a player finishing.
-- **A recording bias hides late-match injuries.** In 2015/16 teams had three substitutions, and once they're used an injured player can't come off, so the injury never reaches the data. Counting only the minutes in which an injury *could* be recorded, the last period of the match has the **highest risk, 5.6 times the first 15 minutes**, and risk rises 65% every 15 minutes within each half.
+- **12.9 injury withdrawals per 1,000 player-hours** across 1,517 matches.
+- **A recording bias hides late-match injuries.** With three substitutions, once they're used an injured player can't come off. Counting only the minutes in which an injury could be recorded, the last period has the **highest risk, 5.6 times the first 15 minutes**.
 - 60% of players withdrawn injured missed their team's next league match, against 11% after a tactical substitution.
 
 ![Injury timing](output/inj_timing.png)
 
 ### 6. A fatigue signal in event data
 
-Each player is compared only with himself, in the same 15-minute period and the same score state, as a fresh substitute and as a starter.
-
-- In the last period, **fresh substitutes pressed 17% more** (95% CI 14% to 20%) than the same players did as starters, and the gap grows the longer the starter has played. That matches what time-motion studies of high-intensity running found, here with no tracking data at all.
-- Without the matching, 38% of the raw gap is explained by who comes on and the score, not fatigue.
+- In the last period, **fresh substitutes pressed 17% more** (95% CI 14% to 20%) than the same players did as starters, in the same score state, matching what time-motion studies found with no tracking data at all.
 
 ![Fatigue](output/fatigue.png)
+
+### 7. How good is a team, really?
+
+Expected points from every chance created and conceded (shots in the same possession combined, goals as a Poisson-binomial distribution), compared with the table the way hospitals compare observed with expected outcomes.
+
+- Across 80 teams, points minus expected points varied by 7.6 points a season; chance alone would produce 6.6. **About 74% of the gap between the table and the chances is luck.**
+- **Points need about 40 matches to measure a team reliably (0.8); expected-goal difference needs about 20.** A season of points tells you about as much as half a season of chances.
+- Leicester won the 2015/16 Premier League with 81 points from chances worth 66.
+
+![Observed against expected](output/c7_table.png)
+
+### 8. Judging a head coach
+
+- **Funnel plot:** 10 of 118 coaching spells sat outside the 95% limits, against 6 expected by chance; none outside 99.8%. All four below the lower limit were replaced that season.
+- **Controlled before-and-after study of all 39 mid-season changes:** points per match went from 0.77 to 1.25 after a change, and from 0.78 to 1.33 in matched teams in the same slump that kept their coach. Effect of the change: −0.07 points per match (95% CI −0.25 to 0.12). **Most of the new-manager bounce is regression to the mean.**
+
+![Before and after](output/c8_before_after.png)
+
+### 9. Measuring a game model
+
+Fifteen style KPIs (possession, territory, build-up, pressing, width, crossing, counter-attacks, set pieces) validated the way a clinical questionnaire is.
+
+- **Build-up KPIs measure a team within 5 to 10 matches; pressing KPIs take 25 to 35;** counter-attack and set-piece shares are still mostly noise after a season.
+- **Construct validity:** when trailing rather than leading, the same teams had 57% of the ball against 43% (every one of 80 teams moved the same way), and pressed and defended higher.
+- Control with the ball and pressing without it go together (r = 0.75); a team's identity is in the gap.
+- A mid-season coaching change shifted style by only 1.08 times normal six-match drift (95% CI 0.92 to 1.27).
+
+![Style map](output/c9_style_map.png)
+
+### 10. Set pieces as an investment
+
+- **28% of non-penalty goals** came from set pieces in four men's top flights.
+- Set-piece xG difference had a season reliability of 0.63, against 0.88 for open play. Much of it follows dominance (r = 0.63 between set pieces won and open-play xG difference); attacking delivery quality is the more coachable part (reliability 0.48), defending quality mostly noise in one season (0.20).
+- The gap between the best and worst set-piece teams is worth about 8 goals and 5 points a season.
+
+![Set pieces](output/c10_reliability.png)
 
 ---
 
@@ -87,64 +116,64 @@ StatsBomb (Hudl) open data: <https://github.com/hudl/open-data>. Free to use wit
 
 | Competition | competition_id | season_id | Used in |
 |---|---|---|---|
-| FA Women's Super League 2023/24 (131 of 132 matches with events; all 132 results) | 37 | 281 | Projects 1–3 |
-| Premier League 2015/16 | 2 | 27 | Projects 2, 4–6 |
-| La Liga 2015/16 | 11 | 27 | Projects 2, 4–6 |
-| Serie A 2015/16 | 12 | 27 | Projects 2, 4–6 |
-| Ligue 1 2015/16 (377 of 380 matches in the open data) | 7 | 27 | Projects 2, 4–6 |
+| FA Women's Super League 2023/24 (132 matches) | 37 | 281 | Projects 1 to 3, 7, 9, 10 |
+| FA Women's Super League 2018/19, 2019/20, 2020/21 | 37 | 4, 42, 90 | Projects 7, 9, 10 |
+| Premier League 2015/16 | 2 | 27 | Projects 2, 4 to 10 |
+| La Liga 2015/16 | 11 | 27 | Projects 2, 4 to 10 |
+| Serie A 2015/16 | 12 | 27 | Projects 2, 4 to 10 |
+| Ligue 1 2015/16 (377 of 380 matches in the open data) | 7 | 27 | Projects 2, 4 to 10 |
 
-The raw data isn't stored in this repository; the build scripts download it or read a local copy.
+The raw data isn't stored in this repository; the build scripts read a local copy (or, for projects 1 to 6, download it).
 
-**What public data can't do:** no tracking, GPS, training or medical data; no fees or wages. The men's seasons are from 2015/16, the most recent free men's seasons with every match. Every method here runs unchanged on a club's own event, tracking, GPS, medical and financial data.
+**What public data can't do:** no tracking, GPS, training or medical data; no fees or wages. Every method here runs unchanged on a club's own event, tracking, GPS, medical and financial data.
 
 ## Run it
 
 ```bash
 pip install -r requirements.txt          # Python 3.10+
-# fastest: clone the open data and point at it
 git clone https://github.com/hudl/open-data.git
 python run_all.py open-data/data
-# or read straight from GitHub (slower)
-python run_all.py
 ```
 
-Rebuilding the PDF also needs Node.js with Playwright (`npm i playwright`) and the Inter font. Everything else runs without it, and every result is written to `output/` as JSON and PNG.
+Every result is written to `output/` as JSON and PNG. The decks are built by `report/decks/build_decks.py` (Python Playwright with Chrome).
 
 ## Files
 
 | File | What it does |
 |---|---|
-| `build_tables.py` | Raw events and lineups → tidy tables per competition: appearances with on/off times, 15-minute bins, shots with xG, substitutions with reason, injury withdrawals, pressures, squads, goals. Handles StatsBomb's second-half clock restart so stoppage time counts. |
-| `build_tables_clock.py` | The tables projects 1–3 were first built on, with minutes counted on the match clock. |
-| `common.py` | Shared helpers: exact Poisson intervals, rate ratios, Kaplan–Meier, Poisson regression, chart style. |
-| `data_summary.py` | The data table in the portfolio. |
-| `project1_3_wsl.py` | Projects 1–3. `python project1_3_wsl.py elapsed` re-runs them on elapsed-time minutes as a sensitivity check (walk-away price £94k instead of £92k; no conclusion changes). |
-| `project2b_finishing_men.py` | Project 2 in the men's game, with the out-of-sample check. |
-| `project4_screening.py` | Project 4. |
-| `project5_injury.py` | Project 5. |
-| `project6_fatigue.py` | Project 6. |
-| `report/` | Template and build script for the portfolio PDF. |
+| `build_tables.py` | Raw events and lineups into tidy player tables per competition, with StatsBomb's second-half clock restart handled so stoppage time counts. |
+| `build_tables_clock.py` | The tables projects 1 to 3 were first built on, with minutes counted on the match clock. |
+| `build_team_tables.py` | Team-level tables for projects 7 to 10: every shot with possession, play pattern and game state; style KPIs per team per match, overall and by game state; set pieces taken; head coaches named for each match. |
+| `common.py`, `common_team.py` | Shared helpers: exact Poisson intervals, rate ratios, Kaplan-Meier, Poisson regression, expected points, chart style. |
+| `project1_3_wsl.py` | Projects 1 to 3. `python project1_3_wsl.py elapsed` re-runs them on elapsed-time minutes as a sensitivity check. |
+| `project2b_finishing_men.py`, `project4_screening.py`, `project5_injury.py`, `project6_fatigue.py` | Projects 2 (men's game), 4, 5 and 6. |
+| `project7_team_strength.py` | Project 7: expected points, luck in the table, reliability, prognostic validation. |
+| `project8_coaches.py` | Project 8: funnel plot of coaching spells and the controlled before-and-after study. |
+| `project9_game_model.py` | Project 9: KPI reliability, game-state validity, structure, style map, style twins, responsiveness. |
+| `project10_set_pieces.py` | Project 10: set-piece reliability, volume against quality, what the edge is worth. |
+| `report/` | Template and build script for the six-project portfolio PDF; `report/decks/` builds the ten decks. |
 | `run_all.py` | Runs everything in order. |
 
 Each method is written out in the code (numpy, scipy, pandas) rather than called from a black-box package, so every step can be read and checked.
 
 ## Sources for literature benchmarks
 
-- Ekstrand J, Hägglund M, Waldén M. Injury incidence and injury patterns in professional football: the UEFA injury study. *Br J Sports Med* 2011;45:553–558.
-- Hawkins RD, Fuller CW. A prospective epidemiological study of injuries in four English professional football clubs. *Br J Sports Med* 1999;33:196–203.
-- Argibay-González JC, et al. Analysis of injury patterns in men's football between the English League and the Spanish League. *Int J Environ Res Public Health* 2022;19:11296.
-- Mohr M, Krustrup P, Bangsbo J. Match performance of high-standard soccer players with special reference to development of fatigue. *J Sports Sci* 2003;21:519–528.
-- DerSimonian R, Laird N. Meta-analysis in clinical trials. *Control Clin Trials* 1986;7:177–188.
-- Strong M, Oakley JE, Brennan A. Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample. *Med Decis Making* 2014;34:311–326.
+- Ekstrand J, Hägglund M, Waldén M. Injury incidence and injury patterns in professional football: the UEFA injury study. *Br J Sports Med* 2011;45:553-558.
+- Hawkins RD, Fuller CW. A prospective epidemiological study of injuries in four English professional football clubs. *Br J Sports Med* 1999;33:196-203.
+- Mohr M, Krustrup P, Bangsbo J. Match performance of high-standard soccer players with special reference to development of fatigue. *J Sports Sci* 2003;21:519-528.
+- DerSimonian R, Laird N. Meta-analysis in clinical trials. *Control Clin Trials* 1986;7:177-188.
+- Strong M, Oakley JE, Brennan A. Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample. *Med Decis Making* 2014;34:311-326.
 - National Institute for Health and Care Excellence. *NICE health technology evaluations: the manual* (PMG36), 2022.
-- Fraser CG, Harris EK. Generation and application of data on biological variation in clinical chemistry. *Crit Rev Clin Lab Sci* 1989;27:409–437.
-- Benjamini Y, Hochberg Y. Controlling the false discovery rate. *J R Stat Soc B* 1995;57:289–300.
+- Fraser CG, Harris EK. Generation and application of data on biological variation in clinical chemistry. *Crit Rev Clin Lab Sci* 1989;27:409-437.
+- Benjamini Y, Hochberg Y. Controlling the false discovery rate. *J R Stat Soc B* 1995;57:289-300.
+- Mokkink LB, et al. The COSMIN checklist for assessing the methodological quality of studies on measurement properties. *Qual Life Res* 2010;19:539-549.
+- Spiegelhalter DJ. Funnel plots for comparing institutional performance. *Stat Med* 2005;24:1185-1202.
 
 ## About me
 
-- **Decision modelling and health economics.** Health Economist at Lumanity (2024–2026); PGCert Health Economics and Decision Modelling, University of Sheffield; co-author, *Journal of Medical Economics* (2025).
+- **Decision modelling and health economics.** Health Economist at Lumanity (2024 to 2026); PGCert Health Economics and Decision Modelling, University of Sheffield; co-author, *Journal of Medical Economics* (2025).
 - **Sport science and physiology.** BSc Sport and Exercise Sciences and MSc Sport and Exercise Physiology, Leeds Beckett; heat acclimation research with the English Institute of Sport for the British triathlon team; Barnsley FC and Leeds Rhinos academies; UK Anti-Doping accredited advisor.
-- **Clinical science.** NHS Trainee Clinical Perfusion Scientist, Oxford University Hospitals (2021–2024).
+- **Clinical science.** NHS Trainee Clinical Perfusion Scientist, Oxford University Hospitals (2021 to 2024).
 - **Commercial.** Co-founder of Novamint, a science-led start-up.
 
 Contact: j.taylor1998@live.co.uk

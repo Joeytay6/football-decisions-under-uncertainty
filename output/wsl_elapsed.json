@@ -10,77 +10,77 @@
  },
  "signing_extra": {
   "fit_share": 0.8869685563912652,
-  "mu_fwd": 0.3784536350446257,
-  "tau": 0.12446483730184522,
-  "i2": 0.7581899544152133,
-  "target_team": "West Ham United",
-  "target_minutes": 946.365,
-  "nmb_mean": -4163.008966608159
+  "mu_fwd": 0.38089934775353546,
+  "tau": 0.1227678491803065,
+  "i2": 0.7465207088978538,
+  "target_team": "Manchester United",
+  "target_minutes": 909.9,
+  "nmb_mean": 2327.7374304101727
  },
  "signing": {
-  "target_raw_per90": 0.4801399809481543,
-  "target_true": 0.4414017052189815,
-  "target_true_sd": 0.07738390568736297,
-  "comparator": 0.31610468954093174,
-  "n_regular_fwd": 37,
-  "points_mean": 2.113815092063853,
-  "points_p5": -0.0699683896255313,
-  "points_p95": 4.346304713615003,
-  "p_worth": 0.4769,
-  "walk_away": 94218.55758960755,
-  "p_free": 0.7966,
-  "evpi": 30568.658094881404,
+  "target_raw_per90": 0.507227359248269,
+  "target_true": 0.44955319365822366,
+  "target_true_sd": 0.08366912385478938,
+  "comparator": 0.3178336071628454,
+  "n_regular_fwd": 38,
+  "points_mean": 2.2219941986808247,
+  "points_p5": -0.13497238913049858,
+  "points_p95": 4.630540129240343,
+  "p_worth": 0.5091,
+  "walk_away": 103232.68097868067,
+  "p_free": 0.8004,
+  "evpi": 33989.53974229042,
   "voi": {
-   "Her true level (scouting, more data)": 29437.929467970036,
-   "Resale value (market)": 3560.830938914394,
-   "Share of matches she plays (manager's plans)": 2008.7869721566822,
-   "Points per goal (league model)": 1097.9380621444732,
-   "Injury risk and recovery (medical)": 1084.3200877832369
+   "Her true level (scouting, more data)": 32951.833852313895,
+   "Resale value (market)": 3720.5339986903236,
+   "Share of matches she plays (manager's plans)": 3601.0612787318983,
+   "Points per goal (league model)": 1634.3492757853664,
+   "Injury risk and recovery (medical)": 2115.761888147623
   }
  },
  "deal": {
-  "upfront": 88973.02611025661,
-  "bonus": 11026.97388974338,
-  "hurdle": 15,
-  "pace_seller": 15.927503059697543,
-  "contrib_mean": 14.591150557273062,
-  "p_hit_ours": 0.4757,
-  "p_hit_if_repeat": 0.62524,
-  "paid_mean": 94218.55758960753,
-  "worth_if_hit": 0.6821526171957116,
-  "worth_if_miss": 0.33301544917032233,
-  "points_if_hit": 2.7685631224954754,
-  "points_if_miss": 1.5197589446743378,
+  "upfront": 105533.5175944551,
+  "bonus": -5533.5175944551,
+  "hurdle": 16,
+  "pace_seller": 16.8260624754377,
+  "contrib_mean": 14.859935201837244,
+  "p_hit_ours": 0.4158,
+  "p_hit_if_repeat": 0.615245,
+  "paid_mean": 103232.68097868066,
+  "worth_if_hit": 0.7436267436267436,
+  "worth_if_miss": 0.3235193426908593,
+  "points_if_hit": 3.046964862005526,
+  "points_if_miss": 1.6348274718571165,
   "fixed_ask": {
-   "mean": -4163.008966608159,
-   "p_worth": 0.4769,
-   "p_big_loss": 0.2945,
-   "p5": -135458.1384137229,
-   "p25": -60703.574653177726,
-   "p75": 49451.85982806204,
-   "p95": 131564.48467282113
+   "mean": 2327.7374304101727,
+   "p_worth": 0.5091,
+   "p_big_loss": 0.283,
+   "p5": -139182.27345494909,
+   "p25": -58624.895363820644,
+   "p75": 60315.15099950676,
+   "p95": 148462.82928586958
   },
   "fixed_walk": {
-   "mean": -2.4586915969848633e-11,
-   "p_worth": 0.4968,
-   "p_big_loss": 0.2771,
-   "p5": -130837.71647561304,
-   "p25": -56339.66693854281,
-   "p75": 53672.79568895031,
-   "p95": 135642.88702664198
+   "mean": 2.3888424038887023e-11,
+   "p_worth": 0.4975,
+   "p_big_loss": 0.2918,
+   "p5": -141717.91740546311,
+   "p25": -61007.54563987228,
+   "p75": 58068.1657475962,
+   "p95": 146349.0974245237
   },
   "outcomes": {
-   "mean": -4.691407810794795,
-   "p_worth": 0.4991,
-   "p_big_loss": 0.2693,
-   "p5": -127906.03223613475,
-   "p25": -55139.61594644008,
-   "p75": 52232.72639824837,
-   "p95": 132453.68279360977
+   "mean": 7.284290831151931,
+   "p_worth": 0.4982,
+   "p_big_loss": 0.2932,
+   "p5": -143302.80091215225,
+   "p25": -61550.09560225734,
+   "p75": 58657.1582273079,
+   "p95": 147796.966044767
   }
  },
  "finishing": {
-  "league_ratio": 1.0690758919857357,
+  "league_ratio": 1.0724838836060706,
   "spread": 0.07500000000000001,
   "spread_lo": 0.01,
   "spread_hi": 0.2,
@@ -90,105 +90,105 @@
   "shaw": {
    "goals": 21,
    "xg": 11.624655410999999,
-   "skill": 1.138352903611012,
-   "lo": 0.9754761562097116,
-   "hi": 1.3923688748830503,
-   "p_above": 0.7075
+   "skill": 1.1398536349190125,
+   "lo": 0.9775568730670112,
+   "hi": 1.4016880983140436,
+   "p_above": 0.709
   }
  },
  "reliability": [
   {
    "metric": "Passes",
-   "players": 126,
-   "r_half": 0.8265262157322543,
+   "players": 127,
+   "r_half": 0.827877295787671,
    "half_matches": 8.0,
-   "season_reliability": 0.9050252973247361,
-   "matches_for_07": 3.9178156054764903
+   "season_reliability": 0.9058346506031972,
+   "matches_for_07": 3.8809581584670587
   },
   {
    "metric": "Pressures",
-   "players": 126,
-   "r_half": 0.8004572285773038,
+   "players": 127,
+   "r_half": 0.8032032098605955,
    "half_matches": 8.0,
-   "season_reliability": 0.8891710570762227,
-   "matches_for_07": 4.653338450713495
+   "season_reliability": 0.8908626664686234,
+   "matches_for_07": 4.573612303217515
   },
   {
    "metric": "Ball recoveries",
-   "players": 126,
-   "r_half": 0.5869569531428521,
+   "players": 127,
+   "r_half": 0.5852672002706765,
    "half_matches": 8.0,
-   "season_reliability": 0.7397263699943806,
-   "matches_for_07": 13.13577909484324
+   "season_reliability": 0.738383031164393,
+   "matches_for_07": 13.227597454120625
   },
   {
    "metric": "Shots (forwards)",
    "players": 33,
-   "r_half": 0.7308719554605339,
+   "r_half": 0.7329517842931497,
    "half_matches": 8.0,
-   "season_reliability": 0.8445130249580715,
-   "matches_for_07": 6.873602770685747
+   "season_reliability": 0.8458998004864999,
+   "matches_for_07": 6.801129533145559
   },
   {
    "metric": "npxG + xA (forwards)",
    "players": 33,
-   "r_half": 0.536806077798575,
+   "r_half": 0.5227283908894085,
    "half_matches": 8.0,
-   "season_reliability": 0.6985996288712397,
-   "matches_for_07": 16.1069088174599
+   "season_reliability": 0.686568128652397,
+   "matches_for_07": 17.043401873719727
   },
   {
    "metric": "Goals (forwards)",
    "players": 33,
-   "r_half": 0.4985880870118989,
+   "r_half": 0.5083510856816192,
    "half_matches": 8.0,
-   "season_reliability": 0.6654104504541415,
-   "matches_for_07": 18.77238804187711
+   "season_reliability": 0.6740487549712565,
+   "matches_for_07": 18.053362447931544
   },
   {
    "metric": "Goals minus xG: finishing (forwards)",
    "players": 33,
-   "r_half": 0.23704550670146565,
+   "r_half": 0.2057626289460229,
    "half_matches": 8.0,
-   "season_reliability": 0.3832446024294424,
-   "matches_for_07": 60.080519586373796
+   "season_reliability": 0.34129873327701893,
+   "matches_for_07": 72.05275484482382
   }
  ],
  "critical": [
   {
    "metric": "Passes",
-   "cv": 0.29807513554311316,
-   "one": 0.8262221226108877,
-   "five": 0.3016936627091882
+   "cv": 0.29841171542200423,
+   "one": 0.8271550744368049,
+   "five": 0.3020343285492686
   },
   {
    "metric": "Pressures",
-   "cv": 0.3645798681801294,
-   "one": 1.010563836531127,
-   "five": 0.369005739378041
+   "cv": 0.36559720988896727,
+   "one": 1.0133837638778513,
+   "five": 0.3700354312569254
   },
   {
    "metric": "Ball recoveries",
-   "cv": 0.5313527726312569,
-   "one": 1.4728347430209552,
-   "five": 0.5378032081532678
+   "cv": 0.5313296108983775,
+   "one": 1.4727705419728936,
+   "five": 0.5377797652451085
   },
   {
    "metric": "Forwards' shots",
-   "cv": 0.8145919817483948,
-   "one": 2.2579337756423548,
-   "five": 0.8244808415147509
+   "cv": 0.8135460054674692,
+   "one": 2.25503447731124,
+   "five": 0.8234221674501586
   },
   {
    "metric": "Forwards' npxG + xA",
-   "cv": 0.9036917192970648,
-   "one": 2.504905647842971,
-   "five": 0.9146622184971247
+   "cv": 0.9087991411794548,
+   "one": 2.519062699020852,
+   "five": 0.9198316426823783
   }
  ],
  "critical_watch": {
-  "comparisons": 444,
-  "players": 126,
+  "comparisons": 447,
+  "players": 127,
   "beyond_95": 28,
   "by_chance": 22,
   "survive_fdr": 5,
@@ -210,8 +210,8 @@
   "minutes_share": 0.85,
   "resale_share": 0.3,
   "min_minutes_regular": 900,
-  "player_matches": 3945,
-  "shots": 3480,
-  "target_player": "Jessica Ziu"
+  "player_matches": 3975,
+  "shots": 3505,
+  "target_player": "Melvine Malard"
  }
 }

@@ -6,3 +6,6 @@ __pycache__/
 *.pyc
 node_modules/
 .DS_Store
+output_deck/
+output_doc/
+report/decks/__pycache__/

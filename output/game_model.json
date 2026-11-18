@@ -1,0 +1,2612 @@
+{
+ "teams": 80,
+ "matches": 1517,
+ "kpis": {
+  "poss": {
+   "label": "Possession share (in-play time)",
+   "dim": "Control",
+   "higher": "more of the ball"
+  },
+  "tilt": {
+   "label": "Field tilt (share of final-third passes)",
+   "dim": "Control",
+   "higher": "more play in the opponent's third"
+  },
+  "ppp": {
+   "label": "Passes per possession",
+   "dim": "Build-up",
+   "higher": "more patient build-up"
+  },
+  "tempo": {
+   "label": "Passes per minute in possession",
+   "dim": "Build-up",
+   "higher": "faster circulation"
+  },
+  "long": {
+   "label": "Long-ball share of open-play passes",
+   "dim": "Build-up",
+   "higher": "more direct"
+  },
+  "ppda": {
+   "label": "PPDA (opponent passes per defensive action)",
+   "dim": "Pressing",
+   "higher": "less intense press"
+  },
+  "press_h": {
+   "label": "Average pressure height (yards from own goal)",
+   "dim": "Pressing",
+   "higher": "higher press"
+  },
+  "cp": {
+   "label": "Counterpresses per 90",
+   "dim": "Pressing",
+   "higher": "more counterpressing"
+  },
+  "line": {
+   "label": "Defenders' action height (yards from own goal)",
+   "dim": "Pressing",
+   "higher": "higher line"
+  },
+  "regain": {
+   "label": "High regains per 90 (final third)",
+   "dim": "Pressing",
+   "higher": "more high turnovers"
+  },
+  "width": {
+   "label": "Final-third passes from wide areas",
+   "dim": "Chance creation",
+   "higher": "wider"
+  },
+  "cross": {
+   "label": "Crosses as a share of passes into the box",
+   "dim": "Chance creation",
+   "higher": "more crossing"
+  },
+  "counter": {
+   "label": "Shots from counter-attacks (share)",
+   "dim": "Chance creation",
+   "higher": "more counter-attacking"
+  },
+  "xg_shot": {
+   "label": "npxG per shot",
+   "dim": "Chance creation",
+   "higher": "better shot selection"
+  },
+  "sp": {
+   "label": "Set-piece share of npxG",
+   "dim": "Chance creation",
+   "higher": "more set-piece reliant"
+  }
+ },
+ "reliability": {
+  "poss": {
+   "r_half": 0.8811494370523104,
+   "icc": 0.2786049734775645,
+   "m80": 10.25097719433506,
+   "season": 0.9368202437261316,
+   "test_retest": 0.8712206149109647
+  },
+  "tilt": {
+   "r_half": 0.8347655879310213,
+   "icc": 0.2101959493064062,
+   "m80": 15.043522994721327,
+   "season": 0.9099424944767437,
+   "test_retest": 0.7994876790739337
+  },
+  "ppp": {
+   "r_half": 0.9408974036951746,
+   "icc": 0.44667409576810496,
+   "m80": 4.773950168770955,
+   "season": 0.9695488302512523,
+   "test_retest": 0.9016381304822585
+  },
+  "tempo": {
+   "r_half": 0.8991582579200912,
+   "icc": 0.31696557510101425,
+   "m80": 8.523496648744757,
+   "season": 0.9469018752600702,
+   "test_retest": 0.8035847780200754
+  },
+  "long": {
+   "r_half": 0.9319423145345237,
+   "icc": 0.4160648419331969,
+   "m80": 5.550111862835251,
+   "season": 0.9647724029058943,
+   "test_retest": 0.8837349965279064
+  },
+  "ppda": {
+   "r_half": 0.7537447032797415,
+   "icc": 0.13474472290427353,
+   "m80": 24.829895943950266,
+   "season": 0.8595831558266562,
+   "test_retest": 0.6186782283758232
+  },
+  "press_h": {
+   "r_half": 0.7434174645161287,
+   "icc": 0.13001606021679635,
+   "m80": 26.230581910617953,
+   "season": 0.8528278276969746,
+   "test_retest": 0.681906271012575
+  },
+  "cp": {
+   "r_half": 0.6869018222601773,
+   "icc": 0.10344073645858157,
+   "m80": 34.64172133061186,
+   "season": 0.8143945464945188,
+   "test_retest": 0.557996799694392
+  },
+  "line": {
+   "r_half": 0.7326369157873384,
+   "icc": 0.12463871184153263,
+   "m80": 27.73487652929085,
+   "season": 0.8456900682557791,
+   "test_retest": 0.6385022257967711
+  },
+  "regain": {
+   "r_half": 0.5454377015587667,
+   "icc": 0.0575304589995295,
+   "m80": 63.33763614580574,
+   "season": 0.705868248210361,
+   "test_retest": 0.42978848379729295
+  },
+  "width": {
+   "r_half": 0.8232629557899551,
+   "icc": 0.1931933359717104,
+   "m80": 16.31558333275768,
+   "season": 0.9030655212684497,
+   "test_retest": 0.7730754536505171
+  },
+  "cross": {
+   "r_half": 0.8214724225724902,
+   "icc": 0.1933243726840104,
+   "m80": 16.516800213452623,
+   "season": 0.9019872191227727,
+   "test_retest": 0.8468432745312927
+  },
+  "counter": {
+   "r_half": 0.2318508706364086,
+   "icc": 0.01489429514743961,
+   "m80": 251.79691441911444,
+   "season": 0.3764268486762979,
+   "test_retest": 0.20950926906500233
+  },
+  "xg_shot": {
+   "r_half": 0.5865717115255874,
+   "icc": 0.06821467609654273,
+   "m80": 53.56642556514548,
+   "season": 0.7394203580770543,
+   "test_retest": 0.5874743847967354
+  },
+  "sp": {
+   "r_half": 0.4849298014060328,
+   "icc": 0.04566674713910292,
+   "m80": 80.72371501945503,
+   "season": 0.6531349844913452,
+   "test_retest": 0.44253754632596976
+  }
+ },
+ "game_state": {
+  "poss": {
+   "lead": 0.42862057613859006,
+   "level": 0.5006356707847608,
+   "trail": 0.5677997254141122,
+   "diff": 0.13917914927552216,
+   "share_teams_same_direction": 1.0,
+   "effect_in_team_sd": 2.3609010131976675
+  },
+  "tilt": {
+   "lead": 0.4133697012109895,
+   "level": 0.5013088670717492,
+   "trail": 0.5813487360853502,
+   "diff": 0.1679790348743607,
+   "share_teams_same_direction": 0.9875,
+   "effect_in_team_sd": 2.156998204426638
+  },
+  "ppda": {
+   "lead": 13.036602115167927,
+   "level": 13.179872532167428,
+   "trail": 11.025991950212326,
+   "diff": -2.0106101649555996,
+   "share_teams_same_direction": 0.7875,
+   "effect_in_team_sd": -1.0523409327196418
+  },
+  "press_h": {
+   "lead": 51.80316132365759,
+   "level": 55.12215280286146,
+   "trail": 56.5391576546351,
+   "diff": 4.735996330977508,
+   "share_teams_same_direction": 0.95,
+   "effect_in_team_sd": 2.264274587980058
+  },
+  "line": {
+   "lead": 30.386358370636138,
+   "level": 35.3377143355223,
+   "trail": 39.239297533538334,
+   "diff": 8.852939162902192,
+   "share_teams_same_direction": 0.9875,
+   "effect_in_team_sd": 3.680497045491589
+  }
+ },
+ "pca": {
+  "var_explained": [
+   0.4937172165859145,
+   0.13652005206035694,
+   0.08328746509526988,
+   0.05747528436488669,
+   0.05226674356876218
+  ],
+  "loadings": {
+   "PC1": {
+    "poss": 0.353,
+    "tilt": 0.353,
+    "ppp": 0.345,
+    "tempo": 0.283,
+    "long": -0.318,
+    "ppda": -0.247,
+    "press_h": 0.269,
+    "cp": 0.168,
+    "line": 0.286,
+    "regain": 0.214,
+    "width": -0.195,
+    "cross": -0.194,
+    "counter": -0.048,
+    "xg_shot": 0.212,
+    "sp": -0.197
+   },
+   "PC2": {
+    "poss": -0.003,
+    "tilt": 0.177,
+    "ppp": -0.175,
+    "tempo": -0.207,
+    "long": 0.142,
+    "ppda": -0.177,
+    "press_h": 0.312,
+    "cp": 0.144,
+    "line": 0.265,
+    "regain": 0.436,
+    "width": 0.372,
+    "cross": 0.391,
+    "counter": -0.155,
+    "xg_shot": -0.008,
+    "sp": 0.386
+   },
+   "PC3": {
+    "poss": -0.098,
+    "tilt": -0.042,
+    "ppp": -0.114,
+    "tempo": -0.101,
+    "long": 0.131,
+    "ppda": -0.172,
+    "press_h": -0.018,
+    "cp": -0.148,
+    "line": 0.117,
+    "regain": 0.237,
+    "width": -0.077,
+    "cross": -0.127,
+    "counter": 0.828,
+    "xg_shot": 0.34,
+    "sp": 0.051
+   },
+   "PC4": {
+    "poss": -0.053,
+    "tilt": -0.064,
+    "ppp": -0.117,
+    "tempo": -0.271,
+    "long": 0.087,
+    "ppda": -0.022,
+    "press_h": 0.129,
+    "cp": -0.054,
+    "line": 0.075,
+    "regain": 0.121,
+    "width": -0.54,
+    "cross": -0.526,
+    "counter": -0.251,
+    "xg_shot": -0.091,
+    "sp": 0.468
+   }
+  },
+  "n_eigen_over_1": 3
+ },
+ "twins": {
+  "Tottenham Hotspur": [
+   {
+    "team": "Liverpool",
+    "league": "Premier League",
+    "distance": 2.1434439811293142
+   },
+   {
+    "team": "AC Milan",
+    "league": "Serie A",
+    "distance": 3.1311991586757433
+   },
+   {
+    "team": "Chelsea",
+    "league": "Premier League",
+    "distance": 3.2205613291149158
+   },
+   {
+    "team": "AS Roma",
+    "league": "Serie A",
+    "distance": 3.2721828964468407
+   }
+  ],
+  "Leicester City": [
+   {
+    "team": "Southampton",
+    "league": "Premier League",
+    "distance": 2.9866295829198344
+   },
+   {
+    "team": "Watford",
+    "league": "Premier League",
+    "distance": 3.065112501005921
+   },
+   {
+    "team": "Sporting Gij\u00f3n",
+    "league": "La Liga",
+    "distance": 3.1272034330883502
+   },
+   {
+    "team": "RC Deportivo La Coru\u00f1a",
+    "league": "La Liga",
+    "distance": 3.3265703713616883
+   }
+  ],
+  "Barcelona": [
+   {
+    "team": "Paris Saint-Germain",
+    "league": "Ligue 1",
+    "distance": 4.685584810067234
+   },
+   {
+    "team": "Arsenal",
+    "league": "Premier League",
+    "distance": 4.818049305578425
+   },
+   {
+    "team": "Real Madrid",
+    "league": "La Liga",
+    "distance": 5.1417021156215315
+   },
+   {
+    "team": "AS Roma",
+    "league": "Serie A",
+    "distance": 5.342304333123937
+   }
+  ],
+  "Juventus": [
+   {
+    "team": "AS Roma",
+    "league": "Serie A",
+    "distance": 2.0961970685536047
+   },
+   {
+    "team": "Manchester United",
+    "league": "Premier League",
+    "distance": 2.906857072416569
+   },
+   {
+    "team": "Fiorentina",
+    "league": "Serie A",
+    "distance": 3.2040723892151393
+   },
+   {
+    "team": "AC Milan",
+    "league": "Serie A",
+    "distance": 3.260258327517719
+   }
+  ],
+  "Aston Villa": [
+   {
+    "team": "Angers",
+    "league": "Ligue 1",
+    "distance": 2.6315500222687587
+   },
+   {
+    "team": "Palermo",
+    "league": "Serie A",
+    "distance": 3.553881506038041
+   },
+   {
+    "team": "Norwich City",
+    "league": "Premier League",
+    "distance": 3.6383803618759587
+   },
+   {
+    "team": "Newcastle United",
+    "league": "Premier League",
+    "distance": 3.7894740499712807
+   }
+  ]
+ },
+ "season_kpis": [
+  {
+   "league": "Premier League",
+   "team": "AFC Bournemouth",
+   "poss": 0.5159,
+   "tilt": 0.5206,
+   "ppp": 4.667,
+   "tempo": 16.1718,
+   "long": 0.1353,
+   "ppda": 12.4083,
+   "press_h": 56.3863,
+   "cp": 31.7144,
+   "line": 34.1072,
+   "regain": 10.792,
+   "width": 0.609,
+   "cross": 0.3935,
+   "counter": 0.0406,
+   "xg_shot": 0.0807,
+   "sp": 0.3372
+  },
+  {
+   "league": "Premier League",
+   "team": "Arsenal",
+   "poss": 0.5651,
+   "tilt": 0.6093,
+   "ppp": 5.8968,
+   "tempo": 17.296,
+   "long": 0.0969,
+   "ppda": 10.9577,
+   "press_h": 54.8375,
+   "cp": 29.9795,
+   "line": 35.0653,
+   "regain": 12.7052,
+   "width": 0.5351,
+   "cross": 0.2627,
+   "counter": 0.0224,
+   "xg_shot": 0.1124,
+   "sp": 0.2277
+  },
+  {
+   "league": "Premier League",
+   "team": "Aston Villa",
+   "poss": 0.4739,
+   "tilt": 0.4605,
+   "ppp": 4.322,
+   "tempo": 16.0148,
+   "long": 0.1397,
+   "ppda": 16.4624,
+   "press_h": 50.3376,
+   "cp": 29.3313,
+   "line": 30.9851,
+   "regain": 9.5006,
+   "width": 0.5778,
+   "cross": 0.4671,
+   "counter": 0.0289,
+   "xg_shot": 0.0693,
+   "sp": 0.3383
+  },
+  {
+   "league": "Premier League",
+   "team": "Chelsea",
+   "poss": 0.5544,
+   "tilt": 0.5982,
+   "ppp": 5.3476,
+   "tempo": 17.002,
+   "long": 0.1115,
+   "ppda": 10.1605,
+   "press_h": 53.4318,
+   "cp": 30.1967,
+   "line": 34.5621,
+   "regain": 11.1957,
+   "width": 0.5434,
+   "cross": 0.2529,
+   "counter": 0.0535,
+   "xg_shot": 0.0967,
+   "sp": 0.263
+  },
+  {
+   "league": "Premier League",
+   "team": "Crystal Palace",
+   "poss": 0.4685,
+   "tilt": 0.4354,
+   "ppp": 3.7674,
+   "tempo": 15.5584,
+   "long": 0.1721,
+   "ppda": 10.9109,
+   "press_h": 53.3049,
+   "cp": 28.1969,
+   "line": 32.6977,
+   "regain": 12.4796,
+   "width": 0.6101,
+   "cross": 0.4235,
+   "counter": 0.0399,
+   "xg_shot": 0.0807,
+   "sp": 0.4265
+  },
+  {
+   "league": "Premier League",
+   "team": "Everton",
+   "poss": 0.5245,
+   "tilt": 0.4777,
+   "ppp": 5.0744,
+   "tempo": 16.0549,
+   "long": 0.1355,
+   "ppda": 12.7754,
+   "press_h": 51.4482,
+   "cp": 31.0334,
+   "line": 32.2777,
+   "regain": 10.9119,
+   "width": 0.5508,
+   "cross": 0.3526,
+   "counter": 0.0802,
+   "xg_shot": 0.093,
+   "sp": 0.31
+  },
+  {
+   "league": "Premier League",
+   "team": "Leicester City",
+   "poss": 0.4212,
+   "tilt": 0.4427,
+   "ppp": 3.7555,
+   "tempo": 16.2468,
+   "long": 0.169,
+   "ppda": 12.7206,
+   "press_h": 53.276,
+   "cp": 30.0179,
+   "line": 32.6424,
+   "regain": 12.1877,
+   "width": 0.6069,
+   "cross": 0.3691,
+   "counter": 0.0731,
+   "xg_shot": 0.1069,
+   "sp": 0.2703
+  },
+  {
+   "league": "Premier League",
+   "team": "Liverpool",
+   "poss": 0.5782,
+   "tilt": 0.5843,
+   "ppp": 5.248,
+   "tempo": 16.6181,
+   "long": 0.1132,
+   "ppda": 9.1362,
+   "press_h": 55.3388,
+   "cp": 38.835,
+   "line": 36.1254,
+   "regain": 12.2348,
+   "width": 0.5281,
+   "cross": 0.291,
+   "counter": 0.0446,
+   "xg_shot": 0.0899,
+   "sp": 0.284
+  },
+  {
+   "league": "Premier League",
+   "team": "Manchester City",
+   "poss": 0.5674,
+   "tilt": 0.6431,
+   "ppp": 5.9194,
+   "tempo": 17.2902,
+   "long": 0.0958,
+   "ppda": 10.3254,
+   "press_h": 56.4327,
+   "cp": 30.9488,
+   "line": 35.747,
+   "regain": 14.6837,
+   "width": 0.5844,
+   "cross": 0.3492,
+   "counter": 0.0509,
+   "xg_shot": 0.0954,
+   "sp": 0.2925
+  },
+  {
+   "league": "Premier League",
+   "team": "Manchester United",
+   "poss": 0.5836,
+   "tilt": 0.6635,
+   "ppp": 5.5871,
+   "tempo": 16.5409,
+   "long": 0.1297,
+   "ppda": 9.4898,
+   "press_h": 55.3322,
+   "cp": 32.2245,
+   "line": 38.5866,
+   "regain": 11.5721,
+   "width": 0.5959,
+   "cross": 0.3616,
+   "counter": 0.0353,
+   "xg_shot": 0.097,
+   "sp": 0.2272
+  },
+  {
+   "league": "Premier League",
+   "team": "Newcastle United",
+   "poss": 0.4604,
+   "tilt": 0.4123,
+   "ppp": 4.1892,
+   "tempo": 16.2682,
+   "long": 0.1482,
+   "ppda": 12.7241,
+   "press_h": 49.8929,
+   "cp": 28.1326,
+   "line": 31.3407,
+   "regain": 9.4954,
+   "width": 0.6139,
+   "cross": 0.4523,
+   "counter": 0.0462,
+   "xg_shot": 0.0958,
+   "sp": 0.236
+  },
+  {
+   "league": "Premier League",
+   "team": "Norwich City",
+   "poss": 0.465,
+   "tilt": 0.4892,
+   "ppp": 4.207,
+   "tempo": 16.3056,
+   "long": 0.1555,
+   "ppda": 13.9508,
+   "press_h": 53.4565,
+   "cp": 26.4887,
+   "line": 33.574,
+   "regain": 10.4153,
+   "width": 0.6188,
+   "cross": 0.4031,
+   "counter": 0.0311,
+   "xg_shot": 0.0941,
+   "sp": 0.3715
+  },
+  {
+   "league": "Premier League",
+   "team": "Southampton",
+   "poss": 0.4865,
+   "tilt": 0.5169,
+   "ppp": 4.5674,
+   "tempo": 16.8303,
+   "long": 0.1534,
+   "ppda": 11.1119,
+   "press_h": 54.6288,
+   "cp": 26.9364,
+   "line": 34.2936,
+   "regain": 11.6617,
+   "width": 0.5746,
+   "cross": 0.4053,
+   "counter": 0.072,
+   "xg_shot": 0.0966,
+   "sp": 0.3077
+  },
+  {
+   "league": "Premier League",
+   "team": "Stoke City",
+   "poss": 0.4934,
+   "tilt": 0.4433,
+   "ppp": 4.5566,
+   "tempo": 16.2708,
+   "long": 0.1453,
+   "ppda": 12.7267,
+   "press_h": 50.2879,
+   "cp": 26.8015,
+   "line": 32.8791,
+   "regain": 8.7613,
+   "width": 0.5568,
+   "cross": 0.3598,
+   "counter": 0.0342,
+   "xg_shot": 0.0884,
+   "sp": 0.2363
+  },
+  {
+   "league": "Premier League",
+   "team": "Sunderland",
+   "poss": 0.4132,
+   "tilt": 0.3716,
+   "ppp": 3.7513,
+   "tempo": 16.023,
+   "long": 0.1934,
+   "ppda": 13.4953,
+   "press_h": 50.9911,
+   "cp": 27.2143,
+   "line": 33.1035,
+   "regain": 10.0203,
+   "width": 0.5094,
+   "cross": 0.2674,
+   "counter": 0.0598,
+   "xg_shot": 0.0947,
+   "sp": 0.3555
+  },
+  {
+   "league": "Premier League",
+   "team": "Swansea City",
+   "poss": 0.5224,
+   "tilt": 0.4661,
+   "ppp": 4.9224,
+   "tempo": 16.7539,
+   "long": 0.1307,
+   "ppda": 12.3408,
+   "press_h": 55.0327,
+   "cp": 32.0345,
+   "line": 33.1603,
+   "regain": 8.9993,
+   "width": 0.5917,
+   "cross": 0.3454,
+   "counter": 0.0358,
+   "xg_shot": 0.0843,
+   "sp": 0.2865
+  },
+  {
+   "league": "Premier League",
+   "team": "Tottenham Hotspur",
+   "poss": 0.575,
+   "tilt": 0.5645,
+   "ppp": 5.0132,
+   "tempo": 16.2411,
+   "long": 0.1346,
+   "ppda": 9.0209,
+   "press_h": 55.8005,
+   "cp": 34.9373,
+   "line": 34.8686,
+   "regain": 13.0307,
+   "width": 0.5175,
+   "cross": 0.3072,
+   "counter": 0.0463,
+   "xg_shot": 0.091,
+   "sp": 0.2255
+  },
+  {
+   "league": "Premier League",
+   "team": "Watford",
+   "poss": 0.4401,
+   "tilt": 0.4337,
+   "ppp": 3.9723,
+   "tempo": 16.6157,
+   "long": 0.1601,
+   "ppda": 12.4633,
+   "press_h": 53.0327,
+   "cp": 29.9219,
+   "line": 31.9538,
+   "regain": 11.1129,
+   "width": 0.5552,
+   "cross": 0.3627,
+   "counter": 0.0434,
+   "xg_shot": 0.0877,
+   "sp": 0.2818
+  },
+  {
+   "league": "Premier League",
+   "team": "West Bromwich Albion",
+   "poss": 0.4027,
+   "tilt": 0.394,
+   "ppp": 3.4907,
+   "tempo": 15.543,
+   "long": 0.1838,
+   "ppda": 15.0405,
+   "press_h": 53.1591,
+   "cp": 24.9028,
+   "line": 33.1106,
+   "regain": 9.9761,
+   "width": 0.5885,
+   "cross": 0.4156,
+   "counter": 0.0337,
+   "xg_shot": 0.0891,
+   "sp": 0.4267
+  },
+  {
+   "league": "Premier League",
+   "team": "West Ham United",
+   "poss": 0.4886,
+   "tilt": 0.4733,
+   "ppp": 4.0612,
+   "tempo": 15.7073,
+   "long": 0.1523,
+   "ppda": 11.8948,
+   "press_h": 52.4951,
+   "cp": 25.6005,
+   "line": 33.0024,
+   "regain": 11.2518,
+   "width": 0.6021,
+   "cross": 0.3627,
+   "counter": 0.06,
+   "xg_shot": 0.092,
+   "sp": 0.3959
+  },
+  {
+   "league": "La Liga",
+   "team": "Athletic Club",
+   "poss": 0.4976,
+   "tilt": 0.5473,
+   "ppp": 4.3296,
+   "tempo": 16.5914,
+   "long": 0.1546,
+   "ppda": 10.1441,
+   "press_h": 56.764,
+   "cp": 36.0988,
+   "line": 38.5708,
+   "regain": 12.152,
+   "width": 0.5576,
+   "cross": 0.382,
+   "counter": 0.0344,
+   "xg_shot": 0.0988,
+   "sp": 0.3377
+  },
+  {
+   "league": "La Liga",
+   "team": "Atl\u00e9tico Madrid",
+   "poss": 0.4729,
+   "tilt": 0.5725,
+   "ppp": 4.6338,
+   "tempo": 17.5861,
+   "long": 0.1179,
+   "ppda": 10.2877,
+   "press_h": 56.4341,
+   "cp": 35.458,
+   "line": 37.5141,
+   "regain": 13.3415,
+   "width": 0.6266,
+   "cross": 0.3416,
+   "counter": 0.0454,
+   "xg_shot": 0.1092,
+   "sp": 0.2695
+  },
+  {
+   "league": "La Liga",
+   "team": "Barcelona",
+   "poss": 0.6666,
+   "tilt": 0.7092,
+   "ppp": 6.6858,
+   "tempo": 17.0611,
+   "long": 0.1011,
+   "ppda": 8.0585,
+   "press_h": 58.0268,
+   "cp": 31.2973,
+   "line": 39.3678,
+   "regain": 12.4366,
+   "width": 0.47,
+   "cross": 0.203,
+   "counter": 0.0468,
+   "xg_shot": 0.1343,
+   "sp": 0.1937
+  },
+  {
+   "league": "La Liga",
+   "team": "Celta Vigo",
+   "poss": 0.5569,
+   "tilt": 0.5457,
+   "ppp": 4.9347,
+   "tempo": 16.6611,
+   "long": 0.1317,
+   "ppda": 8.1473,
+   "press_h": 52.8676,
+   "cp": 32.8078,
+   "line": 35.4894,
+   "regain": 11.0998,
+   "width": 0.4737,
+   "cross": 0.2314,
+   "counter": 0.0728,
+   "xg_shot": 0.1051,
+   "sp": 0.1998
+  },
+  {
+   "league": "La Liga",
+   "team": "Eibar",
+   "poss": 0.4559,
+   "tilt": 0.4848,
+   "ppp": 3.6461,
+   "tempo": 16.5338,
+   "long": 0.1837,
+   "ppda": 9.182,
+   "press_h": 58.106,
+   "cp": 32.9718,
+   "line": 34.8854,
+   "regain": 11.9317,
+   "width": 0.6191,
+   "cross": 0.3994,
+   "counter": 0.036,
+   "xg_shot": 0.1049,
+   "sp": 0.3099
+  },
+  {
+   "league": "La Liga",
+   "team": "Espanyol",
+   "poss": 0.4509,
+   "tilt": 0.4316,
+   "ppp": 3.8638,
+   "tempo": 16.457,
+   "long": 0.1541,
+   "ppda": 9.3508,
+   "press_h": 53.3773,
+   "cp": 30.0111,
+   "line": 33.7039,
+   "regain": 9.4989,
+   "width": 0.5831,
+   "cross": 0.4033,
+   "counter": 0.0478,
+   "xg_shot": 0.1016,
+   "sp": 0.2885
+  },
+  {
+   "league": "La Liga",
+   "team": "Getafe",
+   "poss": 0.4756,
+   "tilt": 0.4486,
+   "ppp": 3.743,
+   "tempo": 15.4464,
+   "long": 0.1546,
+   "ppda": 10.4669,
+   "press_h": 54.2894,
+   "cp": 31.9246,
+   "line": 34.473,
+   "regain": 10.9119,
+   "width": 0.6395,
+   "cross": 0.4078,
+   "counter": 0.0413,
+   "xg_shot": 0.0854,
+   "sp": 0.2757
+  },
+  {
+   "league": "La Liga",
+   "team": "Granada",
+   "poss": 0.4491,
+   "tilt": 0.3998,
+   "ppp": 3.6324,
+   "tempo": 15.6417,
+   "long": 0.1802,
+   "ppda": 10.1009,
+   "press_h": 54.3078,
+   "cp": 29.6687,
+   "line": 32.84,
+   "regain": 9.8728,
+   "width": 0.6252,
+   "cross": 0.3861,
+   "counter": 0.0721,
+   "xg_shot": 0.0818,
+   "sp": 0.3281
+  },
+  {
+   "league": "La Liga",
+   "team": "Las Palmas",
+   "poss": 0.5518,
+   "tilt": 0.4856,
+   "ppp": 4.9728,
+   "tempo": 16.4753,
+   "long": 0.1169,
+   "ppda": 11.2466,
+   "press_h": 53.3868,
+   "cp": 34.7665,
+   "line": 33.1499,
+   "regain": 8.7433,
+   "width": 0.5566,
+   "cross": 0.2789,
+   "counter": 0.0245,
+   "xg_shot": 0.0784,
+   "sp": 0.247
+  },
+  {
+   "league": "La Liga",
+   "team": "Levante UD",
+   "poss": 0.4637,
+   "tilt": 0.4154,
+   "ppp": 3.7715,
+   "tempo": 15.564,
+   "long": 0.1636,
+   "ppda": 11.9405,
+   "press_h": 55.0325,
+   "cp": 30.3233,
+   "line": 34.057,
+   "regain": 10.6678,
+   "width": 0.5914,
+   "cross": 0.3862,
+   "counter": 0.0299,
+   "xg_shot": 0.0786,
+   "sp": 0.31
+  },
+  {
+   "league": "La Liga",
+   "team": "M\u00e1laga",
+   "poss": 0.484,
+   "tilt": 0.5133,
+   "ppp": 3.9442,
+   "tempo": 16.3292,
+   "long": 0.1446,
+   "ppda": 9.5205,
+   "press_h": 55.5796,
+   "cp": 31.3625,
+   "line": 35.57,
+   "regain": 11.6643,
+   "width": 0.5831,
+   "cross": 0.3867,
+   "counter": 0.0319,
+   "xg_shot": 0.0934,
+   "sp": 0.3438
+  },
+  {
+   "league": "La Liga",
+   "team": "RC Deportivo La Coru\u00f1a",
+   "poss": 0.4755,
+   "tilt": 0.4971,
+   "ppp": 4.2199,
+   "tempo": 16.2212,
+   "long": 0.1693,
+   "ppda": 11.9144,
+   "press_h": 53.6137,
+   "cp": 29.6838,
+   "line": 32.2078,
+   "regain": 10.7264,
+   "width": 0.6283,
+   "cross": 0.4252,
+   "counter": 0.0452,
+   "xg_shot": 0.0939,
+   "sp": 0.186
+  },
+  {
+   "league": "La Liga",
+   "team": "Rayo Vallecano",
+   "poss": 0.5553,
+   "tilt": 0.542,
+   "ppp": 3.9474,
+   "tempo": 16.2088,
+   "long": 0.1581,
+   "ppda": 8.7549,
+   "press_h": 55.5292,
+   "cp": 33.8564,
+   "line": 36.5757,
+   "regain": 11.3797,
+   "width": 0.6676,
+   "cross": 0.4738,
+   "counter": 0.0579,
+   "xg_shot": 0.0958,
+   "sp": 0.301
+  },
+  {
+   "league": "La Liga",
+   "team": "Real Betis",
+   "poss": 0.4645,
+   "tilt": 0.4486,
+   "ppp": 3.8888,
+   "tempo": 16.1365,
+   "long": 0.1415,
+   "ppda": 11.7753,
+   "press_h": 52.0505,
+   "cp": 29.2988,
+   "line": 32.712,
+   "regain": 10.2754,
+   "width": 0.6223,
+   "cross": 0.3639,
+   "counter": 0.0628,
+   "xg_shot": 0.0953,
+   "sp": 0.3972
+  },
+  {
+   "league": "La Liga",
+   "team": "Real Madrid",
+   "poss": 0.5719,
+   "tilt": 0.6041,
+   "ppp": 5.6963,
+   "tempo": 17.7559,
+   "long": 0.1138,
+   "ppda": 10.0911,
+   "press_h": 55.4006,
+   "cp": 27.3019,
+   "line": 37.9782,
+   "regain": 12.1935,
+   "width": 0.5265,
+   "cross": 0.3713,
+   "counter": 0.0415,
+   "xg_shot": 0.1043,
+   "sp": 0.1927
+  },
+  {
+   "league": "La Liga",
+   "team": "Real Sociedad",
+   "poss": 0.5176,
+   "tilt": 0.5617,
+   "ppp": 4.1402,
+   "tempo": 16.1444,
+   "long": 0.1439,
+   "ppda": 9.6211,
+   "press_h": 56.4243,
+   "cp": 32.1701,
+   "line": 36.6337,
+   "regain": 11.7122,
+   "width": 0.6601,
+   "cross": 0.4382,
+   "counter": 0.0354,
+   "xg_shot": 0.1007,
+   "sp": 0.3823
+  },
+  {
+   "league": "La Liga",
+   "team": "Sevilla",
+   "poss": 0.5014,
+   "tilt": 0.4936,
+   "ppp": 4.0895,
+   "tempo": 16.0141,
+   "long": 0.1376,
+   "ppda": 9.959,
+   "press_h": 54.2243,
+   "cp": 28.0252,
+   "line": 36.7687,
+   "regain": 11.5455,
+   "width": 0.6018,
+   "cross": 0.3896,
+   "counter": 0.032,
+   "xg_shot": 0.1189,
+   "sp": 0.3278
+  },
+  {
+   "league": "La Liga",
+   "team": "Sporting Gij\u00f3n",
+   "poss": 0.4227,
+   "tilt": 0.3978,
+   "ppp": 3.7921,
+   "tempo": 16.4113,
+   "long": 0.157,
+   "ppda": 11.7532,
+   "press_h": 53.0608,
+   "cp": 29.0627,
+   "line": 32.8481,
+   "regain": 9.3557,
+   "width": 0.5966,
+   "cross": 0.4211,
+   "counter": 0.0492,
+   "xg_shot": 0.097,
+   "sp": 0.2547
+  },
+  {
+   "league": "La Liga",
+   "team": "Valencia",
+   "poss": 0.5088,
+   "tilt": 0.4622,
+   "ppp": 4.1432,
+   "tempo": 15.9248,
+   "long": 0.1407,
+   "ppda": 10.0197,
+   "press_h": 52.5144,
+   "cp": 35.2481,
+   "line": 33.023,
+   "regain": 8.7373,
+   "width": 0.6078,
+   "cross": 0.3844,
+   "counter": 0.0464,
+   "xg_shot": 0.1075,
+   "sp": 0.2425
+  },
+  {
+   "league": "La Liga",
+   "team": "Villarreal",
+   "poss": 0.4574,
+   "tilt": 0.4391,
+   "ppp": 4.3076,
+   "tempo": 16.981,
+   "long": 0.1256,
+   "ppda": 11.2371,
+   "press_h": 55.4097,
+   "cp": 29.4773,
+   "line": 32.5968,
+   "regain": 8.8768,
+   "width": 0.5628,
+   "cross": 0.2741,
+   "counter": 0.0625,
+   "xg_shot": 0.1023,
+   "sp": 0.2704
+  },
+  {
+   "league": "Ligue 1",
+   "team": "AS Monaco",
+   "poss": 0.4903,
+   "tilt": 0.5156,
+   "ppp": 4.0678,
+   "tempo": 15.7976,
+   "long": 0.1312,
+   "ppda": 11.7555,
+   "press_h": 56.6905,
+   "cp": 32.7056,
+   "line": 35.7526,
+   "regain": 9.7346,
+   "width": 0.6083,
+   "cross": 0.4531,
+   "counter": 0.0621,
+   "xg_shot": 0.1135,
+   "sp": 0.3313
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Angers",
+   "poss": 0.4244,
+   "tilt": 0.3941,
+   "ppp": 3.9471,
+   "tempo": 16.3999,
+   "long": 0.1362,
+   "ppda": 15.8077,
+   "press_h": 52.5446,
+   "cp": 32.6095,
+   "line": 30.8755,
+   "regain": 8.6504,
+   "width": 0.6131,
+   "cross": 0.4213,
+   "counter": 0.0229,
+   "xg_shot": 0.0709,
+   "sp": 0.3895
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Bastia",
+   "poss": 0.4394,
+   "tilt": 0.3964,
+   "ppp": 3.7555,
+   "tempo": 15.8666,
+   "long": 0.1677,
+   "ppda": 14.5759,
+   "press_h": 52.8656,
+   "cp": 30.9532,
+   "line": 31.3847,
+   "regain": 8.4218,
+   "width": 0.6573,
+   "cross": 0.4646,
+   "counter": 0.0553,
+   "xg_shot": 0.079,
+   "sp": 0.2633
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Bordeaux",
+   "poss": 0.5125,
+   "tilt": 0.5318,
+   "ppp": 4.5012,
+   "tempo": 16.2283,
+   "long": 0.1354,
+   "ppda": 12.4345,
+   "press_h": 56.0277,
+   "cp": 35.987,
+   "line": 34.9935,
+   "regain": 11.0024,
+   "width": 0.5816,
+   "cross": 0.4454,
+   "counter": 0.0276,
+   "xg_shot": 0.0971,
+   "sp": 0.3262
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Gaz\u00e9lec Ajaccio",
+   "poss": 0.4747,
+   "tilt": 0.4969,
+   "ppp": 4.1473,
+   "tempo": 15.8528,
+   "long": 0.1779,
+   "ppda": 12.9486,
+   "press_h": 54.3608,
+   "cp": 33.8148,
+   "line": 34.9693,
+   "regain": 10.5721,
+   "width": 0.6173,
+   "cross": 0.4104,
+   "counter": 0.0304,
+   "xg_shot": 0.0721,
+   "sp": 0.2625
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Guingamp",
+   "poss": 0.4338,
+   "tilt": 0.4204,
+   "ppp": 3.4615,
+   "tempo": 15.3229,
+   "long": 0.1508,
+   "ppda": 15.4006,
+   "press_h": 52.0481,
+   "cp": 28.7794,
+   "line": 31.9114,
+   "regain": 9.3301,
+   "width": 0.5947,
+   "cross": 0.3605,
+   "counter": 0.0765,
+   "xg_shot": 0.0912,
+   "sp": 0.322
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Lille",
+   "poss": 0.512,
+   "tilt": 0.5337,
+   "ppp": 4.0885,
+   "tempo": 15.9074,
+   "long": 0.1282,
+   "ppda": 9.7213,
+   "press_h": 56.9149,
+   "cp": 31.7553,
+   "line": 38.0969,
+   "regain": 10.8142,
+   "width": 0.6098,
+   "cross": 0.3883,
+   "counter": 0.043,
+   "xg_shot": 0.0749,
+   "sp": 0.2938
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Lorient",
+   "poss": 0.4935,
+   "tilt": 0.4645,
+   "ppp": 4.4735,
+   "tempo": 16.3643,
+   "long": 0.1265,
+   "ppda": 15.842,
+   "press_h": 53.7924,
+   "cp": 33.9565,
+   "line": 32.1057,
+   "regain": 8.9608,
+   "width": 0.6287,
+   "cross": 0.3781,
+   "counter": 0.0557,
+   "xg_shot": 0.0873,
+   "sp": 0.239
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Lyon",
+   "poss": 0.611,
+   "tilt": 0.6725,
+   "ppp": 5.5534,
+   "tempo": 16.9325,
+   "long": 0.1087,
+   "ppda": 9.0855,
+   "press_h": 58.3254,
+   "cp": 39.8742,
+   "line": 38.4054,
+   "regain": 12.0324,
+   "width": 0.5642,
+   "cross": 0.3148,
+   "counter": 0.0378,
+   "xg_shot": 0.1032,
+   "sp": 0.2971
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Montpellier",
+   "poss": 0.4958,
+   "tilt": 0.5301,
+   "ppp": 4.2214,
+   "tempo": 16.2381,
+   "long": 0.1422,
+   "ppda": 13.0012,
+   "press_h": 56.6314,
+   "cp": 35.4608,
+   "line": 34.5554,
+   "regain": 10.2641,
+   "width": 0.5741,
+   "cross": 0.4045,
+   "counter": 0.0424,
+   "xg_shot": 0.0955,
+   "sp": 0.3901
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Nantes",
+   "poss": 0.4825,
+   "tilt": 0.5319,
+   "ppp": 4.3511,
+   "tempo": 16.5442,
+   "long": 0.1526,
+   "ppda": 11.6132,
+   "press_h": 55.056,
+   "cp": 34.646,
+   "line": 34.8332,
+   "regain": 11.0129,
+   "width": 0.62,
+   "cross": 0.4328,
+   "counter": 0.0379,
+   "xg_shot": 0.0787,
+   "sp": 0.2648
+  },
+  {
+   "league": "Ligue 1",
+   "team": "OGC Nice",
+   "poss": 0.5656,
+   "tilt": 0.5012,
+   "ppp": 5.8896,
+   "tempo": 17.834,
+   "long": 0.1031,
+   "ppda": 12.5514,
+   "press_h": 53.063,
+   "cp": 38.7569,
+   "line": 34.8732,
+   "regain": 8.5137,
+   "width": 0.5793,
+   "cross": 0.395,
+   "counter": 0.0511,
+   "xg_shot": 0.1039,
+   "sp": 0.2462
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Olympique de Marseille",
+   "poss": 0.5813,
+   "tilt": 0.5623,
+   "ppp": 4.8004,
+   "tempo": 15.8096,
+   "long": 0.118,
+   "ppda": 10.0607,
+   "press_h": 56.0281,
+   "cp": 37.6894,
+   "line": 37.4247,
+   "regain": 12.1015,
+   "width": 0.6304,
+   "cross": 0.4674,
+   "counter": 0.059,
+   "xg_shot": 0.0968,
+   "sp": 0.3219
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Paris Saint-Germain",
+   "poss": 0.6489,
+   "tilt": 0.6013,
+   "ppp": 7.8807,
+   "tempo": 18.8143,
+   "long": 0.0861,
+   "ppda": 9.4588,
+   "press_h": 56.9357,
+   "cp": 35.6511,
+   "line": 38.4072,
+   "regain": 11.3607,
+   "width": 0.5358,
+   "cross": 0.3412,
+   "counter": 0.047,
+   "xg_shot": 0.128,
+   "sp": 0.2093
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Rennes",
+   "poss": 0.5002,
+   "tilt": 0.4675,
+   "ppp": 4.6615,
+   "tempo": 16.7263,
+   "long": 0.1291,
+   "ppda": 12.4842,
+   "press_h": 54.4142,
+   "cp": 31.5607,
+   "line": 32.7329,
+   "regain": 9.1372,
+   "width": 0.6031,
+   "cross": 0.3442,
+   "counter": 0.0389,
+   "xg_shot": 0.0951,
+   "sp": 0.2237
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Saint-\u00c9tienne",
+   "poss": 0.5102,
+   "tilt": 0.5024,
+   "ppp": 4.2354,
+   "tempo": 16.5434,
+   "long": 0.1405,
+   "ppda": 9.7735,
+   "press_h": 54.9181,
+   "cp": 36.1015,
+   "line": 36.4567,
+   "regain": 10.5771,
+   "width": 0.6365,
+   "cross": 0.3621,
+   "counter": 0.0448,
+   "xg_shot": 0.0911,
+   "sp": 0.337
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Stade Malherbe Caen",
+   "poss": 0.4011,
+   "tilt": 0.4558,
+   "ppp": 3.4187,
+   "tempo": 15.9843,
+   "long": 0.1602,
+   "ppda": 14.6001,
+   "press_h": 53.2999,
+   "cp": 31.0282,
+   "line": 33.9784,
+   "regain": 11.3079,
+   "width": 0.6135,
+   "cross": 0.4839,
+   "counter": 0.0622,
+   "xg_shot": 0.0787,
+   "sp": 0.2686
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Stade de Reims",
+   "poss": 0.4804,
+   "tilt": 0.4756,
+   "ppp": 4.0365,
+   "tempo": 16.0461,
+   "long": 0.1397,
+   "ppda": 12.784,
+   "press_h": 56.116,
+   "cp": 34.4567,
+   "line": 36.2534,
+   "regain": 11.4743,
+   "width": 0.6371,
+   "cross": 0.3535,
+   "counter": 0.0559,
+   "xg_shot": 0.0917,
+   "sp": 0.2901
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Toulouse",
+   "poss": 0.4669,
+   "tilt": 0.4851,
+   "ppp": 3.8111,
+   "tempo": 16.1433,
+   "long": 0.1249,
+   "ppda": 12.4488,
+   "press_h": 55.0013,
+   "cp": 38.0106,
+   "line": 35.1961,
+   "regain": 11.781,
+   "width": 0.6295,
+   "cross": 0.4041,
+   "counter": 0.0911,
+   "xg_shot": 0.1044,
+   "sp": 0.3106
+  },
+  {
+   "league": "Ligue 1",
+   "team": "Troyes",
+   "poss": 0.4773,
+   "tilt": 0.4606,
+   "ppp": 4.2864,
+   "tempo": 16.2216,
+   "long": 0.1444,
+   "ppda": 14.0215,
+   "press_h": 52.5502,
+   "cp": 33.662,
+   "line": 29.6745,
+   "regain": 8.8311,
+   "width": 0.6412,
+   "cross": 0.331,
+   "counter": 0.046,
+   "xg_shot": 0.0705,
+   "sp": 0.2841
+  },
+  {
+   "league": "Serie A",
+   "team": "AC Milan",
+   "poss": 0.5295,
+   "tilt": 0.5424,
+   "ppp": 4.3121,
+   "tempo": 15.7337,
+   "long": 0.1241,
+   "ppda": 10.1246,
+   "press_h": 56.0922,
+   "cp": 33.7785,
+   "line": 37.8513,
+   "regain": 12.2989,
+   "width": 0.5668,
+   "cross": 0.3289,
+   "counter": 0.0623,
+   "xg_shot": 0.0922,
+   "sp": 0.3158
+  },
+  {
+   "league": "Serie A",
+   "team": "AS Roma",
+   "poss": 0.5689,
+   "tilt": 0.6154,
+   "ppp": 5.2554,
+   "tempo": 16.7632,
+   "long": 0.1255,
+   "ppda": 10.8784,
+   "press_h": 57.7356,
+   "cp": 31.9186,
+   "line": 38.7602,
+   "regain": 12.1573,
+   "width": 0.5839,
+   "cross": 0.3027,
+   "counter": 0.0458,
+   "xg_shot": 0.1025,
+   "sp": 0.2524
+  },
+  {
+   "league": "Serie A",
+   "team": "Atalanta",
+   "poss": 0.4781,
+   "tilt": 0.4924,
+   "ppp": 3.9873,
+   "tempo": 16.2057,
+   "long": 0.147,
+   "ppda": 10.5458,
+   "press_h": 52.6471,
+   "cp": 34.0999,
+   "line": 33.8531,
+   "regain": 10.0532,
+   "width": 0.6476,
+   "cross": 0.4812,
+   "counter": 0.0566,
+   "xg_shot": 0.0807,
+   "sp": 0.2536
+  },
+  {
+   "league": "Serie A",
+   "team": "Bologna",
+   "poss": 0.4655,
+   "tilt": 0.4569,
+   "ppp": 4.296,
+   "tempo": 16.011,
+   "long": 0.1425,
+   "ppda": 13.7283,
+   "press_h": 54.5983,
+   "cp": 34.2907,
+   "line": 35.2634,
+   "regain": 10.5447,
+   "width": 0.5874,
+   "cross": 0.2902,
+   "counter": 0.0389,
+   "xg_shot": 0.077,
+   "sp": 0.2974
+  },
+  {
+   "league": "Serie A",
+   "team": "Carpi",
+   "poss": 0.3798,
+   "tilt": 0.3786,
+   "ppp": 3.2615,
+   "tempo": 15.6408,
+   "long": 0.1722,
+   "ppda": 13.2018,
+   "press_h": 52.7653,
+   "cp": 32.1711,
+   "line": 33.7361,
+   "regain": 9.9618,
+   "width": 0.6,
+   "cross": 0.3418,
+   "counter": 0.0621,
+   "xg_shot": 0.0773,
+   "sp": 0.3485
+  },
+  {
+   "league": "Serie A",
+   "team": "Chievo",
+   "poss": 0.4444,
+   "tilt": 0.416,
+   "ppp": 4.1302,
+   "tempo": 16.7286,
+   "long": 0.1463,
+   "ppda": 12.441,
+   "press_h": 53.7911,
+   "cp": 32.1992,
+   "line": 32.8784,
+   "regain": 9.5123,
+   "width": 0.5752,
+   "cross": 0.3325,
+   "counter": 0.0427,
+   "xg_shot": 0.0734,
+   "sp": 0.2867
+  },
+  {
+   "league": "Serie A",
+   "team": "Empoli",
+   "poss": 0.519,
+   "tilt": 0.4644,
+   "ppp": 4.5359,
+   "tempo": 16.9071,
+   "long": 0.1017,
+   "ppda": 11.3191,
+   "press_h": 56.6671,
+   "cp": 32.5206,
+   "line": 34.7495,
+   "regain": 10.3016,
+   "width": 0.5181,
+   "cross": 0.2144,
+   "counter": 0.0387,
+   "xg_shot": 0.0741,
+   "sp": 0.2416
+  },
+  {
+   "league": "Serie A",
+   "team": "Fiorentina",
+   "poss": 0.6057,
+   "tilt": 0.6009,
+   "ppp": 5.8197,
+   "tempo": 16.9025,
+   "long": 0.1047,
+   "ppda": 9.2401,
+   "press_h": 57.1787,
+   "cp": 34.2309,
+   "line": 39.248,
+   "regain": 10.4526,
+   "width": 0.5337,
+   "cross": 0.3299,
+   "counter": 0.0455,
+   "xg_shot": 0.0836,
+   "sp": 0.2551
+  },
+  {
+   "league": "Serie A",
+   "team": "Frosinone",
+   "poss": 0.3979,
+   "tilt": 0.3406,
+   "ppp": 3.0429,
+   "tempo": 15.0266,
+   "long": 0.1752,
+   "ppda": 10.643,
+   "press_h": 52.8669,
+   "cp": 31.5927,
+   "line": 31.1213,
+   "regain": 10.6154,
+   "width": 0.6208,
+   "cross": 0.378,
+   "counter": 0.0683,
+   "xg_shot": 0.0604,
+   "sp": 0.3535
+  },
+  {
+   "league": "Serie A",
+   "team": "Genoa",
+   "poss": 0.4977,
+   "tilt": 0.5154,
+   "ppp": 4.1217,
+   "tempo": 15.5522,
+   "long": 0.1351,
+   "ppda": 11.0139,
+   "press_h": 53.8091,
+   "cp": 33.8168,
+   "line": 37.1919,
+   "regain": 10.5336,
+   "width": 0.5898,
+   "cross": 0.3937,
+   "counter": 0.0383,
+   "xg_shot": 0.0821,
+   "sp": 0.2534
+  },
+  {
+   "league": "Serie A",
+   "team": "Hellas Verona",
+   "poss": 0.4689,
+   "tilt": 0.4657,
+   "ppp": 3.8012,
+   "tempo": 14.9472,
+   "long": 0.1582,
+   "ppda": 13.3154,
+   "press_h": 53.6207,
+   "cp": 34.6104,
+   "line": 33.1987,
+   "regain": 10.9673,
+   "width": 0.6212,
+   "cross": 0.4358,
+   "counter": 0.0247,
+   "xg_shot": 0.0794,
+   "sp": 0.3485
+  },
+  {
+   "league": "Serie A",
+   "team": "Inter Milan",
+   "poss": 0.5516,
+   "tilt": 0.5694,
+   "ppp": 4.8702,
+   "tempo": 16.2893,
+   "long": 0.1194,
+   "ppda": 11.5538,
+   "press_h": 54.8379,
+   "cp": 34.1335,
+   "line": 35.9719,
+   "regain": 11.3358,
+   "width": 0.5914,
+   "cross": 0.4036,
+   "counter": 0.0316,
+   "xg_shot": 0.0944,
+   "sp": 0.3291
+  },
+  {
+   "league": "Serie A",
+   "team": "Juventus",
+   "poss": 0.5635,
+   "tilt": 0.5826,
+   "ppp": 5.5064,
+   "tempo": 16.5121,
+   "long": 0.1151,
+   "ppda": 11.1154,
+   "press_h": 57.9099,
+   "cp": 29.8102,
+   "line": 40.849,
+   "regain": 12.5257,
+   "width": 0.573,
+   "cross": 0.366,
+   "counter": 0.0414,
+   "xg_shot": 0.0957,
+   "sp": 0.3105
+  },
+  {
+   "league": "Serie A",
+   "team": "Lazio",
+   "poss": 0.5579,
+   "tilt": 0.606,
+   "ppp": 4.6535,
+   "tempo": 15.9192,
+   "long": 0.132,
+   "ppda": 9.9566,
+   "press_h": 57.3515,
+   "cp": 37.1442,
+   "line": 39.0427,
+   "regain": 12.5148,
+   "width": 0.5939,
+   "cross": 0.4136,
+   "counter": 0.0283,
+   "xg_shot": 0.0848,
+   "sp": 0.3147
+  },
+  {
+   "league": "Serie A",
+   "team": "Napoli",
+   "poss": 0.6014,
+   "tilt": 0.6748,
+   "ppp": 6.159,
+   "tempo": 19.1271,
+   "long": 0.0865,
+   "ppda": 10.1897,
+   "press_h": 60.5126,
+   "cp": 37.2524,
+   "line": 39.0191,
+   "regain": 11.6093,
+   "width": 0.5808,
+   "cross": 0.2896,
+   "counter": 0.0516,
+   "xg_shot": 0.0888,
+   "sp": 0.1414
+  },
+  {
+   "league": "Serie A",
+   "team": "Palermo",
+   "poss": 0.4362,
+   "tilt": 0.432,
+   "ppp": 3.572,
+   "tempo": 15.3757,
+   "long": 0.1389,
+   "ppda": 14.4523,
+   "press_h": 53.3429,
+   "cp": 32.6536,
+   "line": 35.0917,
+   "regain": 11.2568,
+   "width": 0.5975,
+   "cross": 0.4472,
+   "counter": 0.026,
+   "xg_shot": 0.0831,
+   "sp": 0.3495
+  },
+  {
+   "league": "Serie A",
+   "team": "Sampdoria",
+   "poss": 0.4961,
+   "tilt": 0.4675,
+   "ppp": 4.436,
+   "tempo": 15.7687,
+   "long": 0.1373,
+   "ppda": 12.0516,
+   "press_h": 52.8132,
+   "cp": 33.0259,
+   "line": 33.6928,
+   "regain": 9.3454,
+   "width": 0.539,
+   "cross": 0.3111,
+   "counter": 0.0414,
+   "xg_shot": 0.0832,
+   "sp": 0.2745
+  },
+  {
+   "league": "Serie A",
+   "team": "Sassuolo",
+   "poss": 0.5149,
+   "tilt": 0.5249,
+   "ppp": 4.1077,
+   "tempo": 15.9088,
+   "long": 0.1397,
+   "ppda": 10.4413,
+   "press_h": 56.9252,
+   "cp": 36.4226,
+   "line": 34.0579,
+   "regain": 11.0608,
+   "width": 0.5917,
+   "cross": 0.3856,
+   "counter": 0.0349,
+   "xg_shot": 0.0816,
+   "sp": 0.2857
+  },
+  {
+   "league": "Serie A",
+   "team": "Torino",
+   "poss": 0.4884,
+   "tilt": 0.4247,
+   "ppp": 4.4031,
+   "tempo": 15.1719,
+   "long": 0.1605,
+   "ppda": 13.3481,
+   "press_h": 50.6088,
+   "cp": 27.554,
+   "line": 35.7619,
+   "regain": 8.5156,
+   "width": 0.5504,
+   "cross": 0.3746,
+   "counter": 0.0642,
+   "xg_shot": 0.0846,
+   "sp": 0.2366
+  },
+  {
+   "league": "Serie A",
+   "team": "Udinese",
+   "poss": 0.4346,
+   "tilt": 0.4292,
+   "ppp": 3.8156,
+   "tempo": 16.1713,
+   "long": 0.1555,
+   "ppda": 14.0636,
+   "press_h": 52.9304,
+   "cp": 29.9412,
+   "line": 36.8557,
+   "regain": 10.0427,
+   "width": 0.6095,
+   "cross": 0.4165,
+   "counter": 0.0573,
+   "xg_shot": 0.0952,
+   "sp": 0.3572
+  }
+ ],
+ "responsiveness": {
+  "all_kpis": {
+   "changes": 39,
+   "control_windows": 432,
+   "shift_changed": 1.5701795144598962,
+   "shift_control": 1.4584785271592433,
+   "ratio": 1.076587337571722,
+   "ratio_lo": 0.9750213912269559,
+   "ratio_hi": 1.1799818990147164,
+   "share_above_control_median": 0.6153846153846154
+  },
+  "fast_kpis": {
+   "changes": 39,
+   "control_windows": 432,
+   "shift_changed": 0.7914036341460294,
+   "shift_control": 0.7322290657820347,
+   "ratio": 1.0808142849407312,
+   "ratio_lo": 0.9158184072291157,
+   "ratio_hi": 1.2665425752903263,
+   "share_above_control_median": 0.5641025641025641
+  },
+  "fast_kpis_list": [
+   "Possession share (in-play time)",
+   "Passes per possession",
+   "Passes per minute in possession",
+   "Long-ball share of open-play passes"
+  ]
+ },
+ "women": {
+  "team_seasons": 47,
+  "seasons": [
+   "WSL 2018/19",
+   "WSL 2019/20",
+   "WSL 2020/21",
+   "WSL 2023/24"
+  ],
+  "half_matches": 6,
+  "rel": {
+   "poss": {
+    "r_half": 0.8753250164004929,
+    "m80": 3.418386942364198
+   },
+   "tilt": {
+    "r_half": 0.8727106859951149,
+    "m80": 3.5005226647750054
+   },
+   "ppp": {
+    "r_half": 0.9220265421838131,
+    "m80": 2.0296194328160846
+   },
+   "tempo": {
+    "r_half": 0.8030498217794003,
+    "m80": 5.886066031147016
+   },
+   "long": {
+    "r_half": 0.9195433361562491,
+    "m80": 2.099911832672902
+   },
+   "ppda": {
+    "r_half": 0.6167202898152222,
+    "m80": 14.915534961871824
+   },
+   "press_h": {
+    "r_half": 0.8557499293571701,
+    "m80": 4.0455763730282
+   },
+   "cp": {
+    "r_half": 0.30006190086298257,
+    "m80": 55.98349650847256
+   },
+   "line": {
+    "r_half": 0.8261060562448338,
+    "m80": 5.05195987679226
+   },
+   "regain": {
+    "r_half": 0.7717384140404266,
+    "m80": 7.098620417698669
+   },
+   "width": {
+    "r_half": 0.7275752773715096,
+    "m80": 8.986277497916252
+   },
+   "cross": {
+    "r_half": 0.6531747115555986,
+    "m80": 12.743614802296445
+   },
+   "counter": {
+    "r_half": 0.2826423368186352,
+    "m80": 60.9129690553055
+   },
+   "xg_shot": {
+    "r_half": 0.48324689199921417,
+    "m80": 25.66405453889403
+   },
+   "sp": {
+    "r_half": 0.1442170148202228,
+    "m80": 142.41587006857537
+   }
+  },
+  "season_to_season": {
+   "poss": 0.8031742742022693,
+   "tilt": 0.8783389756791451,
+   "ppp": 0.8561516786723707,
+   "tempo": 0.5163035315308289,
+   "long": 0.6887146200271886,
+   "ppda": 0.5559813771005113,
+   "press_h": 0.8335056570243748,
+   "cp": 0.0020893730236090494,
+   "line": 0.7569243050644768,
+   "regain": 0.7055779175005498,
+   "width": 0.7751450922089482,
+   "cross": 0.48115857666955936,
+   "counter": -0.28245622193626235,
+   "xg_shot": 0.6901540278257214,
+   "sp": 0.27151121010241663
+  },
+  "pairs": 21
+ },
+ "composite": {
+  "r_control_press": 0.747235588595442,
+  "slope": 0.6508948780888888,
+  "most_press_for_control": [
+   {
+    "team": "Eibar",
+    "league": "La Liga",
+    "resid": 1.3893897291616755
+   },
+   {
+    "team": "Athletic Club",
+    "league": "La Liga",
+    "resid": 1.101058731311117
+   },
+   {
+    "team": "Liverpool",
+    "league": "Premier League",
+    "resid": 0.9224463794512721
+   },
+   {
+    "team": "Lazio",
+    "league": "Serie A",
+    "resid": 0.8170535370008507
+   },
+   {
+    "team": "Tottenham Hotspur",
+    "league": "Premier League",
+    "resid": 0.7545557281998301
+   },
+   {
+    "team": "Rayo Vallecano",
+    "league": "La Liga",
+    "resid": 0.7309123799467191
+   }
+  ],
+  "least_press_for_control": [
+   {
+    "team": "Aston Villa",
+    "league": "Premier League",
+    "resid": -1.1761074186235145
+   },
+   {
+    "team": "Torino",
+    "league": "Serie A",
+    "resid": -0.9652445638670263
+   },
+   {
+    "team": "Real Betis",
+    "league": "La Liga",
+    "resid": -0.9327189981646316
+   },
+   {
+    "team": "Real Madrid",
+    "league": "La Liga",
+    "resid": -0.9243085232212092
+   },
+   {
+    "team": "Guingamp",
+    "league": "Ligue 1",
+    "resid": -0.8347677284122464
+   },
+   {
+    "team": "Troyes",
+    "league": "Ligue 1",
+    "resid": -0.7939578322974367
+   }
+  ],
+  "scores": [
+   {
+    "team": "AFC Bournemouth",
+    "league": "Premier League",
+    "control": 0.21847866764930823,
+    "press": 0.5102266204433603
+   },
+   {
+    "team": "Arsenal",
+    "league": "Premier League",
+    "control": 1.4760579948755288,
+    "press": 0.5120671982371822
+   },
+   {
+    "team": "Aston Villa",
+    "league": "Premier League",
+    "control": -0.3001647010389141,
+    "press": -1.3714830851128264
+   },
+   {
+    "team": "Chelsea",
+    "league": "Premier League",
+    "control": 1.0719118610280822,
+    "press": 0.38989378370769584
+   },
+   {
+    "team": "Crystal Palace",
+    "league": "Premier League",
+    "control": -0.8937379467799311,
+    "press": -0.13490690045181714
+   },
+   {
+    "team": "Everton",
+    "league": "Premier League",
+    "control": 0.2646865366664295,
+    "press": -0.4478889438007363
+   },
+   {
+    "team": "Leicester City",
+    "league": "Premier League",
+    "control": -1.0516561511349478,
+    "press": -0.24331408444506417
+   },
+   {
+    "team": "Liverpool",
+    "league": "Premier League",
+    "control": 1.0833008503272115,
+    "press": 1.6275613543585918
+   },
+   {
+    "team": "Manchester City",
+    "league": "Premier League",
+    "control": 1.6039862950548547,
+    "press": 0.9575922890496815
+   },
+   {
+    "team": "Manchester United",
+    "league": "Premier League",
+    "control": 1.2999939544605068,
+    "press": 1.4250953286389365
+   },
+   {
+    "team": "Newcastle United",
+    "league": "Premier League",
+    "control": -0.6269313797990612,
+    "press": -0.981597414684911
+   },
+   {
+    "team": "Norwich City",
+    "league": "Premier League",
+    "control": -0.4428341251144263,
+    "press": -0.5175433931907563
+   },
+   {
+    "team": "Southampton",
+    "league": "Premier League",
+    "control": -0.1249695505636879,
+    "press": 0.1285381577791099
+   },
+   {
+    "team": "Stoke City",
+    "league": "Premier League",
+    "control": -0.2402822167512157,
+    "press": -0.8192393364089524
+   },
+   {
+    "team": "Sunderland",
+    "league": "Premier League",
+    "control": -1.5302023162120384,
+    "press": -0.7704897213643311
+   },
+   {
+    "team": "Swansea City",
+    "league": "Premier League",
+    "control": 0.21561622946693537,
+    "press": 0.24544517384423153
+   },
+   {
+    "team": "Tottenham Hotspur",
+    "league": "Premier League",
+    "control": 0.7280715953636211,
+    "press": 1.2284538005040169
+   },
+   {
+    "team": "Watford",
+    "league": "Premier League",
+    "control": -0.8384720155622891,
+    "press": -0.34317322595404515
+   },
+   {
+    "team": "West Bromwich Albion",
+    "league": "Premier League",
+    "control": -1.506254100181346,
+    "press": -0.8800013976636434
+   },
+   {
+    "team": "West Ham United",
+    "league": "Premier League",
+    "control": -0.40659948175462035,
+    "press": -0.5152362034857162
+   },
+   {
+    "team": "Athletic Club",
+    "league": "La Liga",
+    "control": 0.03262157219789852,
+    "press": 1.122291945569936
+   },
+   {
+    "team": "Atl\u00e9tico Madrid",
+    "league": "La Liga",
+    "control": 0.5203077966677241,
+    "press": 0.8640783520490192
+   },
+   {
+    "team": "Barcelona",
+    "league": "La Liga",
+    "control": 2.6746090450430002,
+    "press": 1.3670017031923862
+   },
+   {
+    "team": "Celta Vigo",
+    "league": "La Liga",
+    "control": 0.7446928270453788,
+    "press": 0.32223934392199416
+   },
+   {
+    "team": "Eibar",
+    "league": "La Liga",
+    "control": -0.9055762287371767,
+    "press": 0.7999548001575949
+   },
+   {
+    "team": "Espanyol",
+    "league": "La Liga",
+    "control": -0.6939919569852069,
+    "press": -0.3305624393004783
+   },
+   {
+    "team": "Getafe",
+    "league": "La Liga",
+    "control": -0.576461678444468,
+    "press": -0.16402830278833092
+   },
+   {
+    "team": "Granada",
+    "league": "La Liga",
+    "control": -1.1764102455664411,
+    "press": -0.48621685791097247
+   },
+   {
+    "team": "Las Palmas",
+    "league": "La Liga",
+    "control": 0.706905644996193,
+    "press": -0.3306848486940363
+   },
+   {
+    "team": "Levante UD",
+    "league": "La Liga",
+    "control": -0.8280592360720939,
+    "press": -0.5708340608192181
+   },
+   {
+    "team": "M\u00e1laga",
+    "league": "La Liga",
+    "control": -0.15147633188727408,
+    "press": 0.28868656223799133
+   },
+   {
+    "team": "RC Deportivo La Coru\u00f1a",
+    "league": "La Liga",
+    "control": -0.4285822674366142,
+    "press": -1.0376303246601866
+   },
+   {
+    "team": "Rayo Vallecano",
+    "league": "La Liga",
+    "control": 0.10264299869352769,
+    "press": 0.7977221820680207
+   },
+   {
+    "team": "Real Betis",
+    "league": "La Liga",
+    "control": -0.42934621811847823,
+    "press": -1.212178252464784
+   },
+   {
+    "team": "Real Madrid",
+    "league": "La Liga",
+    "control": 1.450380834333206,
+    "press": 0.01973693312456365
+   },
+   {
+    "team": "Real Sociedad",
+    "league": "La Liga",
+    "control": 0.22524317845934913,
+    "press": 0.5858510271617057
+   },
+   {
+    "team": "Sevilla",
+    "league": "La Liga",
+    "control": -0.0112457613507458,
+    "press": -0.18614633929154362
+   },
+   {
+    "team": "Sporting Gij\u00f3n",
+    "league": "La Liga",
+    "control": -0.9840396792699557,
+    "press": -1.0708155928829124
+   },
+   {
+    "team": "Valencia",
+    "league": "La Liga",
+    "control": -0.09830625982126193,
+    "press": -0.16393985184697868
+   },
+   {
+    "team": "Villarreal",
+    "league": "La Liga",
+    "control": -0.17390803374656197,
+    "press": -0.6145259788237761
+   },
+   {
+    "team": "AS Monaco",
+    "league": "Ligue 1",
+    "control": -0.03795860319490022,
+    "press": 0.3064779497416085
+   },
+   {
+    "team": "Angers",
+    "league": "Ligue 1",
+    "control": -0.8515214249053674,
+    "press": -1.235731892675795
+   },
+   {
+    "team": "Bastia",
+    "league": "Ligue 1",
+    "control": -1.1922112990647145,
+    "press": -1.1394036330294852
+   },
+   {
+    "team": "Bordeaux",
+    "league": "Ligue 1",
+    "control": 0.17402404904706187,
+    "press": 0.3440726544196683
+   },
+   {
+    "team": "Gaz\u00e9lec Ajaccio",
+    "league": "Ligue 1",
+    "control": -0.6893651045170073,
+    "press": -0.13936441507006253
+   },
+   {
+    "team": "Guingamp",
+    "league": "Ligue 1",
+    "control": -1.0023980158684778,
+    "press": -1.4872234627475034
+   },
+   {
+    "team": "Lille",
+    "league": "Ligue 1",
+    "control": 0.15861201797778776,
+    "press": 0.7253126960280758
+   },
+   {
+    "team": "Lorient",
+    "league": "Ligue 1",
+    "control": -0.06295449362616364,
+    "press": -0.8284490187036813
+   },
+   {
+    "team": "Lyon",
+    "league": "Ligue 1",
+    "control": 1.673389309577888,
+    "press": 1.7308038659771867
+   },
+   {
+    "team": "Montpellier",
+    "league": "Ligue 1",
+    "control": -0.04869923752273857,
+    "press": 0.2727362441260281
+   },
+   {
+    "team": "Nantes",
+    "league": "Ligue 1",
+    "control": -0.18342938865330097,
+    "press": 0.1735748291820292
+   },
+   {
+    "team": "OGC Nice",
+    "league": "Ligue 1",
+    "control": 0.9911716216808821,
+    "press": 0.14570593564127315
+   },
+   {
+    "team": "Olympique de Marseille",
+    "league": "Ligue 1",
+    "control": 0.8418262099067804,
+    "press": 1.010225635843096
+   },
+   {
+    "team": "Paris Saint-Germain",
+    "league": "Ligue 1",
+    "control": 2.3990811402727523,
+    "press": 1.1273229574766817
+   },
+   {
+    "team": "Rennes",
+    "league": "Ligue 1",
+    "control": -0.007181760132423387,
+    "press": -0.49213048722702013
+   },
+   {
+    "team": "Saint-\u00c9tienne",
+    "league": "Ligue 1",
+    "control": -0.07268195777583733,
+    "press": 0.6568026844290445
+   },
+   {
+    "team": "Stade Malherbe Caen",
+    "league": "Ligue 1",
+    "control": -1.1206682347124777,
+    "press": -0.8206537902891289
+   },
+   {
+    "team": "Stade de Reims",
+    "league": "Ligue 1",
+    "control": -0.3344252604704226,
+    "press": 0.30620093205766885
+   },
+   {
+    "team": "Toulouse",
+    "league": "Ligue 1",
+    "control": -0.239641340472268,
+    "press": 0.394760943435978
+   },
+   {
+    "team": "Troyes",
+    "league": "Ligue 1",
+    "control": -0.3949682275470538,
+    "press": -1.0510406286156608
+   },
+   {
+    "team": "AC Milan",
+    "league": "Serie A",
+    "control": 0.33475724875209567,
+    "press": 0.619478354621309
+   },
+   {
+    "team": "AS Roma",
+    "league": "Serie A",
+    "control": 0.9744639190558365,
+    "press": 0.5579077891508456
+   },
+   {
+    "team": "Atalanta",
+    "league": "Serie A",
+    "control": -0.3573071532921163,
+    "press": -0.149089536058011
+   },
+   {
+    "team": "Bologna",
+    "league": "Serie A",
+    "control": -0.36273800737287365,
+    "press": -0.3124548667630987
+   },
+   {
+    "team": "Carpi",
+    "league": "Serie A",
+    "control": -1.5637824701766823,
+    "press": -0.7798596904323462
+   },
+   {
+    "team": "Chievo",
+    "league": "Serie A",
+    "control": -0.6538608325275413,
+    "press": -0.6317826143376497
+   },
+   {
+    "team": "Empoli",
+    "league": "Serie A",
+    "control": 0.38355181253439535,
+    "press": 0.05524193756508178
+   },
+   {
+    "team": "Fiorentina",
+    "league": "Serie A",
+    "control": 1.4775784570085104,
+    "press": 1.054448722425064
+   },
+   {
+    "team": "Frosinone",
+    "league": "Serie A",
+    "control": -1.700909568013081,
+    "press": -0.6654672249585067
+   },
+   {
+    "team": "Genoa",
+    "league": "Serie A",
+    "control": -0.04527737707723006,
+    "press": 0.18413729150780386
+   },
+   {
+    "team": "Hellas Verona",
+    "league": "Serie A",
+    "control": -0.6483172793368315,
+    "press": -0.5097411194376642
+   },
+   {
+    "team": "Inter Milan",
+    "league": "Serie A",
+    "control": 0.7220922691700538,
+    "press": 0.11657491488050059
+   },
+   {
+    "team": "Juventus",
+    "league": "Serie A",
+    "control": 1.0502275339631748,
+    "press": 0.5187391875336438
+   },
+   {
+    "team": "Lazio",
+    "league": "Serie A",
+    "control": 0.6476287554574145,
+    "press": 1.2385917768311632
+   },
+   {
+    "team": "Napoli",
+    "league": "Serie A",
+    "control": 1.972034558362413,
+    "press": 1.5304179140715295
+   },
+   {
+    "team": "Palermo",
+    "league": "Serie A",
+    "control": -0.7349834371512584,
+    "press": -0.7439187841322027
+   },
+   {
+    "team": "Sampdoria",
+    "league": "Serie A",
+    "control": -0.11309925115837176,
+    "press": -0.5036535095268079
+   },
+   {
+    "team": "Sassuolo",
+    "league": "Serie A",
+    "control": -0.004289620061947053,
+    "press": 0.5628442990945501
+   },
+   {
+    "team": "Torino",
+    "league": "Serie A",
+    "control": -0.5257044871266071,
+    "press": -1.3074229219260811
+   },
+   {
+    "team": "Udinese",
+    "league": "Serie A",
+    "control": -0.852065071009351,
+    "press": -0.8349919201091329
+   }
+  ]
+ }
+}

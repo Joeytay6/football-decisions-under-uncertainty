@@ -1,0 +1,450 @@
+{
+ "men": {
+  "label": "Men's top flights 2015/16",
+  "matches": 1517,
+  "teams": 80,
+  "share_np_goals": 0.2762678621462595,
+  "share_npxg": 0.27702021429437823,
+  "share_shots": 0.3138070849338455,
+  "xg_per_shot_sp": 0.08085120627575654,
+  "xg_per_shot_op": 0.09649786674117557,
+  "rel": {
+   "xg_sp": {
+    "label": "Set-piece xG for",
+    "r_half": 0.40206051166680823,
+    "r_lo": 0.272797602541141,
+    "r_hi": 0.5320833068407292,
+    "season": 0.5866969816856087,
+    "half_matches": 18,
+    "m80": 107.07752169322004,
+    "test_retest": 0.4120065237122373,
+    "obs_sd": 0.07054378912513523,
+    "true_sd": 0.05403382479346812
+   },
+   "xg_sp_a": {
+    "label": "Set-piece xG against",
+    "r_half": 0.29759568909391393,
+    "r_lo": 0.14425987350442937,
+    "r_hi": 0.4412582929874655,
+    "season": 0.4721391488192774,
+    "half_matches": 18,
+    "m80": 169.93898849549043,
+    "test_retest": 0.2097136621989197,
+    "obs_sd": 0.06273092025248249,
+    "true_sd": 0.04310390977546889
+   },
+   "xgd_sp": {
+    "label": "Set-piece xG difference",
+    "r_half": 0.44351957311107404,
+    "r_lo": 0.31527345169344423,
+    "r_hi": 0.5782886024928623,
+    "season": 0.6272236041635788,
+    "half_matches": 18,
+    "m80": 90.33781858815165,
+    "test_retest": 0.4382620231284673,
+    "obs_sd": 0.10687186353139394,
+    "true_sd": 0.08463979038162024
+   },
+   "xg_op": {
+    "label": "Open-play xG for",
+    "r_half": 0.7605710904472078,
+    "r_lo": 0.683932818604151,
+    "r_hi": 0.8257660191894426,
+    "season": 0.8702337889433686,
+    "half_matches": 18,
+    "m80": 22.66570699875636,
+    "test_retest": 0.7706584075247198,
+    "obs_sd": 0.23567412212215408,
+    "true_sd": 0.2198517206501301
+   },
+   "xg_op_a": {
+    "label": "Open-play xG against",
+    "r_half": 0.5649184921546834,
+    "r_lo": 0.46110885590572015,
+    "r_hi": 0.6682867923807312,
+    "season": 0.7326995603114839,
+    "half_matches": 18,
+    "m80": 55.452014759476654,
+    "test_retest": 0.5336632930931959,
+    "obs_sd": 0.1718666745920438,
+    "true_sd": 0.14711421524637724
+   },
+   "xgd_op": {
+    "label": "Open-play xG difference",
+    "r_half": 0.7731345803752612,
+    "r_lo": 0.7110135092529102,
+    "r_hi": 0.8291631209960194,
+    "season": 0.8779662556394774,
+    "half_matches": 18,
+    "m80": 21.12738277086624,
+    "test_retest": 0.7624264047448889,
+    "obs_sd": 0.3658179320800024,
+    "true_sd": 0.34277086664013845
+   }
+  },
+  "volume_quality": {
+   "sp_per_match": 16.062623599208965,
+   "xg_per_100_sp": 1.9516838154635368,
+   "r_volume_openplay": 0.6347251325114472,
+   "r_qfor_openplay": 0.24359370590495888,
+   "r_qagainst_openplay": -0.24320186592769946,
+   "r_spd_openplay": 0.5554731132092583,
+   "rel_q_for": {
+    "r_half": 0.3009419896053829,
+    "season": 0.47611773524390766,
+    "m80": 167.2487671607796
+   },
+   "rel_q_against": {
+    "r_half": 0.10532639057351327,
+    "season": 0.19905987146673007,
+    "m80": 611.5893607286116
+   },
+   "rel_volume": null,
+   "q_for_p10": 1.458640019222585,
+   "q_for_p90": 2.4336126938160625,
+   "q_against_p10": 1.6062340601554974,
+   "q_against_p90": 2.4127135718866373,
+   "true_sd_q_for": 0.0025319320285755982,
+   "goals_season_1sd_q_for": 1.5454399038440743
+  },
+  "points_per_goal": 0.5872225071433805,
+  "matches_per_season": 38.0,
+  "edge": {
+   "true_sd_xgd_sp_per_match": 0.08463979038162024,
+   "goals_per_season_1sd": 3.216312034501569,
+   "points_per_season_1sd": 1.8886908166554384,
+   "p90_vs_p10_goals": 8.244051006834423,
+   "p90_vs_p10_points": 4.841092301251221,
+   "true_sd_xgd_op_per_match": 0.34277086664013845
+  },
+  "best": [
+   {
+    "team": "Juventus",
+    "league": "Serie A",
+    "per_match": 0.2642211559447369,
+    "xg_for": 16.489137668,
+    "xg_against": 6.4487337421,
+    "goals_for": 21,
+    "goals_against": 4
+   },
+   {
+    "team": "Paris Saint-Germain",
+    "league": "Ligue 1",
+    "per_match": 0.21704623597027028,
+    "xg_for": 13.4499522644,
+    "xg_against": 5.4192415335,
+    "goals_for": 13,
+    "goals_against": 6
+   },
+   {
+    "team": "Athletic Club",
+    "league": "La Liga",
+    "per_match": 0.19169108721052633,
+    "xg_for": 14.3825820589,
+    "xg_against": 7.0983207449,
+    "goals_for": 18,
+    "goals_against": 10
+   },
+   {
+    "team": "West Ham United",
+    "league": "Premier League",
+    "per_match": 0.17494109425789467,
+    "xg_for": 19.7834757648,
+    "xg_against": 13.135714183000001,
+    "goals_for": 19,
+    "goals_against": 14
+   },
+   {
+    "team": "Barcelona",
+    "league": "La Liga",
+    "per_match": 0.17150398114473686,
+    "xg_for": 14.5028388165,
+    "xg_against": 7.985687533,
+    "goals_for": 18,
+    "goals_against": 2
+   }
+  ],
+  "worst": [
+   {
+    "team": "Newcastle United",
+    "league": "Premier League",
+    "per_match": -0.25366463173684217,
+    "xg_for": 9.4274096359,
+    "xg_against": 19.066665641900002,
+    "goals_for": 10,
+    "goals_against": 19
+   },
+   {
+    "team": "Valencia",
+    "league": "La Liga",
+    "per_match": -0.1788267336763158,
+    "xg_for": 10.5913294575,
+    "xg_against": 17.3867453372,
+    "goals_for": 14,
+    "goals_against": 14
+   },
+   {
+    "team": "Aston Villa",
+    "league": "Premier League",
+    "per_match": -0.17531481401842106,
+    "xg_for": 9.2502850218,
+    "xg_against": 15.9122479545,
+    "goals_for": 9,
+    "goals_against": 19
+   },
+   {
+    "team": "Sampdoria",
+    "league": "Serie A",
+    "per_match": -0.16687909800526315,
+    "xg_for": 9.476144427,
+    "xg_against": 15.817550151199999,
+    "goals_for": 9,
+    "goals_against": 13
+   },
+   {
+    "team": "Troyes",
+    "league": "Ligue 1",
+    "per_match": -0.15299846342432435,
+    "xg_for": 8.2041460186,
+    "xg_against": 13.8650891653,
+    "goals_for": 7,
+    "goals_against": 14
+   }
+  ],
+  "share_by_league": {
+   "Premier League": 0.29431072210065645,
+   "La Liga": 0.2634920634920635,
+   "Ligue 1": 0.2699530516431925,
+   "Serie A": 0.2773892773892774
+  },
+  "restart_mix": {
+   "Corner": 485,
+   "Free Kick": 198,
+   "Throw-in": 187
+  }
+ },
+ "women": {
+  "label": "WSL 2018/19 to 2023/24",
+  "matches": 457,
+  "teams": 47,
+  "share_np_goals": 0.26692307692307693,
+  "share_npxg": 0.27473970048112484,
+  "share_shots": 0.30936726154897104,
+  "xg_per_shot_sp": 0.09327489489125035,
+  "xg_per_shot_op": 0.11029718900754203,
+  "rel": {
+   "xg_sp": {
+    "label": "Set-piece xG for",
+    "r_half": 0.6384144216105286,
+    "r_lo": 0.5003926134632884,
+    "r_hi": 0.7542870172611416,
+    "season": 0.8607162724767745,
+    "half_matches": 6,
+    "m80": 13.593135724370354,
+    "test_retest": 0.7377116640724594,
+    "obs_sd": 0.15704972970896797,
+    "true_sd": 0.14570256594914774
+   },
+   "xg_sp_a": {
+    "label": "Set-piece xG against",
+    "r_half": 0.5441337283791543,
+    "r_lo": 0.3774904960185496,
+    "r_hi": 0.7050661985275021,
+    "season": 0.8068636855486748,
+    "half_matches": 6,
+    "m80": 20.10680453771966,
+    "test_retest": 0.577249653350682,
+    "obs_sd": 0.13974972865464247,
+    "true_sd": 0.12553102012823153
+   },
+   "xgd_sp": {
+    "label": "Set-piece xG difference",
+    "r_half": 0.7261043347809083,
+    "r_lo": 0.6048928278835225,
+    "r_hi": 0.813448981327166,
+    "season": 0.9027103770904568,
+    "half_matches": 6,
+    "m80": 9.053101118369801,
+    "test_retest": 0.7833602711187979,
+    "obs_sd": 0.27867162592349515,
+    "true_sd": 0.26476889868508086
+   },
+   "xg_op": {
+    "label": "Open-play xG for",
+    "r_half": 0.8203428169332889,
+    "r_lo": 0.723906177476752,
+    "r_hi": 0.8898235440379808,
+    "season": 0.9411125527765425,
+    "half_matches": 6,
+    "m80": 5.256061617897611,
+    "test_retest": 0.8428644802133861,
+    "obs_sd": 0.48245702724431505,
+    "true_sd": 0.4680361730197115
+   },
+   "xg_op_a": {
+    "label": "Open-play xG against",
+    "r_half": 0.6619462197496417,
+    "r_lo": 0.5112055025222847,
+    "r_hi": 0.7897031043295142,
+    "season": 0.8726663275546831,
+    "half_matches": 6,
+    "m80": 12.256721896647694,
+    "test_retest": 0.7418191274684015,
+    "obs_sd": 0.3718892511813518,
+    "true_sd": 0.34740633641716057
+   },
+   "xgd_op": {
+    "label": "Open-play xG difference",
+    "r_half": 0.8370286915295714,
+    "r_lo": 0.7632867961543004,
+    "r_hi": 0.8899625355638062,
+    "season": 0.9473023351563765,
+    "half_matches": 6,
+    "m80": 4.672852248520688,
+    "test_retest": 0.8736659351916521,
+    "obs_sd": 0.8162627724999998,
+    "true_sd": 0.7944641305264856
+   }
+  },
+  "volume_quality": {
+   "sp_per_match": 16.10612691466083,
+   "xg_per_100_sp": 2.295597746015896,
+   "r_volume_openplay": 0.8820749158175563,
+   "r_qfor_openplay": 0.7122383262736848,
+   "r_qagainst_openplay": -0.2895696922390866,
+   "r_spd_openplay": 0.863262214341311,
+   "rel_q_for": {
+    "r_half": 0.35921894950073624,
+    "season": 0.6623998645341281,
+    "m80": 42.811620136845846
+   },
+   "rel_q_against": {
+    "r_half": 0.23854455171673947,
+    "season": 0.523005593745293,
+    "m80": 76.61013687916412
+   },
+   "rel_volume": null,
+   "q_for_p10": 1.4777492802370087,
+   "q_for_p90": 2.943726180848554,
+   "q_against_p10": 1.5529249509285714,
+   "q_against_p90": 3.0629247318367345,
+   "true_sd_q_for": 0.0047525546022518916,
+   "goals_season_1sd_q_for": 1.6074501994472123
+  },
+  "points_per_goal": 0.4840538089480049,
+  "matches_per_season": 21.0,
+  "edge": {
+   "true_sd_xgd_sp_per_match": 0.26476889868508086,
+   "goals_per_season_1sd": 5.560146872386698,
+   "points_per_season_1sd": 2.6914102718891177,
+   "p90_vs_p10_goals": 14.251768463301586,
+   "p90_vs_p10_points": 6.898622808906188,
+   "true_sd_xgd_op_per_match": 0.7944641305264856
+  },
+  "best": [
+   {
+    "team": "Chelsea FCW",
+    "league": "wsl_2019_20",
+    "per_match": 0.5968186252999998,
+    "xg_for": 11.5993473605,
+    "xg_against": 2.647067981,
+    "goals_for": 12,
+    "goals_against": 3
+   },
+   {
+    "team": "Arsenal WFC",
+    "league": "wsl_2018_19",
+    "per_match": 0.542285228785,
+    "xg_for": 13.0763298195,
+    "xg_against": 2.2306252438,
+    "goals_for": 14,
+    "goals_against": 2
+   },
+   {
+    "team": "Chelsea FCW",
+    "league": "wsl_2023_24",
+    "per_match": 0.4626024734318182,
+    "xg_for": 14.068207866,
+    "xg_against": 3.8909534505,
+    "goals_for": 16,
+    "goals_against": 4
+   },
+   {
+    "team": "Chelsea FCW",
+    "league": "wsl_2018_19",
+    "per_match": 0.41896912093157895,
+    "xg_for": 11.4165491396,
+    "xg_against": 3.4561358419,
+    "goals_for": 8,
+    "goals_against": 1
+   },
+   {
+    "team": "Manchester City WFC",
+    "league": "wsl_2020_21",
+    "per_match": 0.4148549996590909,
+    "xg_for": 13.3502769485,
+    "xg_against": 4.223466956,
+    "goals_for": 13,
+    "goals_against": 4
+   }
+  ],
+  "worst": [
+   {
+    "team": "Bristol City WFC",
+    "league": "wsl_2019_20",
+    "per_match": -0.5442572003999999,
+    "xg_for": 1.4107776959,
+    "xg_against": 9.0303785015,
+    "goals_for": 0,
+    "goals_against": 8
+   },
+   {
+    "team": "Yeovil Town LFC",
+    "league": "wsl_2018_19",
+    "per_match": -0.5353650964157894,
+    "xg_for": 3.0792899248,
+    "xg_against": 13.2512267567,
+    "goals_for": 3,
+    "goals_against": 8
+   },
+   {
+    "team": "Bristol City WFC",
+    "league": "wsl_2020_21",
+    "per_match": -0.38764683409090905,
+    "xg_for": 3.6329184345,
+    "xg_against": 12.1611487845,
+    "goals_for": 3,
+    "goals_against": 18
+   },
+   {
+    "team": "Everton LFC",
+    "league": "wsl_2018_19",
+    "per_match": -0.37896240015789473,
+    "xg_for": 4.7901092157,
+    "xg_against": 11.9903948187,
+    "goals_for": 2,
+    "goals_against": 13
+   },
+   {
+    "team": "Bristol City WFC",
+    "league": "wsl_2023_24",
+    "per_match": -0.36829057998636366,
+    "xg_for": 5.0078083943,
+    "xg_against": 13.110201154,
+    "goals_for": 6,
+    "goals_against": 19
+   }
+  ],
+  "share_by_league": {
+   "WSL 2018/19": 0.2602739726027397,
+   "WSL 2019/20": 0.27848101265822783,
+   "WSL 2020/21": 0.2682926829268293,
+   "WSL 2023/24": 0.263681592039801
+  },
+  "restart_mix": {
+   "Corner": 195,
+   "Free Kick": 51,
+   "Throw-in": 69
+  }
+ }
+}
